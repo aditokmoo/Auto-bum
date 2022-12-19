@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
+import './css/form.css'
 
 function Login({ onLoginChange }) {
     const [loginData, setLoginData] = useState({

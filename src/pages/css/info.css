@@ -1,0 +1,20 @@
+/* INFO SECTION */
+section .info-section {
+    background-color: #fff;
+    padding: 30px;
+    margin: 50px 20px;
+    font-size: 18px;
+}
+
+section .info-section p {
+    margin-bottom: 1rem;
+    font-weight: 200;
+    color: #666;
+    font-family: Montserrat;
+    line-height: 1.4;
+}
+
+.head {
+    font-weight: 600 !important;
+    color: #333 !important;
+}

@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import Login from './Login';
 import Register from './Register';
 import { HiUserCircle } from 'react-icons/hi';
+import './css/navigation.css'
 
 function Navbar() {
   const [showLogin, setShowLogin] = useState(false);
@@ -18,20 +19,21 @@ function Navbar() {
       <nav>
           <div className="container">
               <div className="nav-section">
-                  <h2>Auto <span>Market</span></h2>
-                    {auth.currentUser ?
+                  <h2><Link to={auth.currentUser ? '/home' : '/'} style={{textDecoration: 'none', color: '#000'}}>Auto <span>Bum.</span></Link></h2>
                     <ul className='f-list'>
-                      <Link to='/home' className='link'>Home</Link>
+                      <Link to='/info' className='link'>Informacije</Link>
+                      <Link to='/search' className='link'>Pretrage</Link>
                       <Link to='/sell' className='link'>Prodaj</Link>
                       <Link to='/buy' className='link'>Kupi</Link>
-                      <Link to='/profile' id='user' className='link'><HiUserCircle id="profile-icon" /> Moj Nalog</Link>
-                    </ul>
-                    :
-                    <ul className='s-list'>
-                      <li><Link id='login' onClick={() => setShowLogin(true)}>Prijavi se</Link></li>
-                      <li><Link id='register' onClick={() => setShowRegister(true)}>Napravi novi nalog</Link></li>
-                    </ul>  
-                  }
+                      {auth.currentUser ? 
+                        <Link to='/profile' id='user' className='link'><HiUserCircle id="profile-icon" /> Moj Nalog</Link>
+                        :
+                        <>
+                          <li><Link id='login' onClick={() => setShowLogin(true)}><HiUserCircle id="profile-icon" /> Prijavi se</Link></li>
+                          <li><Link id='register' onClick={() => setShowRegister(true)}>Napravi novi nalog</Link></li>
+                        </>
+                      }
+                    </ul> 
               </div>
           </div>
       </nav>

@@ -1,0 +1,79 @@
+/* LOGIN AND SIGNUP MODAL */
+.register-modal, .login-modal {
+    position: fixed;
+    background: #fff;
+    top: 30%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 400px;
+    padding: 35px 30px;
+    border-radius: 10px;
+    display: none;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: none;
+}
+
+.overlay.show { display: block }
+
+.register-modal #closeModal, .login-modal #closeModal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.register-modal #closeModal:hover, .login-modal #closeModal:hover {
+    color: #e35b3c;
+}
+
+.register-modal h2, .login-modal h2 {
+    margin: 0 0 20px 0;
+    font-size: 1em;
+    font-family: Montserrat;
+}
+
+.register-modal input, .login-modal input {
+    display: block;
+    width: 100%;
+    margin: 5px auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: none;
+}
+
+.login-modal button, .register-modal button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px auto;
+    background-color: #e35b3c;
+    border: 1px solid #e35b3c;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Montserrat;
+    opacity: .8;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.login-modal button:hover, .register-modal button:hover {
+    opacity: 0.6;
+}
+
+.login-modal.show, .register-modal.show {
+    display: block;
+}

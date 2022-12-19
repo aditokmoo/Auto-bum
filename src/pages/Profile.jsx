@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 import Navbar from '../components/Navbar';
 import { toast } from 'react-toastify';
+import './css/profile.css'
 
 function Profile() {
     const auth = getAuth();

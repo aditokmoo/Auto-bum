@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Pages
 import Home from './pages/Home';
+import Info from './pages/Info';
+import Pretrage from './pages/Pretrage';
 import Kupi from './pages/Kupi';
 import Prodaj from './pages/Prodaj';
 import Profile from './pages/Profile';
 // Components
 import PrivateRoute from './components/PrivateRoute';
-import Layout from './components/Layout';
 // CSS File
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -19,6 +20,8 @@ function App() {
         <Routes>
           <Route element={<Openroute />} >
             <Route path='/' element={<Home />} />
+            <Route path='/info' element={<Info />} />
+            <Route path='/search' element={<Pretrage />} />
           </Route>
           
           <Route element={<PrivateRoute />}>

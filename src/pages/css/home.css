@@ -1,0 +1,37 @@
+/* HOME HEADER SECTION */
+header {
+    background-image: url('../images/banner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+    height: 70vh;
+}
+
+header .home-section form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .home-section form input {
+    width: 700px;
+    padding: 17px 0 17px 40px;
+    margin: 270px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+header .home-section form button {
+    background: inherit;
+    position: relative;
+    right: 40px;
+    top: 3px;
+    font-size: 1.3em;
+    border: 0;
+}
+
+header .home-section form .car_icon {
+    position: relative;
+    left: 35px;
+    font-size: 1.5em;
+}

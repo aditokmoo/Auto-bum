@@ -1,0 +1,91 @@
+/* NAVIGATION SECTION */
+nav {
+    background: #fff;
+    padding: 20px 0;
+} 
+nav .nav-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .nav-section h2 {
+    font-size: 26px;
+    font-family: Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+nav .nav-section h2 span {
+    color: #e35b3c;
+}
+
+nav .nav-section #user {
+    display: flex;
+    align-items: center;
+    font-family: Montserrat;
+    font-size: 1.2em;
+    text-decoration: none;
+    color: #111;
+    transition: .2s;
+}
+
+nav .nav-section #user:hover {
+    color: #e35b3c;
+}
+
+nav .nav-section #profile-icon {
+    margin-right: 5px;
+    font-size: 1.5em;
+}
+
+nav .nav-section ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+nav .nav-section ul .link{
+    text-decoration: none;
+    color: #111;
+    margin: 0 20px;
+    font-family: Montserrat;
+    font-size: 1.1em;
+    transition: .2s;
+}
+
+nav .nav-section ul .link:hover {
+    color: #e35b3c;
+}
+
+nav .nav-section ul li #login, #register {
+    text-decoration: none;
+    color: #111;
+    font-family: Montserrat;
+    padding: 10px 20px;
+    transition: .3s;
+}
+
+nav .nav-section ul li #login {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+nav .nav-section ul li #register {
+    border: 1px solid #e35b3c;
+    border-radius: 5px;
+    color: #e35b3c;
+}
+
+nav .nav-section ul li #register:hover {
+    background-color: #e35b3c;
+    opacity: .7;
+    color: #fff;
+}
+
+nav .nav-section ul li #login:hover {
+    color: #e35b3c;
+}

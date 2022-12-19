@@ -4,6 +4,7 @@ import { setDoc, doc, serverTimestamp } from 'firebase/firestore'
 import { db } from '../firebase.config';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
+import './css/form.css'
 
 function Register({ onRegisterChange }) {
     const [ registerData, setRegisterData ] = useState({
