@@ -9,33 +9,22 @@ import { HiUserCircle } from 'react-icons/hi';
 import './css/navigation.css'
 import ForgotPassword from './ForgotPassword';
 
-function Navbar() {
+const Navbar = () => {
+  const [ activeTab, setActiveTab ] = useState(0);
   const [showModal, setShowModal ] = useState(false);
-  const [showLogin, setShowLogin] = useState(true);
-  const [showRegister, setShowRegister] = useState(false);
-  const [showForgot, setShowForgot] = useState(false);
+  const [showForgotModal, setShowForgotModal] = useState(false);
   
   const auth = getAuth();
 
-  const showRegisterModal = () => {
-    setShowRegister(true)
-    setShowLogin(false);
-    setShowModal(true);
-    setShowForgot(false);
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+    setShowModal(true)
+    setShowForgotModal(false);
   }
 
-  const showLoginModal = () => {
-    setShowRegister(false)
-    setShowLogin(true);
-    setShowModal(true);
-    setShowForgot(false);
-  }
-
-  const showForgotModal = () => {
-    setShowForgot(true);
+  const handleForgotModal = () => {
+    setShowForgotModal(true);
     setShowModal(false);
-    setShowRegister(false)
-    setShowLogin(true);
   }
 
   return (
@@ -53,8 +42,8 @@ function Navbar() {
                         <Link to='/profile' id='user' className='link'><HiUserCircle id="profile-icon" /> Moj Nalog</Link>
                         :
                         <>
-                          <li><Link id='login' onClick={showLoginModal}><HiUserCircle id="profile-icon" /> Prijavi se</Link></li>
-                          <li><Link id='register' onClick={showRegisterModal}>Napravi novi nalog</Link></li>
+                          <li><Link id='login' onClick={() => handleTabClick(0)}><HiUserCircle id="profile-icon" /> Prijavi se</Link></li>
+                          <li><Link id='register' onClick={() => handleTabClick(1)}>Napravi novi nalog</Link></li>
                         </>
                       }
                     </ul> 
@@ -68,36 +57,36 @@ function Navbar() {
         <div className="form-section">
           <FaTimes id="closeModal" onClick={() => setShowModal(false)} />
           <div className="form_nav">
-            <button onClick={showLoginModal} className={showLogin ? 'active' : ''}>
+            <button onClick={() => handleTabClick(0)} className={activeTab === 0 ? 'active' : ''}>
               <h5>Prijava</h5>
             </button>
-            <button onClick={showRegisterModal} className={showRegister ? 'active' : ''}>
+            <button onClick={() => handleTabClick(1)} className={activeTab === 1 ? 'active' : ''}>
               <h5>Napravi novi nalog</h5>
             </button>
           </div>
 
-          <div className={showRegister ? 'register-modal show' : 'register-modal'}>
+          <div className={`register-modal ${activeTab === 1 ? 'show': ''}`}>
             <h2>Napravi novi nalog sa emailom</h2>
-            <Register onRegisterChange={setShowRegister} loginShow={setShowLogin} />
+            <Register />
           </div>
 
-          <div className={showLogin ? 'login-modal show' : 'login-modal'}>
+          <div className={`login-modal ${activeTab === 0 ? 'show': ''}`}>
             <h2>Prijavi se sa emailom</h2>
-            <Login onLoginChange={setShowLogin} showForgotModal={showForgotModal} />
+            <Login handleForgotModal={handleForgotModal} />
           </div>
         </div>
       </div>
       }
 
-      {showForgot &&
+      {showForgotModal &&
         <div className="form">
           <div className="overlay"></div>
           <div className="form-section">
-            <FaTimes id="closeModal" onClick={() => setShowForgot(false)} />
+            <FaTimes id="closeModal" onClick={() => setShowForgotModal(false)} />
             <div className='forgot-modal'>
               <h3>Zaboravljena lozinka</h3>
               <h2>Unesite email za restart lozinke</h2>
-              <ForgotPassword showLoginModal={showLoginModal} />
+              <ForgotPassword handleTabClick={handleTabClick} />
             </div>
           </div>
         </div>

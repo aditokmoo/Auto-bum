@@ -2,7 +2,7 @@ import { Navigate, Outlet } from 'react-router';
 import { useAuthStatus } from '../hooks/useAuthStatus'
 import Spinner from '../shared/Spinner';
 
-function Openroute() {
+const Openroute = () => {
     const { loggedIn, checkingStatus } = useAuthStatus();
 
     if(checkingStatus) {

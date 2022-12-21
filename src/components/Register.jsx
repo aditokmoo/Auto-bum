@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import './css/form.css'
 
-function Register({ onRegisterChange }) {
+const Register = ({ onRegisterChange }) => {
     const [ registerData, setRegisterData ] = useState({
         reg_username: '',
         reg_email: '',

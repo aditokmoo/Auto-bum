@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import { toast } from 'react-toastify';
 
-const ForgotPassword = ({ showLoginModal }) => {
+const ForgotPassword = ({ handleTabClick }) => {
     const [email, setEmail] = useState('')
 
     const handleSubmit = async (e) => {
@@ -25,7 +25,7 @@ const ForgotPassword = ({ showLoginModal }) => {
                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}  placeholder='Email...' id='forgot_email' />
                 </div>
                 <button>Pošalji</button>
-                <p>Natrag na <span onClick={showLoginModal}>prijavu</span></p>
+                <p>Natrag na <span onClick={() => handleTabClick(0)}>prijavu</span></p>
             </div>
         </form>
     )

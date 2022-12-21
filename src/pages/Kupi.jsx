@@ -1,6 +1,6 @@
 import Navbar from '../components/Navbar'
 
-function Kupi() {
+const Kupi = () => {
     return (
         <>
             <Navbar />

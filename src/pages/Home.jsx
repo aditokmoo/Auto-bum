@@ -4,7 +4,7 @@ import { FaSearch } from 'react-icons/fa';
 import { AiFillCar } from 'react-icons/ai';
 import './css/home.css'
 
-function Home() {
+const Home = () => {
   return (
     <>
       <Navbar />

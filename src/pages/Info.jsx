@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import './css/info.css'
 
-function Info() {
+const Info = () => {
   return (
     <>
       <Navbar />

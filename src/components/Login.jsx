@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import './css/form.css'
 
-function Login({ onLoginChange, showForgotModal }) {
+const Login = ({ onLoginChange, handleForgotModal }) => {
     const [loginData, setLoginData] = useState({
         log_email: '',
         log_password: '',
@@ -57,7 +57,7 @@ function Login({ onLoginChange, showForgotModal }) {
                     <input type="password" value={log_password} onChange={handleChange} placeholder='Password' id='log_password' />
                 </div>
             </div>
-            <span onClick={showForgotModal} id='forgot'>Zaboravili ste lozinku?</span>
+            <span onClick={handleForgotModal} id='forgot'>Zaboravili ste lozinku?</span>
             <button>Prijavi se</button>
         </form>
     )
