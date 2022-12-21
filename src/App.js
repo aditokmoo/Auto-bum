@@ -20,9 +20,10 @@ function App() {
         <Routes>
           <Route element={<Openroute />} >
             <Route path='/' element={<Home />} />
-            <Route path='/info' element={<Info />} />
-            <Route path='/search' element={<Pretrage />} />
           </Route>
+
+          <Route path='/info' element={<Info />} />
+          <Route path='/search' element={<Pretrage />} />
           
           <Route element={<PrivateRoute />}>
             <Route path='/home' element={<Home />} />

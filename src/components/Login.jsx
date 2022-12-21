@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import './css/form.css'
 
-function Login({ onLoginChange }) {
+function Login({ onLoginChange, showForgotModal }) {
     const [loginData, setLoginData] = useState({
         log_email: '',
         log_password: '',
@@ -32,7 +32,7 @@ function Login({ onLoginChange }) {
             }
 
         } catch (error) {
-            toast.error(error.message, {
+            toast.error(error.message.includes('wrong-password') ? 'Lozinka nije ispravna': 'Email nije ispravan', {
                 position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -46,10 +46,19 @@ function Login({ onLoginChange }) {
     }
 
     return (
-        <form onSubmit={loginUser}>
-            <input type="email" value={log_email} onChange={handleChange} placeholder='Email...' id='log_email' />
-            <input type="password" value={log_password} onChange={handleChange} placeholder='Password' id='log_password' />
-            <button>Uloguj se</button>
+        <form onSubmit={loginUser}> 
+            <div className="form-container">
+                <div className="input-container">
+                    <label htmlFor="email">Email</label>
+                    <input type="email" value={log_email} onChange={handleChange} placeholder='Email...' id='log_email' />
+                </div>
+                <div className="input-container">
+                    <label htmlFor="password">Lozinka</label>
+                    <input type="password" value={log_password} onChange={handleChange} placeholder='Password' id='log_password' />
+                </div>
+            </div>
+            <span onClick={showForgotModal} id='forgot'>Zaboravili ste lozinku?</span>
+            <button>Prijavi se</button>
         </form>
     )
 }

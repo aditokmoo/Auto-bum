@@ -1,13 +1,35 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase.config';
 import Navbar from '../components/Navbar';
 import { toast } from 'react-toastify';
 import './css/profile.css'
+import { useState } from 'react';
+import { useEffect } from 'react';
 
-function Profile() {
+const Profile = () => {
+    const [ userData, setUserData ] = useState(null);
+    const [ loading, setLoading ] = useState(true);
+
     const auth = getAuth();
     const user = auth.currentUser;
     const navigate = useNavigate();
+
+    useEffect(() => {
+        getCollection();
+    }, [])
+
+    // Get User Data
+    const getCollection = async () => {
+        const querySnapshot = await getDocs(collection(db, "users"));
+        querySnapshot.forEach((doc) => {
+            if(doc.id === user.uid) {
+                setUserData(doc.data());
+                setLoading(false);
+            }
+        });
+    }
 
     // Logout function
     const logOut = () => {
@@ -31,7 +53,8 @@ function Profile() {
     return (
         <>
             <Navbar />
-            <section className="profile">
+            {!loading &&
+                <section className="profile">
                 <div className="container">
                     <h1>Moj Nalog</h1>
                     <div className="profile-section">
@@ -39,8 +62,8 @@ function Profile() {
                             <div className="img-box">
                                 <img src="https://www.autobum.ba/img/avatar.png" alt="" />
                             </div>
-                            <h3>{user.displayName}</h3>
-                            <h4>Kakanj</h4>
+                            <h3>{userData.reg_username}</h3>
+                            <h4>{userData.reg_city}</h4>
                             <ul>
                                 <li><Link className='link active'>Moja vozila</Link></li>
                                 <li><Link className='link'>Poruke</Link></li>
@@ -53,6 +76,7 @@ function Profile() {
                     </div>
                 </div>
             </section>
+            }
         </>
     )
 }

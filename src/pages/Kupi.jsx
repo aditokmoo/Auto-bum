@@ -4,7 +4,13 @@ function Kupi() {
     return (
         <>
             <Navbar />
-            <h1>Kupi</h1>
+            <section>
+                <div className="container">
+                    <div className="buy-section">
+                        <h1>Kupi</h1>
+                    </div>
+                </div>
+            </section>
         </>
       )
 }

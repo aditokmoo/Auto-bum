@@ -1,59 +1,109 @@
 /* LOGIN AND SIGNUP MODAL */
-.register-modal, .login-modal {
-    position: fixed;
-    background: #fff;
-    top: 30%;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    width: 400px;
-    padding: 35px 30px;
-    border-radius: 10px;
-    display: none;
-}
-
-.overlay {
+.form .overlay {
     background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(3px);
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 1;
-    display: none;
 }
 
-.overlay.show { display: block }
+.form .overlay.show { display: block }
 
-.register-modal #closeModal, .login-modal #closeModal {
+.form .form-section{
+    position: fixed;
+    background: #fff;
+    top: 30%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    max-width: 650px;
+    z-index: 1;
+}
+
+.form .form-section .form_nav button {
+    width: 50%;
+    padding: 20px;
+    background-color: #eee;
+    border: 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-family: Montserrat;
+}
+
+.form .form-section .form_nav button.active {
+    background-color: #e35b3c;
+    color: #fff;
+}
+
+/* LOGIN AND REGISTER MODAL */
+.form .form-section .form-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 0;
+}
+
+.form .form-section .form-container .input-container {
+    width: 48%;
+    margin: 0 10px 0 0;
+}
+
+.form .form-section .form-container .input-container label {
+    color: #444;
+    font-family: Montserrat;
+    margin: 0 6px;
+    font-size: 14px;
+}
+
+.form .form-section .register-modal, .login-modal {
+    display: none;
+    padding: 20px 25px 10px 25px;
+}
+
+.form .form-section .login-modal.show {
+    display: block;
+}
+
+.form .form-section .register-modal.show {
+    display: block;
+}
+
+.form .form-section #closeModal {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 0;
+    right: -30px;
+    font-size: 1.5em;
+    background-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
     cursor: pointer;
     transition: .3s;
 }
 
-.register-modal #closeModal:hover, .login-modal #closeModal:hover {
+.form .form-section #closeModal:hover {
     color: #e35b3c;
 }
 
-.register-modal h2, .login-modal h2 {
+
+.form .form-section .register-modal h2, .login-modal h2 {
     margin: 0 0 20px 0;
-    font-size: 1em;
+    font-size: 1.2em;
     font-family: Montserrat;
+    text-transform: uppercase;
 }
 
-.register-modal input, .login-modal input {
-    display: block;
+.form .form-section .register-modal input, .login-modal input {
     width: 100%;
-    margin: 5px auto;
+    margin: 5px;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 3px;
     outline: none;
 }
 
-.login-modal button, .register-modal button {
+.form .login-modal button, .register-modal button {
     display: block;
     width: 100%;
     padding: 15px;
@@ -70,10 +120,98 @@
     cursor: pointer;
 }
 
-.login-modal button:hover, .register-modal button:hover {
+.form .login-modal button:hover, .register-modal button:hover {
     opacity: 0.6;
 }
 
-.login-modal.show, .register-modal.show {
+/* SELECT TAG */
+.form .form-container .input-container select {
     display: block;
+    margin: 5px;
+    padding: 9px;
+    border: 1px solid #ddd;
+    width: 100%;
+    color: #888;
+}
+
+.form .form-container .input-container select option {
+    font-weight: bold;
+    color: #111;
+    font-size: 15px;
+}
+
+.form span#forgot {
+    font-size: 13px;
+    position: relative;
+    top: -12px;
+    right: 15px;
+    float: right;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-decoration: underline;
+    font-family: Montserrat;
+}
+
+/* Forgot password */
+.form .form-section .forgot-modal h3 {
+    background-color: #e35b3c;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-family: Montserrat;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.form .form-section .forgot-modal h2 {
+    padding: 40px 20px;
+    font-family: Montserrat;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #333;
+}
+
+.form .form-section .forgot-modal .form-container {
+    display: block;
+    font-family: Montserrat;
+    padding: 0 20px 30px 20px;
+}
+
+.form .form-section .forgot-modal .form-container .forgot-input-container label {
+    color: #111;
+}
+
+.form .form-section .forgot-modal .form-container .forgot-input-container input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin: 20px 0 0 0;
+}
+
+.form .form-section .forgot-modal .form-container button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px auto;
+    background-color: #e35b3c;
+    border: 1px solid #e35b3c;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Montserrat;
+    opacity: .8;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.form .form-section .forgot-modal .form-container p {
+    text-align: center;
+}
+
+.form .form-section .forgot-modal .form-container p span {
+    color: #e35b3c;
+    cursor: pointer;
 }

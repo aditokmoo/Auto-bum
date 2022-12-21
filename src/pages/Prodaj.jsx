@@ -4,7 +4,13 @@ function Prodaj() {
   return (
     <>
         <Navbar />
-        <h1>Prodaj</h1>
+        <section>
+          <div className="container">
+            <div className="sell-section">
+              <h1>Prodaj</h1>
+            </div>
+          </div>
+        </section>
     </>
   )
 }
