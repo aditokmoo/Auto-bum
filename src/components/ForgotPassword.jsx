@@ -1,24 +1,11 @@
-import { useState } from 'react';
-import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
-import { toast } from 'react-toastify';
+import { useContext } from 'react';
+import AppContext from '../context/AppContext';
 
 const ForgotPassword = ({ handleTabClick }) => {
-    const [email, setEmail] = useState('')
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const auth = getAuth();
-
-            await sendPasswordResetEmail(auth, email);
-            toast.success('Email je poslan')
-        } catch (error) {
-            toast.error('Reset lozinke nije poslan');
-        }
-    }
+    const { handleForgotPasswordSubmit, email, setEmail } = useContext(AppContext);
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleForgotPasswordSubmit}>
             <div className="form-container">
                 <div className="forgot-input-container">
                     <label htmlFor="email">Email adresa</label>

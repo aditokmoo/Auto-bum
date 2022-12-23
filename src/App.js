@@ -12,18 +12,19 @@ import PrivateRoute from './components/PrivateRoute';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import Openroute from './components/Openroute';
+import { AppContextProvider } from './context/AppContext';
 
 function App() {
   return (
-    <>
       <Router>
+        <AppContextProvider>
         <Routes>
+          <Route path='/info' element={<Info />} />
+          <Route path='/search' element={<Pretrage />} />
+          
           <Route element={<Openroute />} >
             <Route path='/' element={<Home />} />
           </Route>
-
-          <Route path='/info' element={<Info />} />
-          <Route path='/search' element={<Pretrage />} />
           
           <Route element={<PrivateRoute />}>
             <Route path='/home' element={<Home />} />
@@ -32,8 +33,8 @@ function App() {
             <Route path='/profile' element={<Profile />} />
           </Route>
         </Routes>
+        </AppContextProvider>
       </Router>
-    </>
   );
 }
 

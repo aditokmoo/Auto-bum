@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import { Link } from 'react-router-dom';
-import { FaTimes } from 'react-icons/fa';
 import { ToastContainer } from 'react-toastify';
 import Login from './Login';
 import Register from './Register';
-import { HiUserCircle } from 'react-icons/hi';
-import './css/navigation.css'
 import ForgotPassword from './ForgotPassword';
+import { HiUserCircle } from 'react-icons/hi';
+import { FaTimes } from 'react-icons/fa';
+import './css/navigation.css'
 
 const Navbar = () => {
   const [ activeTab, setActiveTab ] = useState(0);
@@ -30,25 +30,25 @@ const Navbar = () => {
   return (
     <>
       <nav>
-          <div className="container">
-              <div className="nav-section">
-                  <h2><Link to={auth.currentUser ? '/home' : '/'} style={{textDecoration: 'none', color: '#000'}}>Auto <span>Bum.</span></Link></h2>
-                    <ul className='f-list'>
-                      <Link to='/info' className='link'>Informacije</Link>
-                      <Link to='/search' className='link'>Pretrage</Link>
-                      <Link to='/sell' className='link'>Prodaj</Link>
-                      <Link to='/buy' className='link'>Kupi</Link>
-                      {auth.currentUser ? 
-                        <Link to='/profile' id='user' className='link'><HiUserCircle id="profile-icon" /> Moj Nalog</Link>
-                        :
-                        <>
-                          <li><Link id='login' onClick={() => handleTabClick(0)}><HiUserCircle id="profile-icon" /> Prijavi se</Link></li>
-                          <li><Link id='register' onClick={() => handleTabClick(1)}>Napravi novi nalog</Link></li>
-                        </>
-                      }
-                    </ul> 
-              </div>
-          </div>
+        <div className="container">
+            <div className="nav-section">
+                <h2><Link to={auth.currentUser ? '/home' : '/'} style={{textDecoration: 'none', color: '#000'}}>Auto <span>Bum.</span></Link></h2>
+                  <ul className='f-list'>
+                    <Link to='/info' className='link'>Informacije</Link>
+                    <Link to='/search' className='link'>Pretrage</Link>
+                    <Link to='/sell' className='link'>Prodaj</Link>
+                    <Link to='/buy' className='link'>Kupi</Link>
+                    {auth.currentUser ? 
+                      <Link to='/profile' id='user' className='link'><HiUserCircle id="profile-icon" /> Moj Nalog</Link>
+                      :
+                      <>
+                        <li><Link id='login' onClick={() => handleTabClick(0)}><HiUserCircle id="profile-icon" /> Prijavi se</Link></li>
+                        <li><Link id='register' onClick={() => handleTabClick(1)}>Napravi novi nalog</Link></li>
+                      </>
+                    }
+                  </ul> 
+            </div>
+        </div>
       </nav>
       
       {showModal &&

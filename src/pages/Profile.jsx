@@ -1,52 +1,18 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useContext } from 'react';
 import { getAuth } from 'firebase/auth';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../firebase.config';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-import { toast } from 'react-toastify';
+import AppContext from '../context/AppContext';
 import './css/profile.css'
 
 const Profile = () => {
-    const [ userData, setUserData ] = useState(null);
-
+    const { userData, getCollection, logOut } = useContext(AppContext);
     const auth = getAuth();
-    const user = auth.currentUser;
-    const navigate = useNavigate();
 
     useEffect(() => {
+        // Calling USER Collection function
         getCollection();
     }, [])
-
-    // Get User Data
-    const getCollection = async () => {
-        const querySnapshot = await getDocs(collection(db, "users"));
-        querySnapshot.forEach((doc) => {
-            if(doc.id === user.uid) {
-                setUserData(doc.data());
-            }
-        });
-    }
-
-    // Logout function
-    const logOut = () => {
-        try {
-            auth.signOut();
-            navigate('/')            
-        } catch (error) {
-            toast.error(error.message, {
-                position: "bottom-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-        }
-    }
 
     return (
         <>
@@ -60,7 +26,7 @@ const Profile = () => {
                                 <div className="img-box">
                                     <img src="https://www.autobum.ba/img/avatar.png" alt="" />
                                 </div>
-                                <h3>{userData.reg_username}</h3>
+                                <h3>{userData.reg_name}</h3>
                                 <h4>{userData.reg_city}</h4>
                                 <ul>
                                     <li><Link className='link active'>Moja vozila</Link></li>

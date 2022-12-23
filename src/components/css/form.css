@@ -140,6 +140,7 @@
     font-size: 15px;
 }
 
+/* Forgot password */
 .form span#forgot {
     font-size: 13px;
     position: relative;
@@ -152,7 +153,6 @@
     font-family: Montserrat;
 }
 
-/* Forgot password */
 .form .form-section .forgot-modal h3 {
     background-color: #e35b3c;
     color: #fff;
