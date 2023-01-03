@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Info from './pages/Info';
 import Pretrage from './pages/Pretrage';
-import Kupi from './pages/Kupi';
 import Prodaj from './pages/Prodaj';
 import Profile from './pages/Profile';
 // Components
@@ -28,7 +27,6 @@ function App() {
           
           <Route element={<PrivateRoute />}>
             <Route path='/home' element={<Home />} />
-            <Route path='/buy' element={<Kupi />} />
             <Route path='/sell' element={<Prodaj />} />
             <Route path='/profile' element={<Profile />} />
           </Route>

@@ -1,333 +1,351 @@
+/* LOADING AFTER ADDING CAR TO COLLECTIO */
+.overlay {
+	background-color: rgba(0, 0, 0, 0.8);
+	position: fixed;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+}
+
 /* SELL SECTION */
 section .sell-section {
-    margin: 50px 0;
+	margin: 50px 0;
 }
 
 /* NAVIGATION SECTION */
 section .sell-section .nav h1 {
-    font-size: 1.8em;
-    font-family: Montserrat;
+	font-size: 1.8em;
+	font-family: Montserrat;
 }
 
 section .sell-section .nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 30px 0;
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	margin: 30px 0;
 }
 
 section .sell-section .nav ul li {
-    background-color: #fff;
-    width: 100%;
-    text-align: center;
-    height: 120px;
-    padding: 30px 0;
-    border-radius: 10px;
-    color: #ddd;
+	background-color: #fff;
+	width: 100%;
+	text-align: center;
+	height: 120px;
+	padding: 30px 0;
+	border-radius: 10px;
+	color: #ddd;
 }
 
 section .sell-section .nav ul li.active {
-    color: #fff;
-    background: #111;
+	color: #fff;
+	background: #111;
 }
 
 section .sell-section .nav ul li span .icon {
-    font-size: 2em;
+	font-size: 2em;
 }
 
 section .sell-section .nav ul li span {
-    display: block;
-    font-family: Montserrat;
+	display: block;
+	font-family: Montserrat;
 }
 
 /* AUTO SECTION */
 .section .auto-section .image-section {
-    background-color: #fff;
-    padding: 0 40px;
-    height: 300px;
-    border-radius: 5px;
+	background-color: #fff;
+	padding: 0 40px;
+	height: 300px;
+	border-radius: 5px;
 }
 
 .section .auto-section .image-section h2 {
-    border-bottom: 1px solid #ddd;
-    padding: 30px 0 20px 0;
-    text-transform: uppercase;
-    color: #e35b3c;
-    font-family: Montserrat;
-    font-size: 20px;
+	border-bottom: 1px solid #ddd;
+	padding: 30px 0 20px 0;
+	text-transform: uppercase;
+	color: #e35b3c;
+	font-family: Montserrat;
+	font-size: 20px;
 }
 
-.section .auto-section .image-section form {
-    display: flex;
+.section .auto-section .image-section .add-image-section {
+	display: flex;
 }
 
-.section .auto-section .image-section form #fileInput {
-    display: none;
+.section .auto-section .image-section .add-image-section #images {
+	display: none;
 }
 
-.section .auto-section .image-section form label {
-    background-color: #ffdad2;
-    display: block;
-    width: 200px;
-    height: 150px;
-    padding: 50px;
-    margin: 20px;
-    cursor: pointer;
+.section .auto-section .image-section .add-image-section label {
+	background-color: #ffdad2;
+	display: block;
+	width: 200px;
+	height: 150px;
+	padding: 50px;
+	margin: 20px;
+	cursor: pointer;
 }
 
-.section .auto-section .image-section form label:hover {
-    opacity: .8;
+.section .auto-section .image-section .add-image-section label:hover {
+	opacity: .8;
 }
 
-.section .auto-section .image-section form label span {
-    display: block;
-    font-size: 15px;
-    text-align: center;
-    font-family: Montserrat;
+.section .auto-section .image-section .add-image-section label span {
+	display: block;
+	font-size: 15px;
+	text-align: center;
+	font-family: Montserrat;
 }
 
-.section .auto-section .image-section form label span #icon {
-    font-size: 1.7em;
+.section .auto-section .image-section .add-image-section label span #icon {
+	font-size: 1.7em;
 }
 
-.section .auto-section .image-section form .image {
-    display: flex;
-    height: 200px;
-    margin: 16px 0;
+.section .auto-section .image-section .add-image-section .image {
+	display: flex;
+	height: 200px;
+	margin: 16px 0;
 }
 
-.section .auto-section .image-section form img {
-    width: 100%;
-    height: 159px;
-    border: 0;
-    padding: 5px;
-    border: 1px solid #ddd;
+.section .auto-section .image-section .add-image-section img {
+	width: 100%;
+	height: 159px;
+	border: 0;
+	padding: 5px;
+	border: 1px solid #ddd;
 }
 
-.section .auto-section .image-section form p {
-    cursor: pointer;
-    position: relative;
-    right: 25px;
-    top: 10px;
-    color: #fff;
-    height: 15px;
+.section .auto-section .image-section .add-image-section p {
+	cursor: pointer;
+	position: relative;
+	right: 25px;
+	top: 10px;
+	color: #fff;
+	height: 15px;
 }
 
-.section .auto-section .image-section form p:hover {
-    color: red;
+.section .auto-section .image-section .add-image-section p:hover {
+	color: red;
 }
 
 /* BASIC INFO, OTHER INFO, OTHER EQUIP and DESC */
-.section .auto-section .basic-info, 
-.other-info, 
-.other-equipment, 
+.section .auto-section .basic-info,
+.other-info,
+.other-equipment,
 .desc-section,
 .user-data-section {
-    background-color: #fff;
-    padding: 0 40px;
-    height: 100%;
-    margin: 30px 0;
-    border-radius: 5px;
+	background-color: #fff;
+	padding: 0 40px;
+	height: 100%;
+	margin: 30px 0;
+	border-radius: 5px;
 }
 
-.section .auto-section .basic-info h2, 
+.section .auto-section .basic-info h2,
 .other-info h2,
 .other-equipment h2,
 .desc-section h2,
 .user-data-section h2 {
-    border-bottom: 1px solid #ddd;
-    padding: 30px 0 20px 0;
-    text-transform: uppercase;
-    color: #e35b3c;
-    font-family: Montserrat;
-    font-size: 20px;
+	border-bottom: 1px solid #ddd;
+	padding: 30px 0 20px 0;
+	text-transform: uppercase;
+	color: #e35b3c;
+	font-family: Montserrat;
+	font-size: 20px;
 }
 
-.section .auto-section .basic-info .form-container, 
+.section .auto-section .basic-info .form-container,
 .other-info .form-container,
 .other-equipment .form-container,
 .desc-section .form-container,
 .user-data-section .form-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin: 20px 0;
-    padding-bottom: 30px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 40px;
+	margin: 20px 0;
+	padding-bottom: 30px;
+}
+
+.section .auto-section .other-info .form-container,
+.other-equipment .form-container {
+	grid-template-columns: repeat(4, auto);
 }
 
 /* BASIC INFO AND OTHER INFO SECTION */
 .section .auto-section .basic-info .form-container .input-container {
-    display: block;
-    width: 30%;
-    font-family: Montserrat;
+	display: block;
+	width: 100%;
+	font-family: Montserrat;
 }
 
 .section .auto-section .other-info .form-container .input-container {
-    display: block;
-    width: 22.3%;
-    font-family: Montserrat;
+	display: block;
+	width: 100%;
+	font-family: Montserrat;
 }
 
-.section .auto-section .basic-info .form-container .input-container label, 
+.section .auto-section .basic-info .form-container .input-container label,
 .other-info .form-container .input-container label {
-    font-weight: 600;
+	font-weight: 600;
 }
 
-.section .auto-section .basic-info .form-container .input-container input, 
+.section .auto-section .basic-info .form-container .input-container input,
 .other-info .form-container .input-container input {
-    display: block;
-    padding: 10px;
-    margin: 8px 0;
-    width: 100%;
-    border: 1px solid #ddd;
-    font-family: Montserrat;
+	display: block;
+	padding: 10px;
+	margin: 8px 0;
+	width: 100%;
+	border: 1px solid #ddd;
+	font-family: Montserrat;
 }
 
-.section .auto-section .basic-info .form-container .input-container select, 
+.section .auto-section .basic-info .form-container .input-container select,
 .other-info .form-container .input-container select {
-    display: block;
-    margin: 5px 0;
-    padding: 10px;
-    font-size: 15px;
-    border: 1px solid #ddd;
-    width: 100%;
-    color: #888;
-    font-family: Montserrat;
+	display: block;
+	margin: 5px 0;
+	padding: 10px;
+	font-size: 15px;
+	border: 1px solid #ddd;
+	width: 100%;
+	color: #888;
+	font-family: Montserrat;
 }
 
-.section .auto-section .basic-info .form-container .input-container select option, 
+.section .auto-section .basic-info .form-container .input-container select option,
 .other-info .form-container .input-container select option {
-    font-weight: bold;
-    color: #888;
-    font-size: 15px;
-    font-weight: 200;
+	font-weight: bold;
+	color: #888;
+	font-size: 15px;
+	font-weight: 200;
 }
 
 .fw-black {
-    color: #000 !important;
-    font-weight: 600 !important;
+	color: #000 !important;
+	font-weight: 600 !important;
 }
 
 /* OTHER EQUIPMENT SECTION */
 .section .auto-section .other-equipment .form-container {
-    justify-content: space-between;
+	justify-content: space-between;
 }
 
 .section .auto-section .other-equipment .form-container .input-container {
-    display: flex;
-    align-items: center;
-    font-family: Montserrat;
-    font-weight: 600;
-    margin: 25px 0;
+	display: flex;
+	align-items: center;
+	font-family: Montserrat;
+	font-weight: 600;
+	margin: 25px 0;
 }
 
 .section .auto-section .other-equipment .form-container .input-container input[type="checkbox"] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 23px;
-    height: 23px;
-    border: 1px solid #ddd;
-    border-radius: 2px;
-    display: grid;
-    place-content: center;
+	-webkit-appearance: none;
+	appearance: none;
+	width: 23px;
+	height: 23px;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	display: grid;
+	place-content: center;
 }
 
 .section .auto-section .other-equipment .form-container .input-container input[type="checkbox"]::before {
-    content: "";
-    width: 13px;
-    height: 13px;
-    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-    transform: scale(0);
-    transition: 120ms transform ease-in-out;
-    background-color: #e35b3c;
+	content: "";
+	width: 13px;
+	height: 13px;
+	clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+	transform: scale(0);
+	transition: 120ms transform ease-in-out;
+	background-color: #e35b3c;
 }
 
 .section .auto-section .other-equipment .form-container .input-container input[type="checkbox"]:checked::before {
-    transform: scale(1);
-  }
+	transform: scale(1);
+}
 
 .section .auto-section .other-equipment .form-container .input-container label {
-    position: relative;
-    left: 15px;
-    letter-spacing: 0.6px;
+	position: relative;
+	left: 15px;
+	letter-spacing: 0.6px;
 }
 
 /* DESCRIPTION AND TITLE SECTION */
-.section .auto-section .desc-section .form-container  {
-    display: block;
+.section .auto-section .desc-section .form-container {
+	display: block;
 }
 
 .section .auto-section .desc-section .form-container .input-container {
-    margin: 20px 0;
-    font-family: Montserrat;
+	margin: 20px 0;
+	font-family: Montserrat;
 }
 
 .section .auto-section .desc-section .form-container .input-container label {
-    text-transform: uppercase;
-    font-weight: 600;
+	text-transform: uppercase;
+	font-weight: 600;
 }
 
-.section .auto-section .desc-section .form-container .input-container input, textarea {
-    display: block;
-    font-family: Montserrat;
-    padding: 10px;
-    width: 100%;
-    border: 1px solid #ddd;
-    margin: 10px 0;
+.section .auto-section .desc-section .form-container .input-container input,
+textarea {
+	display: block;
+	font-family: Montserrat;
+	padding: 10px;
+	width: 100%;
+	border: 1px solid #ddd;
+	margin: 10px 0;
 }
 
 .section .auto-section .desc-section .form-container .input-container textarea {
-   width: 100%;
-   resize: none;
-   height: 200px;
-   font-size: 1.3em;
-   padding: 20px;
-   border: 1px solid #ddd;
-   font-family: Montserrat;
+	width: 100%;
+	resize: none;
+	height: 200px;
+	font-size: 1.3em;
+	padding: 20px;
+	border: 1px solid #ddd;
+	font-family: Montserrat;
 }
 
 /* USER DATA SECTION */
 .section .auto-section .user-data-section .form-container {
-    justify-content: center;
+	grid-template-columns: repeat(4, 1fr);
 }
 
 .section .auto-section .user-data-section .form-container .input-container {
-    width: 22%;
-    font-family: Montserrat;
+	width: 100%;
+	font-family: Montserrat;
 }
 
-.section .auto-section .user-data-section .form-container .input-container input, .user-data-section select {
-    display: block;
-    padding: 10px;
-    width: 100%;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    font-weight: 600;
-    font-family: Montserrat;
+.section .auto-section .user-data-section .form-container .input-container input,
+.user-data-section select {
+	display: block;
+	padding: 10px;
+	width: 100%;
+	margin: 10px 0;
+	border: 1px solid #ddd;
+	font-weight: 600;
+	font-family: Montserrat;
 }
 
 /* BUTTON SECTION */
 .section .auto-section .button-section {
-    padding-bottom: 20px;
+	padding-bottom: 20px;
 }
 
 .section .auto-section .button-section button {
-    padding: 14px;
-    float: right;
-    width: 300px;
-    border: 0;
-    background-color: #ee8a74;
-    color: #fff;
-    text-transform: uppercase;
-    font-family: Montserrat;
-    font-weight: 600;
-    letter-spacing: 1px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: .3s;
+	padding: 14px;
+	float: right;
+	width: 300px;
+	border: 0;
+	background-color: #ee8a74;
+	color: #fff;
+	text-transform: uppercase;
+	font-family: Montserrat;
+	font-weight: 600;
+	letter-spacing: 1px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: .3s;
 }
 
 .section .auto-section .button-section button:hover {
-    opacity: .8;
+	opacity: .8;
 }

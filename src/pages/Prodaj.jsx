@@ -13,11 +13,11 @@ import { FaMotorcycle, FaTruck, FaTractor } from 'react-icons/fa';
 import './css/prodaj.css';
 
 function Prodaj() {
-	const { getCollection } = useContext(AppContext);
+	const { getUserCollection, handleCarFormSubmit } = useContext(AppContext);
 
 	useEffect(() => {
 		// Calling USER Collection function
-		getCollection();
+		getUserCollection();
 	}, []);
 
 	return (
@@ -64,29 +64,29 @@ function Prodaj() {
 
 						<div className="section">
 							<div className="auto-section">
-								{/* SECTION FOR ADDING IMAGES */}
-								<AddImage />
-								{/* BASIC INFO SECTION */}
-								<BasicInfo />
+								<form onSubmit={handleCarFormSubmit}>
+									{/* SECTION FOR ADDING IMAGES */}
+									<AddImage />
+									{/* BASIC INFO SECTION */}
+									<BasicInfo />
 
-								{/* OTHER INFO SECTION */}
-								<OtherInfo />
+									{/* OTHER INFO SECTION */}
+									<OtherInfo />
 
-								{/* OTHER EQUIPMENT SECTION */}
-								<OtherEquipment />
+									{/* OTHER EQUIPMENT SECTION */}
+									<OtherEquipment />
 
-								{/* Description and Title SECTION */}
-								<TitleInfo />
+									{/* Description and Title SECTION */}
+									<TitleInfo />
 
-								{/* USER DATA SECTION */}
-								<UserData />
+									{/* USER DATA SECTION */}
+									<UserData />
 
-								{/* BUTTON SECTION */}
-								<div className="button-section">
-									<form>
-										<button>Objavi oglas</button>
-									</form>
-								</div>
+									{/* BUTTON SECTION */}
+									<div className="button-section">
+										<button type='submit'>Objavi oglas</button>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>

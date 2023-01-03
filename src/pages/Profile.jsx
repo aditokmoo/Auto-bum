@@ -6,12 +6,12 @@ import AppContext from '../context/AppContext';
 import './css/profile.css'
 
 const Profile = () => {
-    const { userData, getCollection, logOut } = useContext(AppContext);
+    const { userData, getUserCollection, logOut } = useContext(AppContext);
     const auth = getAuth();
 
     useEffect(() => {
         // Calling USER Collection function
-        getCollection();
+        getUserCollection();
     }, [])
 
     return (

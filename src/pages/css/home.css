@@ -1,5 +1,5 @@
-/* HOME HEADER SECTION */
-header {
+/* HOME .header SECTION */
+.header {
     background-image: url('../images/banner.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -7,13 +7,13 @@ header {
     height: 70vh;
 }
 
-header .home-section form {
+.header .home-section form {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-header .home-section form input {
+.header .home-section form input {
     width: 700px;
     padding: 17px 0 17px 40px;
     margin: 270px 0;
@@ -21,7 +21,7 @@ header .home-section form input {
     border: none;
 }
 
-header .home-section form button {
+.header .home-section form button {
     background: inherit;
     position: relative;
     right: 40px;
@@ -30,8 +30,172 @@ header .home-section form button {
     border: 0;
 }
 
-header .home-section form .car_icon {
+.header .home-section form .car_icon {
     position: relative;
     left: 35px;
     font-size: 1.5em;
+}
+
+/* FILTERS SECTION */
+.filter {
+    position: relative;
+    top: -100px;
+    width: 100%;
+}
+
+/* TABS */
+.filter .tabs {
+    background-color: #f4f4f4;
+}
+
+.filter .tabs ul {
+    display: flex;
+    list-style: none;
+}
+
+.filter .tabs ul li {
+    text-align: center;
+    padding: 8px;
+    width: 100%;
+    border-right: 0.5px solid #ccc;
+    color: #777;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.filter .tabs ul li.active {
+    background-color: #e35b3c;
+    color: #fff;
+    border: none
+}
+
+.filter .tabs ul li .icon {
+    font-size: 1.7em;
+}
+
+/* FILTER FORM */
+.filter .car-filter {
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0px 0px 10px -7px rgba(0,0,0,0.75);
+-webkit-box-shadow: 0px 0px 10px -7px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 10px -7px rgba(0,0,0,0.75);
+}
+
+.filter .car-filter .form-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding: 30px;
+}
+
+.filter .car-filter .form-container .input-container {
+
+}
+
+.filter .car-filter .form-container .input-container label {
+    display: block;
+    font-weight: 600;
+    color: #111;
+    font-family: Montserrat;
+}
+
+.filter .car-filter .form-container .input-container input,
+.filter .car-filter .form-container .input-container select {
+    width: 100%;
+    padding: 10px;
+    color: #777;
+    font-family: Montserrat;
+    border: 1px solid #ddd;
+    position: relative;
+    top: 5px;
+}
+
+.filter .car-filter .form-container #searchLink {
+    display: flex;
+    align-items: flex-end;
+    margin: 7px;
+    font-size: 18px;
+    font-family: Montserrat;
+    text-decoration: none;
+    color: #e35b3c;
+    justify-content: center;
+    font-weight: 600;
+    position: relative;
+    opacity: 0.8;
+}
+
+.filter .car-filter .form-container #searchLink .icon {
+    position: relative;
+    left: 5px;
+}
+
+.filter .car-filter .form-container .input-container button {
+    border: 0;
+    background: #e35b3c;
+    color: #fff;
+    padding: 11px 0;
+    width: 100%;
+    position: relative;
+    top: 18px;
+    font-family: Montserrat;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.filter .car-filter .form-container .input-container button:hover {
+    opacity: 0.7;
+}
+
+/* CAR SECTION */
+.section .cars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding-bottom: 50px;
+}
+
+.section .cars .car {
+    background-color: #fff;
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+}
+
+.section .cars .car .image-section img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.section .cars .car .info-section {
+    padding: 20px;
+    font-family: Montserrat;
+}
+
+.section .cars .car .info-section .details {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px 20px 0;
+}
+
+.section .cars .car .info-section .details span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #555;
+}
+
+.section .cars .car .info-section .details span .icon {
+    font-size: 20px;
+}
+
+.section .cars .car .info-section .price span {
+    color: #e35b3c;
+    font-size: 20px;
+    font-weight: 600;
+    display: block;
+    margin-top: 10px;
 }

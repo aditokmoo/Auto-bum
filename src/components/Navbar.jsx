@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import { Link } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -7,9 +7,12 @@ import Register from './Register';
 import ForgotPassword from './ForgotPassword';
 import { HiUserCircle } from 'react-icons/hi';
 import { FaTimes } from 'react-icons/fa';
+import AppContext from '../context/AppContext';
+import Spinner from '../shared/Spinner';
 import './css/navigation.css'
 
 const Navbar = () => {
+  const { showOverlay } = useContext(AppContext);
   const [ activeTab, setActiveTab ] = useState(0);
   const [showModal, setShowModal ] = useState(false);
   const [showForgotModal, setShowForgotModal] = useState(false);
@@ -37,7 +40,6 @@ const Navbar = () => {
                     <Link to='/info' className='link'>Informacije</Link>
                     <Link to='/search' className='link'>Pretrage</Link>
                     <Link to='/sell' className='link'>Prodaj</Link>
-                    <Link to='/buy' className='link'>Kupi</Link>
                     {auth.currentUser ? 
                       <Link to='/profile' id='user' className='link'><HiUserCircle id="profile-icon" /> Moj Nalog</Link>
                       :
@@ -92,13 +94,22 @@ const Navbar = () => {
         </div>
       }
 
+      {showOverlay && 
+				<div className="overlay">
+					<Spinner />
+				</div>
+			}
+
       <ToastContainer
         position="bottom-right"
-        autoClose={2000}
+        autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
         theme="light"
       />
     </> 

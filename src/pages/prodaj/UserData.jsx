@@ -3,7 +3,7 @@ import AppContext from '../../context/AppContext';
 import { cities } from '../../data/formSelectData';
 
 export const UserData = () => {
-	const { userData } = useContext(AppContext);
+	const { userData, handleCarFormChange } = useContext(AppContext);
 
 	return (
 		userData && (
@@ -12,19 +12,25 @@ export const UserData = () => {
 				<div className="form-container">
 					<div className="input-container">
 						<label>Ime</label>
-						<input type="text" placeholder={userData.reg_name} disabled />
+						<select id="ime" onChange={handleCarFormChange}>
+							<option value={userData.reg_name}>{userData.reg_name}</option>
+						</select>
 					</div>
 					<div className="input-container">
 						<label htmlFor="name">Prezime</label>
-						<input type="text" placeholder={userData.reg_lname} disabled />
+						<select id="prezime" onChange={handleCarFormChange}>
+							<option value={userData.reg_lname}>{userData.reg_lname}</option>
+						</select>
 					</div>
 					<div className="input-container">
 						<label htmlFor="name">Broj telefona</label>
-						<input type="number" placeholder={userData.reg_number} disabled />
+						<select id="broj_telefona" onChange={handleCarFormChange}>
+							<option value={userData.reg_number}>{userData.reg_number}</option>
+						</select>
 					</div>
 					<div className="input-container">
 						<label htmlFor="name">Lokacija vozila</label>
-						<select id="veh_city">
+						<select id="lokacija_vozila" onChange={handleCarFormChange}>
 							<option value={userData.reg_city}>{userData.reg_city}</option>
 							{cities.map(
 								(city, index) =>
