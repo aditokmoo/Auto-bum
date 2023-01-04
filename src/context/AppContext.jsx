@@ -1,6 +1,6 @@
 import { useState, createContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { collection, getDocs, setDoc, doc, serverTimestamp, query, addDoc, arrayRemove } from 'firebase/firestore';
+import { collection, getDocs, setDoc, doc, serverTimestamp, query, addDoc } from 'firebase/firestore';
 import {
 	getAuth,
 	createUserWithEmailAndPassword,
@@ -8,7 +8,7 @@ import {
 	sendPasswordResetEmail,
 	updateProfile
 } from 'firebase/auth';
-import { getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from 'firebase/storage';
+import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { db } from '../firebase.config';
 import { v4 as uuidv4 } from 'uuid';
 import { toast } from 'react-toastify';
@@ -48,6 +48,9 @@ export const AppContextProvider = ({ children }) => {
 	const [ email, setEmail ] = useState('');
 	// State for adding images at prodaja section
 	const [ imgSrc, setImgSrc ] = useState([]);
+	// State for adding error message for form input
+	const [ formError, setFormError ] = useState('');
+	// State for storing Car Form Data
 	const [ carFormData, setCarFormData ] = useState({
 		alu_felge: false,
 		ambijentalno_osvjetljenje: false,
@@ -326,6 +329,9 @@ export const AppContextProvider = ({ children }) => {
 
 	// Handle Car Form Change Function - Add car data to carFormData State
 	const handleCarFormChange = (e) => {
+		// Check that input with type number isnt negative
+		if(e.target.type === 'number' && e.target.value < 0) return
+		// Set input data to carFormData State
 		setCarFormData((prevState) => ({
 			...prevState,
 			[e.target.id]: e.target.value === 'on' ? e.target.checked : e.target.value
@@ -348,7 +354,7 @@ export const AppContextProvider = ({ children }) => {
 					'state_changed',
 					(snapshot) => {
 						const progress = snapshot.bytesTransferred / snapshot.totalBytes * 100;
-
+						// If progress is finished hide progress
 						if (progress < 100) {
 							setShowOverlay(true);
 						} else {
@@ -380,6 +386,7 @@ export const AppContextProvider = ({ children }) => {
 			timestamp: serverTimestamp()
 		};
 
+		// Delete images from carFormData State
 		delete carFormDataCopy.images;
 
 		if (!carFormDataCopy.storageImages.length) {
@@ -521,6 +528,7 @@ export const AppContextProvider = ({ children }) => {
 				carsData,
 				carFormData,
 				showOverlay,
+				formError,
 				handleImageChange,
 				handleCarFormChange,
 				handleCarFormSubmit,
