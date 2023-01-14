@@ -140,6 +140,11 @@
     font-size: 15px;
 }
 
+.form .form-container .input-container select option:first-child {
+    color: #888 !important;
+    font-weight: normal;
+}
+
 /* Forgot password */
 .form span#forgot {
     font-size: 13px;

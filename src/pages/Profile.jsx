@@ -4,15 +4,24 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import AppContext from '../context/AppContext';
 import './css/profile.css'
+import { UrediProfil } from './profile/UrediProfil';
+import { MojaVozila } from './profile/MojaVozila';
+import { useState } from 'react';
 
 const Profile = () => {
     const { userData, getUserCollection, logOut } = useContext(AppContext);
-    const auth = getAuth();
+    // State for store edit form data
+    // State for active tab
+    const [ activeTab, setActiveTab ] = useState(0);
 
     useEffect(() => {
         // Calling USER Collection function
         getUserCollection();
     }, [])
+
+    const handleTabClick = (tab) => {
+        setActiveTab(tab)
+    }
 
     return (
         <>
@@ -29,14 +38,21 @@ const Profile = () => {
                                 <h3>{userData.reg_name}</h3>
                                 <h4>{userData.reg_city}</h4>
                                 <ul>
-                                    <li><Link className='link active'>Moja vozila</Link></li>
-                                    <li><Link className='link'>Poruke</Link></li>
-                                    <li><Link className='link'>Spašeni artikli</Link></li>
-                                    <li><Link className='link'>Uredi profil</Link></li>
+                                    <li><Link className={activeTab === 0 ? 'link active' : 'link'} onClick={() => handleTabClick(0)}>Moja vozila</Link></li>
+                                    <li><Link className={activeTab === 1 ? 'link active' : 'link'} onClick={() => handleTabClick(1)}>Poruke</Link></li>
+                                    <li><Link className={activeTab === 2 ? 'link active' : 'link'} onClick={() => handleTabClick(2)}>Spašeni artikli</Link></li>
+                                    <li><Link className={activeTab === 3 ? 'link active' : 'link'} onClick={() => handleTabClick(3)}>Uredi profil</Link></li>
                                     <li><Link to='/' className='link' onClick={logOut}>Odjavi se</Link></li>
                                 </ul>
                             </div>
-                            <div className="section-2"></div>
+                            <div className="section-2">
+                                <div className={activeTab === 0 ? 'section active' : 'section'}>
+                                    <MojaVozila />
+                                </div>
+                                <div className={activeTab === 3 ? 'section active' : 'section'}>
+                                    <UrediProfil />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

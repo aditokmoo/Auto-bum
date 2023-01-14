@@ -22,6 +22,8 @@ export const AppContextProvider = ({ children }) => {
 	const [ currentUser, setCurrentUser ] = useState(null);
 	// State for storing firebase cars collection data
 	const [ carsData, setCarsData ] = useState();
+	// State for storing firebase cars from user
+	const [ profileCars, setProfileCars ] = useState();
 	// State for storing car images in firebase/storage
 	const [ carFormImageFile, setCarFormImageFile ] = useState([]);
 	// State for showing LOADING OVERLAY
@@ -43,6 +45,7 @@ export const AppContextProvider = ({ children }) => {
 	// Destructuring loginData and registerData
 	const { log_email, log_password } = loginData;
 	const { reg_name, reg_lname, reg_number, reg_email, reg_password, reg_city } = registerData;
+
 
 	// Email data state for forgot password form
 	const [ email, setEmail ] = useState('');
@@ -131,11 +134,14 @@ export const AppContextProvider = ({ children }) => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		// Check if user is logged in then add that user to currentUser state
+		/* Check if user is logged in then add that user to currentUser 
+		state and call function that gets cars collection from firebase */
 		auth.onAuthStateChanged((user) => {
 			if (user) {
 				setCurrentUser(user);
 			}
+
+			getCarsCollection();
 		});
 	}, []);
 
@@ -199,6 +205,13 @@ export const AppContextProvider = ({ children }) => {
 
 			// And setting copy (modified) data in db
 			await setDoc(doc(db, 'users', register_user.uid), registerDataCopy);
+
+			// Clear register form input
+			setRegisterData(prevState => ({
+				...prevState,
+				[e.target.id]: ''
+			}))
+
 			// Redirect to home page after registration
 			navigate('/home');
 		} catch (error) {
@@ -291,20 +304,34 @@ export const AppContextProvider = ({ children }) => {
 		// Execute query
 		const querySnap = await getDocs(q);
 
+		// Car Array to fetch data from collection
 		const carObj = [];
+		// Cars Array to store all car data from cars collection
 		const cars = [];
+		// My Cars Array to store all cars from logged in user
+		const myCars = [];
 
+		// Loop fetched collection data to be stored in Car Object
 		querySnap.forEach((doc) => {
 			const docData = doc.data();
-
+			// Storing Car Object in Car Object array
 			return carObj.push({
 				id: doc.id,
 				data: docData
 			});
 		});
 
-		carObj.map((car) => cars.push(car.data));
+		// Loop car object array to store them in Cars and My Cars array
+		carObj.map((car) => {
+			// Storing car data in Cars array
+			cars.push(car.data);
+			// Stroing user car data in My Cars array
+			if(auth.currentUser && auth.currentUser.uid === car.data.uid) {
+				myCars.push(car.data)
+			}
+		});
 
+		setProfileCars(myCars)
 		setCarsData(cars);
 	};
 
@@ -382,6 +409,11 @@ export const AppContextProvider = ({ children }) => {
 		// CarFormData state copy
 		const carFormDataCopy = {
 			...carFormData,
+			ime: userData.reg_name,
+			prezime: userData.reg_lname,
+			broj_telefona: userData.reg_number,
+			lokacija_vozila: userData.reg_city,
+			uid: auth.currentUser.uid,
 			storageImages: imgUrls,
 			timestamp: serverTimestamp()
 		};
@@ -503,6 +535,9 @@ export const AppContextProvider = ({ children }) => {
 		try {
 			auth.signOut();
 			navigate('/');
+
+			setUserData(null)
+			setCurrentUser(null)
 		} catch (error) {
 			toast.error(error.message, {
 				position: 'bottom-right',
@@ -526,9 +561,11 @@ export const AppContextProvider = ({ children }) => {
 				registerData,
 				email,
 				carsData,
+				profileCars,
 				carFormData,
 				showOverlay,
 				formError,
+				setUserData,
 				handleImageChange,
 				handleCarFormChange,
 				handleCarFormSubmit,

@@ -1,12 +1,11 @@
-import { useContext, useEffect } from 'react';
-import AppContext from '../context/AppContext';
 import Navbar from '../components/Navbar';
 import { Cars } from './home/Cars';
 import { Filters } from './home/Filters';
 import { FaSearch } from 'react-icons/fa';
 import { AiFillCar } from 'react-icons/ai';
-import { ToastContainer } from 'react-toastify';
 import './css/home.css';
+import { useContext, useEffect } from 'react';
+import AppContext from '../context/AppContext';
 
 const Home = () => {
 	const { getCarsCollection } = useContext(AppContext);

@@ -19,16 +19,21 @@ const Navbar = () => {
   
   const auth = getAuth();
 
+  // Login and Register modal
   const handleTabClick = (tab) => {
     setActiveTab(tab);
     setShowModal(true)
     setShowForgotModal(false);
   }
 
+  // Forgot password modal
   const handleForgotModal = () => {
     setShowForgotModal(true);
     setShowModal(false);
   }
+
+  // Set login modal active if user is not signed in
+  const checkAuth = () => setShowModal(true);
 
   return (
     <>
@@ -39,7 +44,7 @@ const Navbar = () => {
                   <ul className='f-list'>
                     <Link to='/info' className='link'>Informacije</Link>
                     <Link to='/search' className='link'>Pretrage</Link>
-                    <Link to='/sell' className='link'>Prodaj</Link>
+                    <Link to={auth.currentUser && '/sell'} onClick={checkAuth} className='link'>Prodaj</Link>
                     {auth.currentUser ? 
                       <Link to='/profile' id='user' className='link'><HiUserCircle id="profile-icon" /> Moj Nalog</Link>
                       :
