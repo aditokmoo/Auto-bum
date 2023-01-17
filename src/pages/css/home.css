@@ -158,6 +158,12 @@
     width: 100%;
     margin: 0 auto;
     border: 1px solid #ddd;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.section .cars .car:hover {
+    opacity: 0.7;
 }
 
 .section .cars .car .image-section img {

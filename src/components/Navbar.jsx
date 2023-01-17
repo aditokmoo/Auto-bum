@@ -33,7 +33,11 @@ const Navbar = () => {
   }
 
   // Set login modal active if user is not signed in
-  const checkAuth = () => setShowModal(true);
+  const checkAuth = () => {
+    if(!auth.currentUser) {
+      setShowModal(true);
+    }
+  }
 
   return (
     <>

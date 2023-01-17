@@ -6,12 +6,14 @@ import Pretrage from './pages/Pretrage';
 import Prodaj from './pages/Prodaj';
 import Profile from './pages/Profile';
 // Components
+import { AppContextProvider } from './context/AppContext';
+import { CarDetails } from './pages/CarDetails';
 import PrivateRoute from './components/PrivateRoute';
+import Openroute from './components/Openroute';
 // CSS File
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
-import Openroute from './components/Openroute';
-import { AppContextProvider } from './context/AppContext';
+
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/sell' element={<Prodaj />} />
             <Route path='/profile' element={<Profile />} />
+            <Route path='/:car' element={<CarDetails />} />
           </Route>
         </Routes>
         </AppContextProvider>

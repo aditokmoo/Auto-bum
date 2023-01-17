@@ -26,6 +26,8 @@ export const AppContextProvider = ({ children }) => {
 	const [ profileCars, setProfileCars ] = useState();
 	// State for storing car images in firebase/storage
 	const [ carFormImageFile, setCarFormImageFile ] = useState([]);
+	// State for storing Cars ID from firebase/firestore
+	const [ carID, setCarID ] = useState();
 	// State for showing LOADING OVERLAY
 	const [ showOverlay, setShowOverlay ] = useState(false);
 	// Login data state
@@ -310,16 +312,23 @@ export const AppContextProvider = ({ children }) => {
 		const cars = [];
 		// My Cars Array to store all cars from logged in user
 		const myCars = [];
+		// Cars id
+		const carsId = [];
 
 		// Loop fetched collection data to be stored in Car Object
 		querySnap.forEach((doc) => {
 			const docData = doc.data();
+			// Set id for cars
+			carsId.push(doc.id);
 			// Storing Car Object in Car Object array
 			return carObj.push({
 				id: doc.id,
 				data: docData
 			});
+
 		});
+
+		setCarID(carsId)
 
 		// Loop car object array to store them in Cars and My Cars array
 		carObj.map((car) => {
@@ -327,7 +336,7 @@ export const AppContextProvider = ({ children }) => {
 			cars.push(car.data);
 			// Stroing user car data in My Cars array
 			if(auth.currentUser && auth.currentUser.uid === car.data.uid) {
-				myCars.push(car.data)
+				myCars.push(car)
 			}
 		});
 
@@ -565,6 +574,7 @@ export const AppContextProvider = ({ children }) => {
 				carFormData,
 				showOverlay,
 				formError,
+				carID,
 				setUserData,
 				handleImageChange,
 				handleCarFormChange,

@@ -295,7 +295,7 @@ for (let sittingPlace = 1; sittingPlace <= 8; sittingPlace++) {
 }
 
 // OSTALE INFORMACIJE
-export const row_one = [
+export const ostalo_info = [
 	{
 		id: 'metalik_boja',
 		name: 'Metalik boja'
@@ -343,10 +343,7 @@ export const row_one = [
 	{
 		id: 'torba_za_skije',
 		name: 'Torba za skije'
-	}
-];
-
-export const row_two = [
+	},
 	{
 		id: 'led_prednja_svjetla',
 		name: 'Led prednja svijetla'
@@ -394,10 +391,7 @@ export const row_two = [
 	{
 		id: 'senzor_za_kišu',
 		name: 'Senzor za kišu'
-	}
-];
-
-export const row_three = [
+	},
 	{
 		id: 'dpf_filter',
 		name: 'DPF filter'
@@ -445,10 +439,7 @@ export const row_three = [
 	{
 		id: 'svjetla_za_maglu',
 		name: 'Svjetla za maglu'
-	}
-];
-
-export const row_four = [
+	},
 	{
 		id: 'automatsko_parkiranje',
 		name: 'Automatsko parkiranje'
