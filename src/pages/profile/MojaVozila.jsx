@@ -61,7 +61,7 @@ export const MojaVozila = () => {
 						{profileCarData &&
 							profileCarData.map((car, index) => {
 								return (
-									<Link to={`/${profileCarID[index]}`} key={index}>
+									<Link to={`/${profileCarID[index]}`} key={index} id='car-link'>
 										<div className="car">
 											<div className="image-section">
 												<img src={car.storageImages[0]} alt="" />

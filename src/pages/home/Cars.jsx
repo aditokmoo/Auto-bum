@@ -11,8 +11,8 @@ export const Cars = () => {
 		<div className="cars">
 			{carsData &&
 				carsData.map((car, index) => (
-					<Link to={`/${carID[index]}`} key={index}>
-						<div className="car" >
+					<Link to={`/${carID[index]}`} key={index} id='car-link'>
+						<div className="car">
 							<div className="image-section">
 								<img src={car.storageImages[0]} alt="" />
 							</div>

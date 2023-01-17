@@ -162,6 +162,11 @@
     cursor: pointer;
 }
 
+.section .cars #car-link {
+    text-decoration: none;
+    color: #000;
+}
+
 .section .cars .car:hover {
     opacity: 0.7;
 }
