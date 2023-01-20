@@ -2,27 +2,9 @@ import { MdDirectionsCar } from 'react-icons/md';
 import { AiFillDribbbleCircle } from 'react-icons/ai';
 import { FaMotorcycle, FaTruck, FaTractor, FaTools, FaChevronRight } from 'react-icons/fa';
 import { cars, yearType, fuelType } from '../../data/formSelectData';
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import AppContext from '../../context/AppContext';
 
-export const Filters = () => {
-	const { carFormData } = useContext(AppContext);
-	// Destructure carFormData
-	const {
-		proizvodjac,
-		model,
-		godiste,
-		kilometraza,
-		cijena,
-		gorivo,
-		hp,
-		kubikaza,
-		vlasnistvo,
-		klima,
-		mjenjac
-	} = carFormData;
-
+export const Filters = ({ handleFilterChange, handleFilterSubmit, filterFormData }) => {
 	return (
 		<div className="filter">
 			<div className="tabs">
@@ -50,12 +32,12 @@ export const Filters = () => {
 
 			{/* CAR FORM FILTER SECTION */}
 			<div className="car-filter">
-				<form>
+				<form onSubmit={handleFilterSubmit}>
 					<div className="form-container">
 						{/* Proizvodjac */}
 						<div className="input-container">
 							<label>Proizvodjac</label>
-							<select id="proizvodjac">
+							<select id="proizvodjac" onChange={handleFilterChange}>
 								<option value="">Izaberite proizvođača</option>
 								{cars.map((car, index) => (
 									<option key={index} value={car.name}>
@@ -68,24 +50,24 @@ export const Filters = () => {
 						{/* Model */}
 						<div className="input-container">
 							<label>Model</label>
-							<select id="model">
+							<select id="model" onChange={handleFilterChange}>
 								<option value="">Izaberite model</option>
 								{cars.map(
 									(car) =>
-										car.name === proizvodjac &&
+										car.name === filterFormData.proizvodjac &&
 										car.models.map((model, modelIndex) => (
 											<option key={modelIndex} value={model}>
 												{model}
 											</option>
 										))
-								)}
+										)}
 							</select>
 						</div>
 
 						{/* GODIŠTE */}
 						<div className="input-container">
 							<label>Godište *</label>
-							<select id="godiste">
+							<select id="godiste" onChange={handleFilterChange}>
 								<option value="">Izaberite godište</option>
 								{yearType.map((year, index) => (
 									<option key={index} value={year}>
@@ -98,7 +80,7 @@ export const Filters = () => {
 						{/* GORIVO */}
 						<div className="input-container">
 							<label>Gorivo *</label>
-							<select id="gorivo">
+							<select id="gorivo" onChange={handleFilterChange}>
 								<option value="">Izaberite filter</option>
 								{fuelType.map((fuel, index) => (
 									<option key={index} value={fuel}>
@@ -111,19 +93,19 @@ export const Filters = () => {
 						{/* KILOMETRAZA */}
 						<div className="input-container">
 							<label>Kilometraža do (km)</label>
-							<input type="number" placeholder="Kilometraža do" />
+							<input type="text" id='kilometraza' placeholder="Kilometraža do" onChange={handleFilterChange} />
 						</div>
 
 						{/* CIJENA */}
 						<div className="input-container">
 							<label>Cijena do (KM)</label>
-							<input type="number" placeholder="Cijena do" />
+							<input type="text" id='cijena' placeholder="Cijena do" onChange={handleFilterChange} />
 						</div>
 
                         <Link to='/search' id='searchLink'>Detaljna pretraga <FaChevronRight className='icon' /></Link>
 
                         <div className="input-container">
-                            <button>Broj rezultata</button>
+                            <button>Pretraži</button>
                         </div>
 					</div>
 				</form>

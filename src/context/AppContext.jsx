@@ -333,7 +333,7 @@ export const AppContextProvider = ({ children }) => {
 		// Loop car object array to store them in Cars and My Cars array
 		carObj.map((car) => {
 			// Storing car data in Cars array
-			cars.push(car.data);
+			cars.push(car);
 			// Stroing user car data in My Cars array
 			if(auth.currentUser && auth.currentUser.uid === car.data.uid) {
 				myCars.push(car)

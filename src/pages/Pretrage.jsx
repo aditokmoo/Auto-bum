@@ -7,7 +7,7 @@ function Pretrage() {
       <Navbar />
       <div className="search_section">
         <div className="container">
-          <h1>Pretraga</h1>
+          <h1>Pretraga u izradi...</h1>
         </div>
       </div>
     </>

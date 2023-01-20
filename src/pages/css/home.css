@@ -151,6 +151,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     padding-bottom: 50px;
+    margin-top: -40px;
 }
 
 .section .cars .car {
