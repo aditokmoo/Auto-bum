@@ -57,7 +57,7 @@ export const MojaVozila = () => {
 			</div>
 			<div className="moja-vozila-section">
 				<div className="container">
-					<div className="cars">
+					<div className="profile-cars">
 						{profileCarData &&
 							profileCarData.map((car, index) => {
 								return (
