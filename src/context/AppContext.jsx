@@ -24,6 +24,10 @@ export const AppContextProvider = ({ children }) => {
 	const [ carsData, setCarsData ] = useState();
 	// State for storing firebase cars from user
 	const [ profileCars, setProfileCars ] = useState();
+	// State for storing search value
+	const [ searchFormData, setSearchFormData ] = useState();
+	// State for storing search data items
+	const [ searchData, setSearchData ] = useState([]);
 	// State for storing car images in firebase/storage
 	const [ carFormImageFile, setCarFormImageFile ] = useState([]);
 	// State for storing Cars ID from firebase/firestore
@@ -146,6 +150,15 @@ export const AppContextProvider = ({ children }) => {
 			getCarsCollection();
 		});
 	}, []);
+
+	// For storing search data to localStorage
+	useEffect(() => {
+		const dataFromLocalStorage = localStorage.getItem('searchData');
+
+		if(dataFromLocalStorage) {
+			setSearchData(JSON.parse(dataFromLocalStorage))
+		}
+	}, [])
 
 	// Handle Forgot Password Form Function
 	const handleForgotPasswordSubmit = async (e) => {
@@ -539,6 +552,32 @@ export const AppContextProvider = ({ children }) => {
 		}));
 	};
 
+	// Handle Search Change
+	const handleSearchChange = (e) => {
+		setSearchFormData(e.target.value)
+	}
+
+	// Handle Search Submit
+	const handleSearchSubmit = (e) => {
+		e.preventDefault();
+
+		const dataArr = []
+
+		carsData.forEach(({data, id}) => {
+			if(data.naslov_oglasa.toLowerCase().includes(searchFormData.toLowerCase())) {
+				dataArr.push({
+					id,
+					data,
+				})
+			}
+		})
+
+		localStorage.setItem('searchData', JSON.stringify(dataArr));
+		setSearchData(dataArr)
+
+		navigate('/rezultati-pretrage');
+	}
+
 	// Logout from profile function
 	const logOut = () => {
 		try {
@@ -575,6 +614,10 @@ export const AppContextProvider = ({ children }) => {
 				showOverlay,
 				formError,
 				carID,
+				searchData,
+				searchFormData,
+				handleSearchChange,
+				handleSearchSubmit,
 				setUserData,
 				handleImageChange,
 				handleCarFormChange,

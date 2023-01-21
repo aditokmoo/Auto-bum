@@ -23,7 +23,6 @@ export const MojaVozila = () => {
 		profileCars.forEach((car) => {
 			carDataArr.push(car.data);
 			carIDArr.push(car.id);
-			console.log(car)
 		})
 
 		setProfileCarData(carDataArr);

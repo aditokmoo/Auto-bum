@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import './css/home.css';
 
 const Home = () => {
-	const { getCarsCollection, carsData } = useContext(AppContext);
+	const { getCarsCollection, carsData, handleSearchChange, handleSearchSubmit } = useContext(AppContext);
 	const [ filterCarData, setFilterCarData ] = useState(null);
 	const [ filterCarID, setFilterCarID ] = useState(null);
  	const [ filterFormData, setFilterFormData ] = useState({
@@ -119,9 +119,9 @@ const Home = () => {
 				<div className="header">
 					<div className="container">
 						<div className="home-section">
-							<form>
+							<form onSubmit={handleSearchSubmit}>
 								<AiFillCar className="car_icon" />
-								<input type="text" placeholder="Audi A4 B8 2.0TDI" />
+								<input type="text" placeholder="Audi A4 B8 2.0TDI" onChange={handleSearchChange} />
 								<button>
 									<FaSearch />
 								</button>

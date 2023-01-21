@@ -3,11 +3,9 @@ import { Link } from 'react-router-dom';
 import { FaCalendarAlt, FaRoad } from 'react-icons/fa';
 import { GiGasPump } from 'react-icons/gi';
 import AppContext from '../../context/AppContext';
-import { useEffect } from 'react';
 
-export const Cars = ({filterCarData}) => {
+export const Cars = () => {
 	const { carsData, carID } = useContext(AppContext);
-	const { cars, setCars } = useState();
 
 	return (
 		<div className="cars">

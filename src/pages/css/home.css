@@ -207,3 +207,79 @@
     display: block;
     margin-top: 10px;
 }
+
+/* REZULTATI PRETRAGE */
+.rezultati-pretrage {
+    margin: 40px 0;
+    font-family: Montserrat;
+}
+
+.rezultati-pretrage #link {
+    text-decoration: none;
+    color: #000;
+}
+
+.rezultati-pretrage h1 span {
+    color: #e35b3c;
+}
+
+.rezultati-pretrage .car-item {
+    display: flex;
+    background-color: #fff;
+    margin: 25px 0;
+    height: 200px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+
+/* IMAGE */
+.rezultati-pretrage .car-item .image {
+    width: 500px;
+}
+
+.rezultati-pretrage .car-item .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+/* CAR INFO */
+.rezultati-pretrage .car-item .car-info {
+    margin: 20px 30px;
+    width: 100%;
+}
+
+.rezultati-pretrage .car-item .car-info span {
+    padding: 20px 0 13px 0;
+    display: block;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+}
+
+.rezultati-pretrage .car-item .car-info ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 50px;
+    margin: 15px 0;
+}
+
+.rezultati-pretrage .car-item .car-info ul li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.1em;
+}
+
+/* CAR PRICE */
+.rezultati-pretrage .car-item .price {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    font-weight: 600;
+    color: #e35b3c;
+}

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Pages
 import Home from './pages/Home';
+import { RezultatiPretrage } from './pages/home/RezultatiPretrage';
 import Info from './pages/Info';
 import Pretrage from './pages/Pretrage';
 import Prodaj from './pages/Prodaj';
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route path='/info' element={<Info />} />
           <Route path='/search' element={<Pretrage />} />
+          <Route path='/rezultati-pretrage' element={<RezultatiPretrage />} />
           
           <Route element={<Openroute />} >
             <Route path='/' element={<Home />} />
