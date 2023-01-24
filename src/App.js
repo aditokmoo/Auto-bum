@@ -9,6 +9,7 @@ import Profile from './pages/Profile';
 // Components
 import { AppContextProvider } from './context/AppContext';
 import { CarDetails } from './pages/CarDetails';
+import { UserDetails } from './pages/UserDetails';
 import PrivateRoute from './components/PrivateRoute';
 import Openroute from './components/Openroute';
 // CSS File
@@ -24,6 +25,8 @@ function App() {
           <Route path='/info' element={<Info />} />
           <Route path='/search' element={<Pretrage />} />
           <Route path='/rezultati-pretrage' element={<RezultatiPretrage />} />
+          <Route path='/user/:user' element={<UserDetails />} />
+          <Route path='/:car' element={<CarDetails />} />
           
           <Route element={<Openroute />} >
             <Route path='/' element={<Home />} />
@@ -33,7 +36,6 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/sell' element={<Prodaj />} />
             <Route path='/profile' element={<Profile />} />
-            <Route path='/:car' element={<CarDetails />} />
           </Route>
         </Routes>
         </AppContextProvider>

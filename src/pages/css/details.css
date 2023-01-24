@@ -139,6 +139,17 @@
     margin: 0 10px;
 }
 
+.details .details-section .section-2 .details-info-2 ul li p:last-child {
+    cursor: pointer;
+    color: #e35b3c;
+}
+
+.details .details-section .section-2 .details-info-2 ul li p #link {
+    text-decoration: none;
+    color: #e35b3c;
+}
+
+
 .details .details-section .section-2 .details-info-1 ul li p:first-child,
 .details-info-2 ul li p:first-child {
     position: absolute;

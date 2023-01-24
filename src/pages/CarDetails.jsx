@@ -24,12 +24,12 @@ export const CarDetails = () => {
 	const getCarDetails = async () => {
 		const carDoc = doc(db, 'cars', params.car);
 		const getCarDoc = await getDoc(carDoc);
-		const data = getCarDoc.data();
+		const data = getCarDoc.data()
 
 		const equipData = [];
 
 		ostalo_info.forEach(row => {
-			Object.entries(data).filter(([key, value]) => {
+			Object.entries({data}).filter(([key, value]) => {
 				if(row.id === key && value === true) {
 					equipData.push(row.name);
 				}
@@ -144,7 +144,7 @@ export const CarDetails = () => {
 											<FaUserAlt id="icon" />
 										</p>
 										<p>Prodavac</p>
-										<p>{carDetails.ime + ' ' + carDetails.prezime}</p>
+										<p><Link to={`/user/${carDetails.uid}`} id='link'>{carDetails.ime + ' ' + carDetails.prezime}</Link></p>
 									</li>
 									<li>
 										<p>
@@ -289,7 +289,7 @@ export const CarDetails = () => {
 						}
 					</div>
 				</div>
-			)}
+					)}
 		</div>
 	);
 };
