@@ -26,6 +26,7 @@ function App() {
           <Route path='/search' element={<Pretrage />} />
           <Route path='/rezultati-pretrage' element={<RezultatiPretrage />} />
           <Route path='/user/:user' element={<UserDetails />} />
+          <Route path='/user/:user/:car' element={<CarDetails />} />
           <Route path='/:car' element={<CarDetails />} />
           
           <Route element={<Openroute />} >

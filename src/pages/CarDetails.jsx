@@ -38,16 +38,17 @@ export const CarDetails = () => {
 		})
 
 		setEquipDetails(equipData)
-
 		setCarDetails(data);
 	};
 
 	return (
 		<div className="details">
 			<div className="nav">
-				<Link to="/home" id="back-icon">
+				{carDetails && 
+					<Link to='/home' id="back-icon">
 					<BsArrowLeft />
 				</Link>
+				}
 				<h3>Detalji artikla</h3>
 			</div>
 			{carDetails && (

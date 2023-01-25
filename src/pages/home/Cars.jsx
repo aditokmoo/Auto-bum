@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaCalendarAlt, FaRoad } from 'react-icons/fa';
 import { GiGasPump } from 'react-icons/gi';

@@ -159,7 +159,10 @@
 
 .moja-vozila .nav .form-container {
     display: flex !important;
-    padding: 10px !important;
+    gap: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 7px;
 }
 
 .moja-vozila .moja-vozila-section .profile-cars {
