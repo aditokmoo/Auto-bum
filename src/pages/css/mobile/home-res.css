@@ -1,0 +1,124 @@
+@media only screen and (max-width: 580px) {
+	header .header, .section .filter {
+        display: none;
+    }
+
+    header .mobile-header {
+        display: block;
+    }
+
+    header .mobile-header .slider .slide {
+        width: 100%;
+        display: none;
+    }
+
+    header .mobile-header .slider .slide.active {
+        display: block;
+    }
+
+    header .mobile-header .slider .slide img {
+        width: 100%;
+    }
+
+    header .mobile-header .num-of-cars {
+        background-color: #212529;
+        text-align: center;
+        padding: 15px 30px;
+        margin: 10px 30px;
+        border-radius: 10px;
+    }
+
+    header .mobile-header .num-of-cars h1 {
+        color: #e35b3c;
+        font-size: 2.5em;
+        padding: 0 0 5px 0;
+    }
+
+    header .mobile-header .num-of-cars span {
+        font-family: Montserrat;
+        color: #fff;
+        font-size: 0.8em;
+    }
+
+    /* CARS SECTION */
+    header .section .cars {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin: 15px;
+    }
+
+    header .section .cars .car {
+        border-radius: 7px;
+        box-shadow: 0px 0px 10px -7px rgb(0 0 0 / 75%);
+    }
+
+    header .section .cars .car .image-section img {
+        height: 130px;
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+    }
+
+    header .section .cars .car .info-section {
+        display: grid;
+        padding: 0 10px;
+    }
+
+    header .section .cars .car .info-section h3 {
+        display: none;
+    }
+
+    header .section .cars .car .info-section h3.mobile-h3 {
+        display: block;
+        order: 1;
+        font-weight: 200;
+        font-size: 14px;
+        color: #444;
+    }
+
+    header .section .cars .car .info-section .details {
+        display: grid;
+        gap: 15px;
+        order: 2;
+        font-size: 14px;
+    }
+
+    header .section .cars .car .info-section .details span {
+        color: #888;
+    }
+
+    header .section .cars .car .info-section .price span {
+        order: 0;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    /* Mobile Footer Attachment for car item */
+    header .section .cars .car .mobile-attachment {
+        display: grid;
+        order: 3;
+        border-top: 1px solid #ddd;
+        padding: 10px 0;
+        font-size: 14px;
+    }
+
+    header .section .cars .car .mobile-attachment ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        list-style: none;
+    }
+
+    header .section .cars .car .mobile-attachment ul li:first-child {
+        color: #e35b3c;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        position: relative;
+        top: -2px;
+    }
+
+    header .section .cars .car .mobile-attachment ul #icon {
+        font-size: 17px;
+    }
+}

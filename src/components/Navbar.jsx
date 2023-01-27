@@ -7,9 +7,14 @@ import Register from './Register';
 import ForgotPassword from './ForgotPassword';
 import { HiUserCircle } from 'react-icons/hi';
 import { FaTimes } from 'react-icons/fa';
+import { BiMenu } from 'react-icons/bi';
+import { AiOutlineSearch, AiFillHome } from 'react-icons/ai';
+import { HiPlus } from 'react-icons/hi'
+import { MdMessage } from 'react-icons/md'
 import AppContext from '../context/AppContext';
 import Spinner from '../shared/Spinner';
 import './css/navigation.css'
+import './css/mobile/nav-res.css'
 
 const Navbar = () => {
   const { showOverlay } = useContext(AppContext);
@@ -44,20 +49,33 @@ const Navbar = () => {
       <nav>
         <div className="container">
             <div className="nav-section">
+                <BiMenu className='icon menu' />
                 <h2><Link to={auth.currentUser ? '/home' : '/'} style={{textDecoration: 'none', color: '#000'}}>Auto <span>Bum.</span></Link></h2>
-                  <ul className='f-list'>
-                    <Link to='/info' className='link'>Informacije</Link>
-                    <Link to='/search' className='link'>Pretrage</Link>
-                    <Link to={auth.currentUser && '/sell'} onClick={checkAuth} className='link'>Prodaj</Link>
-                    {auth.currentUser ? 
-                      <Link to='/profile' id='user' className='link'><HiUserCircle id="profile-icon" /> Moj Nalog</Link>
-                      :
-                      <>
-                        <li><Link id='login' onClick={() => handleTabClick(0)}><HiUserCircle id="profile-icon" /> Prijavi se</Link></li>
-                        <li><Link id='register' onClick={() => handleTabClick(1)}>Napravi novi nalog</Link></li>
-                      </>
-                    }
-                  </ul> 
+                <AiOutlineSearch className='icon search' />
+
+                <ul className='f-list'>
+                  <Link to='/info' className='link'>Informacije</Link>
+                  <Link to='/search' className='link'>Pretrage</Link>
+                  <Link to={auth.currentUser && '/sell'} onClick={checkAuth} className='link'>Prodaj</Link>
+                  {auth.currentUser ? 
+                    <Link to='/profile' id='user' className='link'><HiUserCircle id="profile-icon" /> Moj Nalog</Link>
+                    :
+                    <>
+                      <li><Link id='login' onClick={() => handleTabClick(0)}><HiUserCircle id="profile-icon" /> Prijavi se</Link></li>
+                      <li><Link id='register' onClick={() => handleTabClick(1)}>Napravi novi nalog</Link></li>
+                    </>
+                  }
+                </ul> 
+            </div>
+
+            <div className="mobile-nav">
+              <ul>
+                <li className='active'><AiFillHome id='icon' /> Početna</li>
+                <li><AiOutlineSearch id='icon' /> Pretraga</li>
+                <li><HiPlus id='icon' /> Objavi oglas</li>
+                <li><MdMessage id='icon' /> Poruke</li>
+                <li><HiUserCircle id='icon' /> Moj Nalog</li>
+              </ul>
             </div>
         </div>
       </nav>

@@ -3,6 +3,7 @@ nav {
     background: #fff;
     padding: 20px 0;
 } 
+
 nav .nav-section {
     display: flex;
     justify-content: space-between;
@@ -88,4 +89,9 @@ nav .nav-section ul li #register:hover {
 
 nav .nav-section ul li #login:hover {
     color: #e35b3c;
+}
+
+/* Mobile items */
+nav .nav-section .icon, .mobile-nav {
+    display: none;
 }

@@ -7,7 +7,10 @@ import { Filters } from './home/Filters';
 import { FaSearch } from 'react-icons/fa';
 import { AiFillCar } from 'react-icons/ai';
 import { toast } from 'react-toastify';
+import sliderImageOne from './images/home-slider-image.jpg';
+import sliderImageTwo from './images/home-slider-image-2.jpg';
 import './css/home.css';
+import './css/mobile/home-res.css';
 
 const Home = () => {
 	const { getCarsCollection, carsData, handleSearchChange, handleSearchSubmit } = useContext(AppContext);
@@ -129,6 +132,22 @@ const Home = () => {
 						</div>
 					</div>
 				</div>
+
+				<div className="mobile-header">
+					<div className="slider">
+						<div className="slide active">
+							<img src={sliderImageOne} alt="" />
+						</div>
+						<div className="slide">
+							<img src={sliderImageTwo} alt="" />
+						</div>
+					</div>
+					<div className="num-of-cars">
+						<h1>{carsData && carsData.length}</h1>
+						<span>Automobila na prodaju</span>
+					</div>
+				</div>
+
 				<div className="section">
 					<div className="container">
 						<Filters handleFilterChange={handleFilterChange} filterCarData={filterCarData} handleFilterSubmit={handleFilterSubmit} filterFormData={filterFormData} />

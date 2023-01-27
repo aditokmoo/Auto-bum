@@ -158,7 +158,6 @@
     background-color: #fff;
     width: 100%;
     margin: 0 auto;
-    border: 1px solid #ddd;
     transition: .2s;
     cursor: pointer;
 }
@@ -282,4 +281,9 @@
     right: 20px;
     font-weight: 600;
     color: #e35b3c;
+}
+
+/* MOBILE ITEMS */
+.mobile-header, .mobile-attachment, h3.mobile-h3 {
+    display: none;
 }

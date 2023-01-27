@@ -1,0 +1,59 @@
+@media only screen and (max-width: 580px) {
+    nav .nav-section .icon {
+        font-size: 1.5em;
+        position: relative;
+        display: block;
+    }
+
+    nav .nav-section .icon.menu {
+        left: 20px;
+    }
+
+    nav .nav-section .icon.search {
+        right: 20px;
+    }
+
+	nav .nav-section h2 {
+        margin: 0 auto;
+    }
+    nav .nav-section ul {
+        display: none;
+    }
+
+    nav .mobile-nav {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        background-color: #fff;
+        z-index: 1;
+        width: 100%;
+        box-shadow: 0 0 6px rgb(0 0 0 / 30%);
+        color: #333;
+    }
+
+    nav .mobile-nav ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        list-style: none;
+    }
+
+    nav .mobile-nav ul li {
+        padding: 7px 0;
+        text-align: center;
+        font-size: 11px;
+        font-family: Montserrat;
+        display: block;
+    }
+
+    nav .mobile-nav ul li.active {
+        color: #e35b3c;
+    }
+
+    nav .mobile-nav ul li #icon {
+        display: block;
+        font-size: 22px;
+        margin: 5px auto;
+    }
+}
