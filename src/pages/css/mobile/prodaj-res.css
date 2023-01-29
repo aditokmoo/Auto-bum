@@ -1,8 +1,6 @@
 @media only screen and (max-width: 580px) {
     /* NAV */
-    .section {
-        margin-top: -40px;
-    }
+    
 
     section .sell-section .nav, .add-info  {
         display: none;
@@ -12,6 +10,7 @@
     .section .auto-section .image-section {
         background-color: inherit;
         padding: 0 20px;
+        margin-top: -40px;
     }
 
     .section .auto-section .image-section h2 {
@@ -49,7 +48,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         width: 100%;
-        gap: 20px;
+        gap: 10px;
         position: fixed;
         bottom: 20px;
         left: 0;
@@ -59,7 +58,10 @@
 
     .section .auto-section .image-section .add-image-section .btns span {
         width: 100%;
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
         padding: 12px;
         border-radius: 7px;
         border: 1px solid #333;
@@ -71,7 +73,7 @@
         text-align: center;
     }
 
-    .section .auto-section .image-section .add-image-section .btns span:first-child {
+    .section .auto-section .image-section .add-image-section .btns #gallery-span, #continue-span {
         background-color: #e35b3c;
         border: none;
         color: #fff;

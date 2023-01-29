@@ -1,7 +1,7 @@
-import { useState } from 'react';
 import { useContext, useRef } from 'react';
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes, FaCamera } from 'react-icons/fa';
 import { FiPlus } from 'react-icons/fi';
+import { TfiGallery } from 'react-icons/tfi'
 import AppContext from '../../context/AppContext';
 
 export const AddImage = ({ checkIsInfoActive }) => {
@@ -20,12 +20,12 @@ export const AddImage = ({ checkIsInfoActive }) => {
 				</label>
 				<div className="btns">
 					<label htmlFor="images-mobile">
-						<span>Galerija</span>
+						<span id='gallery-span'><TfiGallery fontSize='20px' /> Galerija</span>
 					</label>
 					<label htmlFor="images-camera" id='imagesCamera'>
-						<span>Kamera</span>
+						<span><FaCamera fontSize='20px' /> Kamera</span>
 					</label>
-					<span onClick={checkIsInfoActive}>Nastavi</span>
+					<span onClick={checkIsInfoActive} id='continue-span'>Nastavi</span>
 				</div>
 				<input type="file" id="images-desktop" onChange={handleImageChange} name='file'/>
 				<input type="file" id="images-mobile" onChange={handleImageChange} name='file'/>
