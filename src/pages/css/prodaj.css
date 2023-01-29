@@ -73,11 +73,15 @@ section .sell-section .nav ul li span {
 	display: flex;
 }
 
+.section .auto-section .image-section .add-image-section .btns {
+	display: none;
+}
+
 .section .auto-section .image-section .add-image-section #images {
 	display: none;
 }
 
-.section .auto-section .image-section .add-image-section label {
+.section .auto-section .image-section .add-image-section #imagesDesktop {
 	background-color: #ffdad2;
 	display: block;
 	width: 200px;
@@ -87,11 +91,15 @@ section .sell-section .nav ul li span {
 	cursor: pointer;
 }
 
-.section .auto-section .image-section .add-image-section label:hover {
+.section .auto-section .image-section .add-image-section #images-mobile, #images-camera, #images-desktop {
+	display: none;
+}
+
+.section .auto-section .image-section .add-image-section #imagesDesktop:hover {
 	opacity: .8;
 }
 
-.section .auto-section .image-section .add-image-section label span {
+.section .auto-section .image-section .add-image-section #imagesDesktop span {
 	display: block;
 	font-size: 15px;
 	text-align: center;

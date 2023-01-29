@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import AppContext from '../context/AppContext';
 import Navbar from '../components/Navbar';
 import { AddImage } from './prodaj/AddImage';
@@ -11,14 +11,24 @@ import { MdDirectionsCar } from 'react-icons/md';
 import { AiFillDribbbleCircle } from 'react-icons/ai';
 import { FaMotorcycle, FaTruck, FaTractor } from 'react-icons/fa';
 import './css/prodaj.css';
+import './css/mobile/prodaj-res.css';
 
 function Prodaj() {
-	const { getUserCollection, handleCarFormSubmit } = useContext(AppContext);
+	const { getUserCollection, carFormData, handleCarFormSubmit } = useContext(AppContext);
+	const [ infoActive, setInfoActive ] = useState(false);
 
 	useEffect(() => {
 		// Calling USER Collection function
 		getUserCollection();
 	}, []);
+
+	const checkIsInfoActive = () => {
+		if(carFormData.images.length < 1) {
+			alert('dodaj slike')
+		} else {
+			setInfoActive(true)
+		}
+	}
 
 	return (
 		<div>
@@ -66,25 +76,30 @@ function Prodaj() {
 							<div className="auto-section">
 								<form onSubmit={handleCarFormSubmit}>
 									{/* SECTION FOR ADDING IMAGES */}
-									<AddImage />
-									{/* BASIC INFO SECTION */}
-									<BasicInfo />
+									<div className={infoActive ? 'add-images info-hide' : 'add-images'}>
+										<AddImage  checkIsInfoActive={checkIsInfoActive} infoActive={infoActive} />
+									</div>
 
-									{/* OTHER INFO SECTION */}
-									<OtherInfo />
+									<div className={infoActive ? 'add-info info-active' : 'add-info'}>
+										{/* BASIC INFO SECTION */}
+										<BasicInfo />
 
-									{/* OTHER EQUIPMENT SECTION */}
-									<OtherEquipment />
+										{/* OTHER INFO SECTION */}
+										<OtherInfo />
 
-									{/* Description and Title SECTION */}
-									<TitleInfo />
+										{/* OTHER EQUIPMENT SECTION */}
+										<OtherEquipment />
 
-									{/* USER DATA SECTION */}
-									<UserData />
+										{/* Description and Title SECTION */}
+										<TitleInfo />
 
-									{/* BUTTON SECTION */}
-									<div className="button-section">
-										<button type='submit'>Objavi oglas</button>
+										{/* USER DATA SECTION */}
+										<UserData />
+
+										{/* BUTTON SECTION */}
+										<div className="button-section">
+											<button type='submit'>Objavi oglas</button>
+										</div>
 									</div>
 								</form>
 							</div>

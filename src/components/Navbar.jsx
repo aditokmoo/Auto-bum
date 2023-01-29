@@ -68,13 +68,13 @@ const Navbar = () => {
                 </ul> 
             </div>
 
-            <div className="mobile-nav">
+            <div className={window.location.pathname === '/sell' ? "mobile-nav deactivated" : "mobile-nav"}>
               <ul>
-                <li className='active'><AiFillHome id='icon' /> Početna</li>
-                <li><AiOutlineSearch id='icon' /> Pretraga</li>
-                <li><HiPlus id='icon' /> Objavi oglas</li>
-                <li><MdMessage id='icon' /> Poruke</li>
-                <li><HiUserCircle id='icon' /> Moj Nalog</li>
+                <li><Link to='/home' className='link active'><AiFillHome id='icon' /> Početna</Link></li>
+                <li><Link to='/search' className='link'><AiOutlineSearch id='icon' /> Pretraga</Link></li>
+                <li><Link to='/sell' className='link'><HiPlus id='icon' /> Objavi oglas</Link></li>
+                <li><Link to='/poruke' className='link'><MdMessage id='icon' /> Poruke</Link></li>
+                <li><Link to='/profile' className='link'><HiUserCircle id='icon' /> Moj Nalog</Link></li>
               </ul>
             </div>
         </div>

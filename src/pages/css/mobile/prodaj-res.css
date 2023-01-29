@@ -1,0 +1,105 @@
+@media only screen and (max-width: 580px) {
+    /* NAV */
+    .section {
+        margin-top: -40px;
+    }
+
+    section .sell-section .nav, .add-info  {
+        display: none;
+    }
+
+    /* ADD IMAGE SECTION */
+    .section .auto-section .image-section {
+        background-color: inherit;
+        padding: 0 20px;
+    }
+
+    .section .auto-section .image-section h2 {
+        padding: 10px 0;
+        text-transform: none;
+    }
+
+    .section .auto-section .image-section .add-image-section {
+        display: block;
+    }
+
+    .section .auto-section .image-section .add-image-section .images {
+        overflow-y: scroll;
+        height: 600px;
+    }
+
+    .section .auto-section .image-section .add-image-section .image {
+        padding: 0 70px;
+        height: auto;
+    }
+
+    .section .auto-section .image-section .add-image-section img {
+        height: inherit;
+    }
+
+    .section .auto-section .image-section .add-image-section #imagesDesktop {
+        display: none;
+    }
+
+    .section .auto-section .image-section .add-image-section #imagesCamera {
+        display: block;
+    }
+
+    .section .auto-section .image-section .add-image-section .btns {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        gap: 20px;
+        position: fixed;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        padding: 0 15px;
+    }
+
+    .section .auto-section .image-section .add-image-section .btns span {
+        width: 100%;
+        display: block;
+        padding: 12px;
+        border-radius: 7px;
+        border: 1px solid #333;
+        background-color: #333;
+        color: #fff;
+        font-family: Montserrat;
+        font-size: 17px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .section .auto-section .image-section .add-image-section .btns span:first-child {
+        background-color: #e35b3c;
+        border: none;
+        color: #fff;
+    }
+
+    .section .auto-section .image-section .btns span:last-child {
+        grid-column: 1 / -1
+    }
+    
+    .info-active {
+        display: block;
+    }
+
+    .info-hide {
+        display: none;
+    }
+
+    /* ADD INFO SECTION */
+    .section .auto-section .basic-info .form-container, .other-info .form-container, .other-equipment .form-container, .desc-section .form-container, .user-data-section .form-container {
+        display: block;
+    }
+
+    .section .auto-section .button-section {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .section .auto-section .basic-info .form-container .input-container {
+        margin: 30px 0;
+    }
+}

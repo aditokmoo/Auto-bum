@@ -28,7 +28,10 @@
         z-index: 1;
         width: 100%;
         box-shadow: 0 0 6px rgb(0 0 0 / 30%);
-        color: #333;
+    }
+
+    nav .mobile-nav.deactivated {
+        display: none;
     }
 
     nav .mobile-nav ul {
@@ -47,8 +50,13 @@
         display: block;
     }
 
-    nav .mobile-nav ul li.active {
-        color: #e35b3c;
+    nav .mobile-nav ul li .link {
+        text-decoration: none;
+        color: #333;
+    }
+
+    nav .mobile-nav ul li .link.active {
+        color: #e35b3c !important;
     }
 
     nav .mobile-nav ul li #icon {
