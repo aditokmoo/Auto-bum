@@ -15,6 +15,8 @@ import Openroute from './components/Openroute';
 // CSS File
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
+import Login from './components/Login';
+import Register from './components/Register';
 
 
 function App() {
@@ -28,7 +30,7 @@ function App() {
           <Route path='/user/:user' element={<UserDetails />} />
           <Route path='/user/:user/:car' element={<CarDetails />} />
           <Route path='/:car' element={<CarDetails />} />
-          
+
           <Route element={<Openroute />} >
             <Route path='/' element={<Home />} />
           </Route>

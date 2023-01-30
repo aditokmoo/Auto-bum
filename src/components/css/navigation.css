@@ -1,3 +1,6 @@
+/* REMOVE MOBILE VERSION */
+.mobile, .mobile-login, .mobile-login-modal {display: none}
+
 /* NAVIGATION SECTION */
 nav {
     background: #fff;

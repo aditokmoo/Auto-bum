@@ -10,16 +10,19 @@ import { FaTimes } from 'react-icons/fa';
 import { BiMenu } from 'react-icons/bi';
 import { AiOutlineSearch, AiFillHome } from 'react-icons/ai';
 import { HiPlus } from 'react-icons/hi'
+import { BsArrowLeftShort } from 'react-icons/bs'
 import { MdMessage } from 'react-icons/md'
 import AppContext from '../context/AppContext';
 import Spinner from '../shared/Spinner';
 import './css/navigation.css'
 import './css/mobile/nav-res.css'
+import { LoginMobile } from './LoginMobile';
 
 const Navbar = () => {
   const { showOverlay } = useContext(AppContext);
   const [ activeTab, setActiveTab ] = useState(0);
   const [showModal, setShowModal ] = useState(false);
+  const [showMobileModal, setShowMobileModal ] = useState(false);
   const [showForgotModal, setShowForgotModal] = useState(false);
   
   const auth = getAuth();
@@ -27,6 +30,7 @@ const Navbar = () => {
   // Login and Register modal
   const handleTabClick = (tab) => {
     setActiveTab(tab);
+    setShowMobileModal(false)
     setShowModal(true)
     setShowForgotModal(false);
   }
@@ -41,6 +45,12 @@ const Navbar = () => {
   const checkAuth = () => {
     if(!auth.currentUser) {
       setShowModal(true);
+    }
+  }
+
+  const checkMobileAuth = () => {
+    if(!auth.currentUser) {
+      setShowMobileModal(true)
     }
   }
 
@@ -72,7 +82,7 @@ const Navbar = () => {
               <ul>
                 <li><Link to='/home' className='link active'><AiFillHome id='icon' /> Početna</Link></li>
                 <li><Link to='/search' className='link'><AiOutlineSearch id='icon' /> Pretraga</Link></li>
-                <li><Link to='/sell' className='link'><HiPlus id='icon' /> Objavi oglas</Link></li>
+                <li><Link to={auth.currentUser && '/sell'} onClick={checkMobileAuth} className='link'><HiPlus id='icon' /> Objavi oglas</Link></li>
                 <li><Link to='/poruke' className='link'><MdMessage id='icon' /> Poruke</Link></li>
                 <li><Link to='/profile' className='link'><HiUserCircle id='icon' /> Moj Nalog</Link></li>
               </ul>
@@ -83,7 +93,7 @@ const Navbar = () => {
       {showModal &&
       <div className="form">
         <div className="overlay"></div>
-        <div className="form-section">
+        <div className="form-section desktop">
           <FaTimes id="closeModal" onClick={() => setShowModal(false)} />
           <div className="form_nav">
             <button onClick={() => handleTabClick(0)} className={activeTab === 0 ? 'active' : ''}>
@@ -104,6 +114,30 @@ const Navbar = () => {
             <Login handleForgotModal={handleForgotModal} />
           </div>
         </div>
+
+        <div className={activeTab === 0 ? 'mobile-login-modal show' : 'mobile-login-modal'}>
+            <LoginMobile />
+        </div>
+      </div>
+      }
+
+      {showMobileModal &&
+      <div className="form">
+        <div className="form-section mobile">
+            <Link to='/home'><BsArrowLeftShort id='icon' /></Link>
+             <h2>Auto <span>Bum.</span></h2>
+             <p>Niste prijavljeni. Da bi ste nastavili izaberite jednu od opcija.</p>
+             <div className="btns">
+                <div>
+                  <button className='btn login' onClick={() => handleTabClick(0)}>Prijavi se</button>
+                  <p><span>Imam</span> nalog</p>
+                </div>
+                <div>
+                  <button className='btn register' onClick={() => handleTabClick(1)}>Napravi novi nalog</button>
+                  <p><span>Nemam</span> nalog</p>
+                </div>
+              </div>   
+        </div>  
       </div>
       }
 

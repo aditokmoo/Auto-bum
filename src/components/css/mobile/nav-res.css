@@ -1,4 +1,130 @@
 @media only screen and (max-width: 580px) {
+    /* REMOVE DESKTOP VERSION */
+    .desktop, .desktop-login, .mobile-login-modal, .overlay {
+        display: none;
+    }
+
+    /* LOGIN */
+    .mobile {
+        display: block;
+        height: 100vh;
+        top: 0;
+    }
+
+    .mobile #icon {
+        font-size: 2em;
+        position: absolute;
+        top: 20px;
+        left: 15px;
+        color: #000;
+    }
+    
+    .mobile h2 {
+        font-size: 2.3em;
+        font-family: Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+        font-weight: 900;
+        text-align: center;
+        margin: 200px 0 0 0;
+    }
+
+    .mobile h2 span {
+        color: #e35b3c;
+    }
+
+    .mobile p {
+        text-align: center;
+        margin: 15px 30px;
+        font-family: Montserrat;
+        line-height: 1.4;
+        display: block;
+    }
+
+    .mobile .btns {
+        margin: 0 30px;
+    }
+
+    .mobile .btns div {
+        margin: 40px 0;
+    }
+
+    .mobile .btns .btn {
+        width: 100%;
+        margin: 10px 0;
+        padding: 13px;
+        font-size: 16px;
+        font-family: Montserrat;
+        border: 0;
+        background-color: #e35b3c;
+        color: #fff;
+        border-radius: 6px;
+    }
+
+    .mobile .btns div .btn.register {
+        background-color: #333;
+        color: #fff;
+    }
+
+    .mobile .btns p {
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .mobile .btns span {
+        font-weight: bold;
+    }
+
+    /* MOBILE LOGIN */
+    .mobile-login-modal.show {
+        display: block;
+    }
+
+    .mobile-login-modal .form-container-mobile {
+        margin: 60px 25px 0 25px;
+    }
+
+    .mobile-login-modal .form-container-mobile .input-container {
+        margin: 15px 0;
+        font-family: Montserrat;
+    }
+
+    .mobile-login-modal .form-container-mobile .input-container label {
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .mobile-login-modal .form-container-mobile .input-container input {
+        width: 100%;
+        padding: 14px;
+        margin: 8px 0;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+    }
+
+    .mobile-login-modal p {
+        font-size: 12px;
+    }
+
+    .mobile-login-modal p span {
+        color: #e35b3c;
+    }
+
+    .mobile-login-modal .btn {
+        padding: 10px 25px;
+        width: 100%;
+    }
+
+    .mobile-login-modal .btn button {
+        width: 100%;
+        padding: 14px;
+        border: 0;
+        font-size: 17px;
+        font-family: Montserrat;
+        border-radius: 6px;
+        background-color: #e35b3c;
+        color: #fff;
+    }
+
+    /* MOBILE VERSION */
     nav .nav-section .icon {
         font-size: 1.5em;
         position: relative;

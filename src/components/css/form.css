@@ -2,7 +2,7 @@
 .form .overlay {
     background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(3px);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -10,17 +10,20 @@
     z-index: 1;
 }
 
-.form .overlay.show { display: block }
 
-.form .form-section{
+
+.form .form-section {
     position: fixed;
     background: #fff;
-    top: 30%;
     margin: 0 auto;
     left: 0;
     right: 0;
     max-width: 650px;
     z-index: 1;
+}
+
+.form .form-section.desktop {
+    top: 30%;
 }
 
 .form .form-section .form_nav button {
