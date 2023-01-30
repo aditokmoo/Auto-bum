@@ -1,9 +1,11 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import { Link } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Login from './Login';
 import Register from './Register';
+import { LoginMobile } from './LoginMobile';
+import { RegisterMobile } from './RegisterMobile';
 import ForgotPassword from './ForgotPassword';
 import { HiUserCircle } from 'react-icons/hi';
 import { FaTimes } from 'react-icons/fa';
@@ -16,7 +18,6 @@ import AppContext from '../context/AppContext';
 import Spinner from '../shared/Spinner';
 import './css/navigation.css'
 import './css/mobile/nav-res.css'
-import { LoginMobile } from './LoginMobile';
 
 const Navbar = () => {
   const { showOverlay } = useContext(AppContext);
@@ -51,8 +52,15 @@ const Navbar = () => {
   const checkMobileAuth = () => {
     if(!auth.currentUser) {
       setShowMobileModal(true)
+      document.body.style.overflowY = 'hidden';
     }
   }
+
+  useEffect(() => {
+    if(!showMobileModal) {
+      document.body.style.overflowY = 'scroll'
+    }
+  }, [])
 
   return (
     <>
@@ -83,8 +91,8 @@ const Navbar = () => {
                 <li><Link to='/home' className='link active'><AiFillHome id='icon' /> Početna</Link></li>
                 <li><Link to='/search' className='link'><AiOutlineSearch id='icon' /> Pretraga</Link></li>
                 <li><Link to={auth.currentUser && '/sell'} onClick={checkMobileAuth} className='link'><HiPlus id='icon' /> Objavi oglas</Link></li>
-                <li><Link to='/poruke' className='link'><MdMessage id='icon' /> Poruke</Link></li>
-                <li><Link to='/profile' className='link'><HiUserCircle id='icon' /> Moj Nalog</Link></li>
+                <li><Link to={auth.currentUser && '/poruke'} onClick={checkMobileAuth} className='link'><MdMessage id='icon' /> Poruke</Link></li>
+                <li><Link to={auth.currentUser && '/profile'} onClick={checkMobileAuth} className='link'><HiUserCircle id='icon' /> Moj Nalog</Link></li>
               </ul>
             </div>
         </div>
@@ -117,6 +125,10 @@ const Navbar = () => {
 
         <div className={activeTab === 0 ? 'mobile-login-modal show' : 'mobile-login-modal'}>
             <LoginMobile />
+        </div>
+
+        <div className={activeTab === 1 ? 'mobile-register-modal show' : 'mobile-register-modal'}>
+            <RegisterMobile />
         </div>
       </div>
       }

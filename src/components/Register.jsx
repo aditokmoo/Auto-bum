@@ -41,7 +41,7 @@ const Register = () => {
                 </div>
             </div>
             
-            <button>Kreiraj nalog</button>
+            <button>Napravi novi nalog</button>
         </form>
     )
 }

@@ -1,12 +1,11 @@
-import { useEffect, useContext } from 'react';
-import { getAuth } from 'firebase/auth';
+import { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import AppContext from '../context/AppContext';
-import './css/profile.css'
 import { UrediProfil } from './profile/UrediProfil';
 import { MojaVozila } from './profile/MojaVozila';
-import { useState } from 'react';
+import { Poruke } from '../components/Poruke';
+import './css/profile.css'
 
 const Profile = () => {
     const { userData, getUserCollection, logOut } = useContext(AppContext);
@@ -48,6 +47,9 @@ const Profile = () => {
                             <div className="section-2">
                                 <div className={activeTab === 0 ? 'section active' : 'section'}>
                                     <MojaVozila />
+                                </div>
+                                <div className={activeTab === 1 ? 'section active' : 'section'}>
+                                    <Poruke />
                                 </div>
                                 <div className={activeTab === 3 ? 'section active' : 'section'}>
                                     <UrediProfil />

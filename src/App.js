@@ -12,11 +12,10 @@ import { CarDetails } from './pages/CarDetails';
 import { UserDetails } from './pages/UserDetails';
 import PrivateRoute from './components/PrivateRoute';
 import Openroute from './components/Openroute';
+import { Poruke } from './components/Poruke';
 // CSS File
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
-import Login from './components/Login';
-import Register from './components/Register';
 
 
 function App() {
@@ -39,6 +38,7 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/sell' element={<Prodaj />} />
             <Route path='/profile' element={<Profile />} />
+            <Route path='/poruke' element={<Poruke />} />
           </Route>
         </Routes>
         </AppContextProvider>

@@ -10,7 +10,7 @@ export const LoginMobile = ({ handleForgotModal }) => {
 
 	return (
 		<form onSubmit={loginUser}>
-			<div className="form-section mobile">
+			<div className="form-section mobile login-section">
 				<Link to="/home">
 					<BsArrowLeftShort id="icon" />
 				</Link>
