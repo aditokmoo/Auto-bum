@@ -10,6 +10,7 @@ import { IoIosPricetags } from 'react-icons/io';
 import { AiFillCar, AiOutlineStar } from 'react-icons/ai';
 import { ostalo_info } from '../data/formSelectData';
 import './css/details.css';
+import './css/mobile/details-res.css';
 
 export const CarDetails = () => {
 	const [ carDetails, setCarDetails ] = useState();

@@ -10,10 +10,12 @@ import ForgotPassword from './ForgotPassword';
 import { HiUserCircle } from 'react-icons/hi';
 import { FaTimes } from 'react-icons/fa';
 import { BiMenu } from 'react-icons/bi';
-import { AiOutlineSearch, AiFillHome } from 'react-icons/ai';
+import { AiOutlineSearch, AiFillHome, AiOutlineLock, AiOutlineInfoCircle } from 'react-icons/ai';
 import { HiPlus } from 'react-icons/hi'
-import { BsArrowLeftShort } from 'react-icons/bs'
-import { MdMessage } from 'react-icons/md'
+import { BsArrowLeftShort, BsInstagram, BsYoutube } from 'react-icons/bs'
+import { MdMessage, MdOutlinePermContactCalendar } from 'react-icons/md'
+import { GrFormClose } from 'react-icons/gr'
+import { TiSocialFacebookCircular } from 'react-icons/ti'
 import AppContext from '../context/AppContext';
 import Spinner from '../shared/Spinner';
 import './css/navigation.css'
@@ -22,6 +24,7 @@ import './css/mobile/nav-res.css'
 const Navbar = () => {
   const { showOverlay } = useContext(AppContext);
   const [ activeTab, setActiveTab ] = useState(0);
+  const [ showSideBar, setShowSideBar ] = useState(false);
   const [showModal, setShowModal ] = useState(false);
   const [showMobileModal, setShowMobileModal ] = useState(false);
   const [showForgotModal, setShowForgotModal] = useState(false);
@@ -67,7 +70,7 @@ const Navbar = () => {
       <nav>
         <div className="container">
             <div className="nav-section">
-                <BiMenu className='icon menu' />
+                <BiMenu className='icon menu' onClick={() => setShowSideBar(true)} />
                 <h2><Link to={auth.currentUser ? '/home' : '/'} style={{textDecoration: 'none', color: '#000'}}>Auto <span>Bum.</span></Link></h2>
                 <AiOutlineSearch className='icon search' />
 
@@ -86,13 +89,29 @@ const Navbar = () => {
                 </ul> 
             </div>
 
+            {showSideBar &&
+              <div className="mobile-side-nav">
+              <div className="overlay"></div>
+                <h2>Auto <span>Bum.</span></h2>
+                <GrFormClose id='close-icon' onClick={() => setShowSideBar(false)} />
+              <ul>
+                <li><MdOutlinePermContactCalendar id='icon' /><Link id='link'> Kontaktirajte nas</Link></li>
+                <li><TiSocialFacebookCircular id='icon' /><a href='https://www.facebook.com/AUTOBUM.BA/' id='link'> Facebook stranica</a></li>
+                <li><BsInstagram id='icon' /><a href='https://www.instagram.com/autobum.ba/' id='link'> Instagram stranica</a></li> 
+                <li><BsYoutube id='icon' /><a href='https://www.youtube.com/channel/UC5e6tcbNkUSD6sv38SYjX9Q' id='link'> Youtube kanal</a></li> 
+                <li><AiOutlineLock id='icon' /><Link id='link'> Politika privatnosti</Link></li>
+              </ul>
+              <li><AiOutlineInfoCircle id='icon' /><Link to='/info' id='link'> O aplikaciji</Link></li>
+            </div>
+            }
+
             <div className={window.location.pathname === '/sell' ? "mobile-nav deactivated" : "mobile-nav"}>
               <ul>
-                <li><Link to='/home' className='link active'><AiFillHome id='icon' /> Početna</Link></li>
-                <li><Link to='/search' className='link'><AiOutlineSearch id='icon' /> Pretraga</Link></li>
-                <li><Link to={auth.currentUser && '/sell'} onClick={checkMobileAuth} className='link'><HiPlus id='icon' /> Objavi oglas</Link></li>
-                <li><Link to={auth.currentUser && '/poruke'} onClick={checkMobileAuth} className='link'><MdMessage id='icon' /> Poruke</Link></li>
-                <li><Link to={auth.currentUser && '/profile'} onClick={checkMobileAuth} className='link'><HiUserCircle id='icon' /> Moj Nalog</Link></li>
+                <li><Link to='/home' className={window.location.pathname === '/home' ? 'link active' : 'link'}><AiFillHome id='icon' /> Početna</Link></li>
+                <li><Link to='/search' className={window.location.pathname === '/search' ? 'link active' : 'link'}><AiOutlineSearch id='icon' /> Pretraga</Link></li>
+                <li><Link to={auth.currentUser && '/sell'} onClick={checkMobileAuth} className={window.location.pathname === '/sell' ? 'link active' : 'link'}><HiPlus id='icon' /> Objavi oglas</Link></li>
+                <li><Link to={auth.currentUser && '/poruke'} onClick={checkMobileAuth} className={window.location.pathname === '/poruke' ? 'link active' : 'link'}><MdMessage id='icon' /> Poruke</Link></li>
+                <li><Link to={auth.currentUser && '/profile'} onClick={checkMobileAuth} className={window.location.pathname === '/profile' ? 'link active' : 'link'}><HiUserCircle id='icon' /> Moj Nalog</Link></li>
               </ul>
             </div>
         </div>
@@ -156,7 +175,7 @@ const Navbar = () => {
       {showForgotModal &&
         <div className="form">
           <div className="overlay"></div>
-          <div className="form-section">
+          <div className="form-section desktop">
             <FaTimes id="closeModal" onClick={() => setShowForgotModal(false)} />
             <div className='forgot-modal'>
               <h3>Zaboravljena lozinka</h3>

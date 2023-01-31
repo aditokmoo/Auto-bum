@@ -12,11 +12,10 @@ import { CarDetails } from './pages/CarDetails';
 import { UserDetails } from './pages/UserDetails';
 import PrivateRoute from './components/PrivateRoute';
 import Openroute from './components/Openroute';
-import { Poruke } from './components/Poruke';
 // CSS File
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { Poruke } from './components/Poruke';
 
 function App() {
   return (

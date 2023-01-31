@@ -1,0 +1,94 @@
+@media only screen and (max-width: 580px) {
+    /* REMOVE DESKTOP VERSION */
+    .profile h1,
+    .moja-vozila .nav h3 {
+        display: none;
+    }
+
+    .profile .profile-section .section-1 h4 {
+        border: none;
+    }
+
+    /* MOBILE VERSION */
+    .profile .profile-section {
+        display: block;
+        padding: 20px 0 0 0;
+        background: #fff;
+        margin: 0;
+    }
+
+    .profile .profile-section .section-1 {
+        width: 100%;
+        background-color: #fff;
+    }
+
+    .profile .profile-section .section-1 .img-box {
+        margin: 0;
+        display: block;
+        width: 20%;
+    }
+
+    .profile .profile-section .section-1 img {
+        width: 100%;
+    }
+
+    .profile .profile-section .section-1 .profile-head {
+        display: flex;
+        border-bottom: 1px solid #ddd;
+        margin: 0 20px;
+    }
+
+    .profile .profile-section .section-1 .profile-head .profile-text-head {
+        margin: 30px 20px;
+    }
+
+    .profile .profile-section .section-1 h3, h4 {
+        margin: 0;
+    }
+
+    .profile .profile-section .section-1 ul li {
+        margin: 10px 20px;
+        padding: 0;
+        box-shadow: 0px 0px 5px -3px rgba(0,0,0,0.75);
+    }
+
+    .profile .profile-section .section-2 {
+        width: 100%;
+        background-color: #fff;
+        padding: 30px 0;
+    }
+
+    /* MOJA VOZILA SECTION */
+    .moja-vozila .moja-vozila-section .profile-cars .car {
+        height: auto;
+        display: block;
+        -webkit-box-shadow: 0px 0px 5px -3px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 5px -3px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 5px -3px rgba(0,0,0,0.75);
+    }
+
+    .moja-vozila .moja-vozila-section .profile-cars .car .image-section img {
+        width: 100%;
+    }
+
+    .moja-vozila .moja-vozila-section .profile-cars .car .info-section h3 {
+        font-size: 1em;
+    }
+
+    .moja-vozila .moja-vozila-section .profile-cars .car .info-section .details {
+        display: grid;
+        gap: 10px;
+    }
+
+    .moja-vozila .moja-vozila-section .profile-cars .car .price {
+        position: inherit;
+    }
+
+    /* UREDI PROFIL SECTION */
+    .profile .profile-section .section-2 .section .form-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0;
+    }
+}
