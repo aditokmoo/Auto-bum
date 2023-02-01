@@ -1,3 +1,9 @@
+@media only screen and (max-width: 360px) {
+    nav .mobile-nav ul li {
+        font-size: 9px !important;
+    }
+}
+
 @media only screen and (max-width: 580px) {
     /* REMOVE DESKTOP VERSION */
     .desktop, .desktop-login, .mobile-login-modal, .mobile-register-modal, .overlay {

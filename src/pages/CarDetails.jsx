@@ -275,7 +275,6 @@ export const CarDetails = () => {
 							</ul>
 						</div>
 						
-						
 						{equipDetails &&
 						<div className="info">
 							<h3 id='custom-h3'>Oprema</h3>
@@ -288,8 +287,6 @@ export const CarDetails = () => {
 						</div>
 						}
 						
-						
-
 						{carDetails.opis_oglasa &&
 						<div className="opis">
 							<h3 id='custom-h3'>Detaljan opis</h3>

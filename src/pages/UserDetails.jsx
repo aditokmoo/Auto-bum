@@ -128,7 +128,7 @@ export const UserDetails = () => {
 								</div>
 							</div>
 
-							<div className="section">
+							<div className="details-section">
 								<div className="cars">
 									{userCars.map(({data: { storageImages, naslov_oglasa, godiste, gorivo, kilometraza, cijena }, id}, index) => (
                                             <Link to={`${id}`} key={index} id="car-link">

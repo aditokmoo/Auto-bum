@@ -1,3 +1,13 @@
+@media only screen and (max-width: 360px) {
+    .details .info-section .info ul li {
+        font-size: 13px;
+    }
+
+    .details .details-section .section-2 .details-info-1 ul li, .details-info-2 ul li {
+        font-size: 13px;
+    }
+}
+
 /* NAV */
 .details .nav {
     background-color: #fff;

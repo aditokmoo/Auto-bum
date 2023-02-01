@@ -1,5 +1,15 @@
+@media only screen and (max-width: 360px) {
+    header .home-section .cars .car .mobile-attachment {
+        font-size: 12px !important;
+    }
+
+    header .home-section .cars .car .mobile-attachment ul #icon {
+        font-size: 13px !important;
+    }
+}
+
 @media only screen and (max-width: 580px) {
-	header .header, .section .filter {
+	header .header, .home-section .filter {
         display: none;
     }
 
@@ -41,34 +51,36 @@
     }
 
     /* CARS SECTION */
-    header .section .cars {
+    header .home-section .cars {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
-        margin: 15px;
+        margin: 0 15px;
+        margin-top: 0 !important;
+        margin-bottom: 40px;
     }
 
-    header .section .cars .car {
+    header .home-section .cars .car {
         border-radius: 7px;
         box-shadow: 0px 0px 10px -7px rgb(0 0 0 / 75%);
     }
 
-    header .section .cars .car .image-section img {
+    header .home-section .cars .car .image-section img {
         height: 130px;
         border-top-left-radius: 7px;
         border-top-right-radius: 7px;
     }
 
-    header .section .cars .car .info-section {
+    header .home-section .cars .car .info-section {
         display: grid;
         padding: 0 10px;
     }
 
-    header .section .cars .car .info-section h3 {
+    header .home-section .cars .car .info-section h3 {
         display: none;
     }
 
-    header .section .cars .car .info-section h3.mobile-h3 {
+    header .home-section .cars .car .info-section h3.mobile-h3 {
         display: block;
         order: 1;
         font-weight: 200;
@@ -76,25 +88,25 @@
         color: #444;
     }
 
-    header .section .cars .car .info-section .details {
+    header .home-section .cars .car .info-section .details {
         display: grid;
         gap: 15px;
         order: 2;
         font-size: 14px;
     }
 
-    header .section .cars .car .info-section .details span {
+    header .home-section .cars .car .info-section .details span {
         color: #888;
     }
 
-    header .section .cars .car .info-section .price span {
+    header .home-section .cars .car .info-section .price span {
         order: 0;
         font-size: 16px;
         font-weight: bold;
     }
 
     /* Mobile Footer Attachment for car item */
-    header .section .cars .car .mobile-attachment {
+    header .home-section .cars .car .mobile-attachment {
         display: grid;
         order: 3;
         border-top: 1px solid #ddd;
@@ -102,14 +114,14 @@
         font-size: 14px;
     }
 
-    header .section .cars .car .mobile-attachment ul {
+    header .home-section .cars .car .mobile-attachment ul {
         display: flex;
         align-items: center;
         justify-content: space-between;
         list-style: none;
     }
 
-    header .section .cars .car .mobile-attachment ul li:first-child {
+    header .home-section .cars .car .mobile-attachment ul li:first-child {
         color: #e35b3c;
         display: flex;
         align-items: center;
@@ -118,7 +130,7 @@
         top: -2px;
     }
 
-    header .section .cars .car .mobile-attachment ul #icon {
+    header .home-section .cars .car .mobile-attachment ul #icon {
         font-size: 17px;
     }
 }

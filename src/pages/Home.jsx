@@ -148,7 +148,7 @@ const Home = () => {
 					</div>
 				</div>
 
-				<div className="section">
+				<div className="home-section">
 					<div className="container">
 						<Filters handleFilterChange={handleFilterChange} filterCarData={filterCarData} handleFilterSubmit={handleFilterSubmit} filterFormData={filterFormData} />
 						{filterCarData ? <FilteredCars filterCarData={filterCarData} filterCarID={filterCarID} /> : <Cars />}

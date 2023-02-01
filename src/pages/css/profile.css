@@ -186,6 +186,7 @@
 .moja-vozila .moja-vozila-section .profile-cars .car .image-section img {
     width: 170px;
     height: 100%;
+    object-fit: cover;
 }
 
 .moja-vozila .moja-vozila-section .profile-cars .car .info-section {
