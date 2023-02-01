@@ -9,12 +9,13 @@ import { TbEngine } from 'react-icons/tb';
 import { IoIosPricetags } from 'react-icons/io';
 import { AiFillCar, AiOutlineStar } from 'react-icons/ai';
 import { ostalo_info } from '../data/formSelectData';
+import checkIcon from './images/check-green.png'
 import './css/details.css';
 import './css/mobile/details-res.css';
 
 export const CarDetails = () => {
 	const [ carDetails, setCarDetails ] = useState();
-	const [ equipDetails, setEquipDetails ] = useState();
+	const [ equipDetails, setEquipDetails ] = useState(null);
 
 	const params = useParams();
 
@@ -30,13 +31,13 @@ export const CarDetails = () => {
 		const equipData = [];
 
 		ostalo_info.forEach(row => {
-			Object.entries({data}).filter(([key, value]) => {
+			Object.entries(data).forEach(([key, value]) => {
 				if(row.id === key && value === true) {
 					equipData.push(row.name);
 				}
-				return equipData;
 			})
 		})
+
 
 		setEquipDetails(equipData)
 		setCarDetails(data);
@@ -128,7 +129,7 @@ export const CarDetails = () => {
 									<li>
 										<p id="custom-icon">kw</p>
 										<p>Kilovati</p>
-										<p>{carDetails.kilovati}</p>
+										<p>{carDetails.kilovati ? carDetails.kilovati : 'Nije navedeno'}</p>
 									</li>
 									<li>
 										<p>
@@ -139,6 +140,8 @@ export const CarDetails = () => {
 									</li>
 								</ul>
 							</div>
+							
+							
 							<div className="details-info-2">
 								<ul>
 									<li>
@@ -271,17 +274,21 @@ export const CarDetails = () => {
 								}
 							</ul>
 						</div>
-						{equipDetails === [] &&
+						
+						
+						{equipDetails &&
 						<div className="info">
 							<h3 id='custom-h3'>Oprema</h3>
 							<div className="items">
 								{equipDetails.map((oprema, index) => (
-									<p key={index}>{oprema}</p>	
+									<p key={index}><img src={checkIcon} alt="" /> {oprema}</p>	
 								))
 								}
 							</div>
 						</div>
 						}
+						
+						
 
 						{carDetails.opis_oglasa &&
 						<div className="opis">

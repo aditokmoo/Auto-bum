@@ -51,4 +51,8 @@
     .details .details-section .section-2 .btns button.btn-2 {
         width: 100%;
     }
+
+    .details .info-section .info .items {
+        grid-template-columns: 1fr;
+    }
 }

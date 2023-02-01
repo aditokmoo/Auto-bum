@@ -281,6 +281,13 @@
 
 .details .info-section .info .items p {
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.details .info-section .info .items img {
+    width: 20px;
 }
 
 /* OPIS OGLASA */

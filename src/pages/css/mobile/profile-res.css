@@ -55,7 +55,7 @@
     .profile .profile-section .section-2 {
         width: 100%;
         background-color: #fff;
-        padding: 30px 0;
+        padding: 30px 0 80px 0;
     }
 
     /* MOJA VOZILA SECTION */
@@ -69,6 +69,8 @@
 
     .moja-vozila .moja-vozila-section .profile-cars .car .image-section img {
         width: 100%;
+        height: 200px;
+        object-fit: cover;
     }
 
     .moja-vozila .moja-vozila-section .profile-cars .car .info-section h3 {
