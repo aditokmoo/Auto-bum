@@ -24,6 +24,8 @@ export const AppContextProvider = ({ children }) => {
 	const [ carsData, setCarsData ] = useState();
 	// State for storing firebase cars from user
 	const [ profileCars, setProfileCars ] = useState();
+	// State for storing cars that are filtered on profile
+	const [ profileFilterCars, setProfileFilterCars ] = useState();
 	// State for storing search value
 	const [ searchFormData, setSearchFormData ] = useState();
 	// State for storing search data items
@@ -51,7 +53,6 @@ export const AppContextProvider = ({ children }) => {
 	// Destructuring loginData and registerData
 	const { log_email, log_password } = loginData;
 	const { reg_name, reg_lname, reg_number, reg_email, reg_password, reg_city } = registerData;
-
 
 	// Email data state for forgot password form
 	const [ email, setEmail ] = useState('');
@@ -578,6 +579,29 @@ export const AppContextProvider = ({ children }) => {
 		navigate('/rezultati-pretrage');
 	}
 
+	// Handle Profile Filter Change
+	const handleProfileCarsFilter = (e) => {
+		const cars = [];
+
+		profileCars.forEach(({data, id}) => {
+			if(e.target.value === data.proizvodjac) {
+				cars.push({
+					data,
+					id
+				});
+			}
+
+			if(e.target.value === '') {
+				cars.push({
+					data,
+					id
+				});
+			}
+		})
+
+		setProfileFilterCars(cars);
+	}
+
 	// Logout from profile function
 	const logOut = () => {
 		try {
@@ -616,6 +640,8 @@ export const AppContextProvider = ({ children }) => {
 				carID,
 				searchData,
 				searchFormData,
+				profileFilterCars,
+				handleProfileCarsFilter,
 				handleSearchChange,
 				handleSearchSubmit,
 				setUserData,

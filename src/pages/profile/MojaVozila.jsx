@@ -7,7 +7,7 @@ import { GiGasPump } from 'react-icons/gi';
 import { useEffect } from 'react';
 
 export const MojaVozila = () => {
-	const { profileCars } = useContext(AppContext);
+	const { profileCars, handleProfileCarsFilter, profileFilterCars } = useContext(AppContext);
 
 	const [ profileCarData, setProfileCarData ] = useState([]);
 	const [ profileCarID, setProfileCarID ] = useState([]);
@@ -36,7 +36,7 @@ export const MojaVozila = () => {
 				<div className="form-container">
 					{/* Proizvodjac */}
 					<div className="input-container">
-						<select id="proizvodjac">
+						<select id="proizvodjac" onChange={handleProfileCarsFilter}>
 							<option value="">Proizvođač</option>
 							{cars.map((car, index) => (
 								<option key={index} value={car.name}>
@@ -45,48 +45,70 @@ export const MojaVozila = () => {
 							))}
 						</select>
 					</div>
-
-					{/* Sortiraj */}
-					<div className="input-container">
-						<select id="sortiraj">
-							<option value="najnovije">Najnovije prvo</option>
-							<option value="najstarije">Najstarije prvo</option>
-						</select>
-					</div>
 				</div>
 			</div>
 			<div className="moja-vozila-section">
 				<div className="container">
 					<div className="profile-cars">
-						{profileCarData &&
-							profileCarData.map((car, index) => {
+						{profileFilterCars ?
+							profileFilterCars.map(({data: {storageImages, naslov_oglasa, godiste, gorivo, kilometraza, cijena}}, index) => {
 								return (
 									<Link to={`/${profileCarID[index]}`} key={index} id='car-link'>
 										<div className="car">
 											<div className="image-section">
-												<img src={car.storageImages[0]} alt="" />
+												<img src={storageImages[0]} alt="" />
 											</div>
 											<div className="info-section">
-												<h3>{car.naslov_oglasa}</h3>
+												<h3>{naslov_oglasa}</h3>
 												<div className="details">
 													<span>
-														<FaCalendarAlt className="icon" /> {car.godiste}
+														<FaCalendarAlt className="icon" /> {godiste}
 													</span>
 													<span>
-														<GiGasPump className="icon" /> {car.gorivo}
+														<GiGasPump className="icon" /> {gorivo}
 													</span>
 													<span>
-														<FaRoad className="icon" /> {car.kilometraza}
+														<FaRoad className="icon" /> {kilometraza}
 													</span>
 												</div>
 												<div className="price">
-													<span>{car.cijena} KM</span>
+													<span>{cijena} KM</span>
 												</div>
 											</div>
 										</div>
 									</Link>
 								);
-							})}
+							})
+						:
+						profileCarData.map(({storageImages, naslov_oglasa, godiste, gorivo, kilometraza, cijena}, index) => {
+							return (
+								<Link to={`/${profileCarID[index]}`} key={index} id='car-link'>
+									<div className="car">
+										<div className="image-section">
+											<img src={storageImages[0]} alt="" />
+										</div>
+										<div className="info-section">
+											<h3>{naslov_oglasa}</h3>
+											<div className="details">
+												<span>
+													<FaCalendarAlt className="icon" /> {godiste}
+												</span>
+												<span>
+													<GiGasPump className="icon" /> {gorivo}
+												</span>
+												<span>
+													<FaRoad className="icon" /> {kilometraza}
+												</span>
+											</div>
+											<div className="price">
+												<span>{cijena} KM</span>
+											</div>
+										</div>
+									</div>
+								</Link>
+							);
+						})
+						}
 					</div>
 				</div>
 			</div>

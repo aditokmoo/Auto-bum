@@ -78,14 +78,15 @@ const Navbar = () => {
                   <Link to='/info' className='link'>Informacije</Link>
                   <Link to='/search' className='link'>Pretrage</Link>
                   <Link to={auth.currentUser && '/sell'} onClick={checkAuth} className='link'>Prodaj</Link>
-                  {auth.currentUser ? 
+                  {auth.currentUser && 
                     <Link to='/profile' id='user' className='link'><HiUserCircle id="profile-icon" /> Moj Nalog</Link>
-                    :
-                    <>
-                      <li><Link id='login' onClick={() => handleTabClick(0)}><HiUserCircle id="profile-icon" /> Prijavi se</Link></li>
-                      <li><Link id='register' onClick={() => handleTabClick(1)}>Napravi novi nalog</Link></li>
-                    </>
                   }
+
+                  {!auth.currentUser &&
+                  <>
+                  <li><Link id='login' onClick={() => handleTabClick(0)}><HiUserCircle id="profile-icon" /> Prijavi se</Link></li>
+                  <li><Link id='register' onClick={() => handleTabClick(1)}>Napravi novi nalog</Link></li>
+                </>}
                 </ul> 
             </div>
 

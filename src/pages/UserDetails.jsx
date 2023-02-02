@@ -1,16 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import { BsArrowLeft } from 'react-icons/bs';
+import AppContext from '../context/AppContext';
 import { db } from '../firebase.config';
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { FaCalendarAlt, FaRoad } from 'react-icons/fa';
 import { GiGasPump } from 'react-icons/gi';
+import { BsArrowLeft } from 'react-icons/bs';
 import avatar_image from './images/avatar-image.png';
 import { cars } from '../data/formSelectData';
 import './css/userDetails.css';
 
 export const UserDetails = () => {
+	const { handleProfileCarsFilter, profileFilterCars } = useContext(AppContext)
 	const [ userDetails, setUserDetails ] = useState();
 	const [ userCars, setUserCars ] = useState();
 	const params = useParams();
@@ -108,7 +110,7 @@ export const UserDetails = () => {
 								<div className="form-container">
 									{/* Proizvodjac */}
 									<div className="input-container">
-										<select id="proizvodjac">
+										<select id="proizvodjac" onChange={handleProfileCarsFilter}>
 											<option value="">Proizvođač</option>
 											{cars.map((car, index) => (
 												<option key={index} value={car.name}>
@@ -117,20 +119,12 @@ export const UserDetails = () => {
 											))}
 										</select>
 									</div>
-
-									{/* Sortiraj */}
-									<div className="input-container">
-										<select id="sortiraj">
-											<option value="najnovije">Najnovije prvo</option>
-											<option value="najstarije">Najstarije prvo</option>
-										</select>
-									</div>
 								</div>
 							</div>
 
 							<div className="details-section">
 								<div className="cars">
-									{userCars.map(({data: { storageImages, naslov_oglasa, godiste, gorivo, kilometraza, cijena }, id}, index) => (
+									{profileFilterCars ? profileFilterCars.map(({data: { storageImages, naslov_oglasa, godiste, gorivo, kilometraza, cijena }, id}, index) => (
                                             <Link to={`${id}`} key={index} id="car-link">
 												<div className="car">
 													<div className="image-section">
@@ -156,7 +150,36 @@ export const UserDetails = () => {
 												</div>
 											</Link>
 										)
-									)}
+									) 
+									:
+									profileFilterCars.map(({data: { storageImages, naslov_oglasa, godiste, gorivo, kilometraza, cijena }, id}, index) => (
+										<Link to={`${id}`} key={index} id="car-link">
+											<div className="car">
+												<div className="image-section">
+													<img src={storageImages[0]} alt="" />
+												</div>
+												<div className="info-section">
+													<h3>{naslov_oglasa}</h3>
+													<div className="details">
+														<span>
+															<FaCalendarAlt className="icon" /> {godiste}
+														</span>
+														<span>
+															<GiGasPump className="icon" /> {gorivo}
+														</span>
+														<span>
+															<FaRoad className="icon" /> {kilometraza}
+														</span>
+													</div>
+													<div className="price">
+														<span>{cijena} KM</span>
+													</div>
+												</div>
+											</div>
+										</Link>
+									)
+								)
+									}
 								</div>
 							</div>
 						</div>
