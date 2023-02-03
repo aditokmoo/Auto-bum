@@ -1,0 +1,23 @@
+.politika-privatnosti-section {
+    margin: 50px 20px;
+    font-family: Montserrat;
+    padding-bottom: 50px;
+}
+
+.politika-privatnosti-section h4 {
+    margin: 30px 0;
+    font-size: 1.2em;
+}
+
+.politika-privatnosti-section p {
+    line-height: 1.8;
+    margin: 15px 0;
+}
+
+.politika-privatnosti-section ul {
+    list-style: none;
+}
+
+.politika-privatnosti-section li {
+    margin: 10px 0;
+}

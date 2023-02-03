@@ -97,11 +97,11 @@ const Navbar = () => {
                   <h2>Auto <span>Bum.</span></h2>
                   <GrFormClose id='close-icon' onClick={() => setShowSideBar(false)} />
                 <ul>
-                  <li><MdOutlinePermContactCalendar id='icon' /><Link id='link'> Kontaktirajte nas</Link></li>
+                  <li><MdOutlinePermContactCalendar id='icon' /><Link to='/contact' id='link'> Kontaktirajte nas</Link></li>
                   <li><TiSocialFacebookCircular id='icon' /><a href='https://www.facebook.com/AUTOBUM.BA/' id='link'> Facebook stranica</a></li>
                   <li><BsInstagram id='icon' /><a href='https://www.instagram.com/autobum.ba/' id='link'> Instagram stranica</a></li> 
                   <li><BsYoutube id='icon' /><a href='https://www.youtube.com/channel/UC5e6tcbNkUSD6sv38SYjX9Q' id='link'> Youtube kanal</a></li> 
-                  <li><AiOutlineLock id='icon' /><Link id='link'> Politika privatnosti</Link></li>
+                  <li><AiOutlineLock id='icon' /><Link to='/politika-privatnosti' id='link'> Politika privatnosti</Link></li>
                 </ul>
                 <li><AiOutlineInfoCircle id='icon' /><Link to='/info' id='link'> O aplikaciji</Link></li>
               </div>

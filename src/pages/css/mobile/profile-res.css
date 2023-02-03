@@ -42,7 +42,8 @@
         margin: 30px 20px;
     }
 
-    .profile .profile-section .section-1 h3, h4 {
+    .profile .profile-section .section-1 h3,
+    .profile .profile-section .section-1 h3 h4 {
         margin: 0;
     }
 

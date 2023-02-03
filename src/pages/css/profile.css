@@ -29,7 +29,8 @@
     padding: 20px 0;
 }
 
-.profile .profile-section .section-1 h3, h4 {
+.profile .profile-section .section-1 h3,
+.profile .profile-section .section-1 h3 h4 {
     margin: 15px 30px;
     text-transform: capitalize;
     font-family: Montserrat;
