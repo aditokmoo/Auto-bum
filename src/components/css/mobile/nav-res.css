@@ -232,6 +232,10 @@
 
     /* MOBILE SIDE NAV */
     .mobile-side-nav {
+        display: block;
+    }
+
+    .mobile-side-nav .side-nav {
         position: fixed;
         left: 0;
         top: 0;
@@ -239,6 +243,12 @@
         width: 70%;
         z-index: 2;
         background-color: #fff;
+        display: block;
+    }
+
+    .mobile-side-nav .overlay {
+        display: block;
+        z-index: 2;
     }
 
     .mobile-side-nav h2 {
