@@ -6,16 +6,18 @@ import Info from './pages/Info';
 import Pretrage from './pages/Pretrage';
 import Prodaj from './pages/Prodaj';
 import Profile from './pages/Profile';
+import { PolitikaPrivatnosti } from './pages/PolitikaPrivatnosti';
+import { Contact } from './pages/Contact';
 // Components
 import { AppContextProvider } from './context/AppContext';
 import { CarDetails } from './pages/CarDetails';
 import { UserDetails } from './pages/UserDetails';
 import PrivateRoute from './components/PrivateRoute';
 import Openroute from './components/Openroute';
+import { Poruke } from './components/Poruke';
 // CSS File
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
-import { Poruke } from './components/Poruke';
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           <Route path='/user/:user' element={<UserDetails />} />
           <Route path='/user/:user/:car' element={<CarDetails />} />
           <Route path='/:car' element={<CarDetails />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/politika-privatnosti' element={<PolitikaPrivatnosti />} />
 
           <Route element={<Openroute />} >
             <Route path='/' element={<Home />} />

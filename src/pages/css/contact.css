@@ -1,0 +1,30 @@
+.contact-section {
+    margin: 50px 20px;
+    font-family: Montserrat;
+}
+
+.contact-section h3 {
+    font-size: 1.5em;
+}
+
+.contact-section h5 {
+    font-size: 1.1em;
+}
+
+.contact-section p {
+    margin: 20px 0;
+    line-height: 1.4;
+}
+
+.contact-section ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin: 20px 0;
+    font-size: 1.5em;
+}
+
+.contact-section ul li a {
+    color: #000;
+}
