@@ -29,7 +29,7 @@ export const AppContextProvider = ({ children }) => {
 	//
 	const [ userCurrentProfileCars, setUserCurrentProfileCars ] = useState(null);
 	// State for storing cars that are filtered on profile
-	const [ profileFilterCars, setProfileFilterCars ] = useState();
+	const [ profileFilterCars, setProfileFilterCars ] = useState(null);
 	// State for storing search value
 	const [ searchFormData, setSearchFormData ] = useState();
 	// State for storing search data items
@@ -653,7 +653,7 @@ export const AppContextProvider = ({ children }) => {
 				searchFormData,
 				profileFilterCars,
 				userCars,
-				setUserCurrentProfileCars,
+				setProfileFilterCars,
 				setUserCars,
 				handleProfileCarsFilter,
 				handleSearchChange,

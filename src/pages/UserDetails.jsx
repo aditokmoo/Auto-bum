@@ -12,14 +12,15 @@ import { cars } from '../data/formSelectData';
 import './css/userDetails.css';
 
 export const UserDetails = () => {
-	const { handleProfileCarsFilter, profileFilterCars, userCars, setUserCars, setUserCurrentProfileCars, userCurrentProfileCars } = useContext(AppContext)
+	const { handleProfileCarsFilter, profileFilterCars, userCars, setUserCars, setProfileFilterCars } = useContext(AppContext)
 	const [ userDetails, setUserDetails ] = useState();
 	const params = useParams();
-
+	
 	useEffect(() => {
 		getUserDetails();
 		getUserCars();
-	}, [userCurrentProfileCars]);
+		setProfileFilterCars(null)
+	}, []);
 
 	const getUserDetails = async () => {
 		const userDoc = doc(db, 'users', params.user);
@@ -59,7 +60,6 @@ export const UserDetails = () => {
 			}
 		});
 
-		setUserCurrentProfileCars('')
 		setUserCars(userCarsData);
 	};
 
