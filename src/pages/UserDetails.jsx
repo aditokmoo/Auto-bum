@@ -12,15 +12,14 @@ import { cars } from '../data/formSelectData';
 import './css/userDetails.css';
 
 export const UserDetails = () => {
-	const { handleProfileCarsFilter, profileFilterCars } = useContext(AppContext)
+	const { handleProfileCarsFilter, profileFilterCars, userCars, setUserCars, setUserCurrentProfileCars, userCurrentProfileCars } = useContext(AppContext)
 	const [ userDetails, setUserDetails ] = useState();
-	const [ userCars, setUserCars ] = useState();
 	const params = useParams();
 
 	useEffect(() => {
 		getUserDetails();
 		getUserCars();
-	}, []);
+	}, [userCurrentProfileCars]);
 
 	const getUserDetails = async () => {
 		const userDoc = doc(db, 'users', params.user);
@@ -52,9 +51,15 @@ export const UserDetails = () => {
                     data,
                     id
                 });
+			} else {
+				setUserCars({
+					data: null,
+					id: null
+				})
 			}
 		});
 
+		setUserCurrentProfileCars('')
 		setUserCars(userCarsData);
 	};
 
@@ -152,7 +157,7 @@ export const UserDetails = () => {
 										)
 									) 
 									:
-									profileFilterCars.map(({data: { storageImages, naslov_oglasa, godiste, gorivo, kilometraza, cijena }, id}, index) => (
+									userCars.map(({data: { storageImages, naslov_oglasa, godiste, gorivo, kilometraza, cijena }, id}, index) => (
 										<Link to={`${id}`} key={index} id="car-link">
 											<div className="car">
 												<div className="image-section">

@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { collection, getDocs, setDoc, doc, serverTimestamp, query, addDoc } from 'firebase/firestore';
 import {
 	getAuth,
@@ -22,8 +22,12 @@ export const AppContextProvider = ({ children }) => {
 	const [ currentUser, setCurrentUser ] = useState(null);
 	// State for storing firebase cars collection data
 	const [ carsData, setCarsData ] = useState();
+	// State for storing current user cars
+	const [ userCars, setUserCars ] = useState();
 	// State for storing firebase cars from user
 	const [ profileCars, setProfileCars ] = useState();
+	//
+	const [ userCurrentProfileCars, setUserCurrentProfileCars ] = useState(null);
 	// State for storing cars that are filtered on profile
 	const [ profileFilterCars, setProfileFilterCars ] = useState();
 	// State for storing search value
@@ -137,6 +141,8 @@ export const AppContextProvider = ({ children }) => {
 
 	// Get auth from firestore
 	const auth = getAuth();
+	// Define params
+	const params = useParams();
 	// Get Navigate
 	const navigate = useNavigate();
 
@@ -579,25 +585,30 @@ export const AppContextProvider = ({ children }) => {
 		navigate('/rezultati-pretrage');
 	}
 
-	// Handle Profile Filter Change
+	// Handle Profile Filter Change - BUG
 	const handleProfileCarsFilter = (e) => {
 		const cars = [];
 
-		profileCars.forEach(({data, id}) => {
-			if(e.target.value === data.proizvodjac) {
+		const option = e.target.value;
+
+		userCars.forEach(({data, id}) => {
+			if(option === data.proizvodjac) {
 				cars.push({
 					data,
 					id
 				});
 			}
 
-			if(e.target.value === '') {
+			if(option === '') {
 				cars.push({
 					data,
 					id
 				});
 			}
 		})
+
+		setUserCurrentProfileCars(option)
+
 
 		setProfileFilterCars(cars);
 	}
@@ -641,6 +652,9 @@ export const AppContextProvider = ({ children }) => {
 				searchData,
 				searchFormData,
 				profileFilterCars,
+				userCars,
+				setUserCurrentProfileCars,
+				setUserCars,
 				handleProfileCarsFilter,
 				handleSearchChange,
 				handleSearchSubmit,
