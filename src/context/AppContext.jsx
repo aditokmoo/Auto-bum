@@ -591,18 +591,26 @@ export const AppContextProvider = ({ children }) => {
 
 		const option = e.target.value;
 
-		userCars.forEach(({data, id}) => {
+		let carData;
+
+		if(window.location.pathname === '/profile') {
+			carData = profileCars
+		} else {
+			carData = userCars
+		}
+
+		carData.forEach(({data, id}) => {
 			if(option === data.proizvodjac) {
 				cars.push({
-					data,
-					id
+					id,
+					data
 				});
 			}
 
 			if(option === '') {
 				cars.push({
-					data,
-					id
+					id,
+					data
 				});
 			}
 		})

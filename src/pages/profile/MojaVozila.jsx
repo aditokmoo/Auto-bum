@@ -7,26 +7,26 @@ import { GiGasPump } from 'react-icons/gi';
 import { useEffect } from 'react';
 
 export const MojaVozila = () => {
-	const { profileCars, handleProfileCarsFilter, profileFilterCars } = useContext(AppContext);
+	const { profileCars, handleProfileCarsFilter, profileFilterCars, setProfileFilterCars } = useContext(AppContext);
 
-	const [ profileCarData, setProfileCarData ] = useState([]);
-	const [ profileCarID, setProfileCarID ] = useState([]);
+	const [ profileCar, setProfileCar ] = useState([]);
 
 	useEffect(() => {
 		getProfileCar();
+		setProfileFilterCars(null)
 	}, [])
 
 	const getProfileCar = () => {
-		const carDataArr = [];
-		const carIDArr = [];
+		const carData = [];
 
-		profileCars.forEach((car) => {
-			carDataArr.push(car.data);
-			carIDArr.push(car.id);
+		profileCars.forEach(({data, id}) => {
+			carData.push({
+				id,
+				data
+			})
 		})
 
-		setProfileCarData(carDataArr);
-		setProfileCarID(carIDArr);
+		setProfileCar(carData);
 	}
 
 	return (
@@ -51,9 +51,9 @@ export const MojaVozila = () => {
 				<div className="container">
 					<div className="profile-cars">
 						{profileFilterCars ?
-							profileFilterCars.map(({data: {storageImages, naslov_oglasa, godiste, gorivo, kilometraza, cijena}}, index) => {
+							profileFilterCars.map(({data: {storageImages, naslov_oglasa, godiste, gorivo, kilometraza, cijena}, id}, index) => {
 								return (
-									<Link to={`/${profileCarID[index]}`} key={index} id='car-link'>
+									<Link to={`/${id}`} key={index} id='car-link'>
 										<div className="car">
 											<div className="image-section">
 												<img src={storageImages[0]} alt="" />
@@ -80,9 +80,9 @@ export const MojaVozila = () => {
 								);
 							})
 						:
-						profileCarData.map(({storageImages, naslov_oglasa, godiste, gorivo, kilometraza, cijena}, index) => {
+						profileCar.map(({data: {storageImages, naslov_oglasa, godiste, gorivo, kilometraza, cijena}, id }, index) => {
 							return (
-								<Link to={`/${profileCarID[index]}`} key={index} id='car-link'>
+								<Link to={`/${id}`} key={index} id='car-link'>
 									<div className="car">
 										<div className="image-section">
 											<img src={storageImages[0]} alt="" />
