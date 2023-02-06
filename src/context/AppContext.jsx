@@ -32,6 +32,8 @@ export const AppContextProvider = ({ children }) => {
 	const [ searchFormData, setSearchFormData ] = useState();
 	// State for storing search data items
 	const [ searchData, setSearchData ] = useState([]);
+	// State for mobile search modal
+	const [ searchModal, setSearchModal ] = useState(false);
 	// State for storing car images in firebase/storage
 	const [ carFormImageFile, setCarFormImageFile ] = useState([]);
 	// State for storing Cars ID from firebase/firestore
@@ -158,10 +160,12 @@ export const AppContextProvider = ({ children }) => {
 
 	// For storing search data to localStorage
 	useEffect(() => {
-		const dataFromLocalStorage = localStorage.getItem('searchData');
+		const searchDataFromLocalStorage = localStorage.getItem('searchData');
+		const valueDataFromLocalStorage = localStorage.getItem('searchValue');
 
-		if(dataFromLocalStorage) {
-			setSearchData(JSON.parse(dataFromLocalStorage))
+		if(searchDataFromLocalStorage) {
+			setSearchData(JSON.parse(searchDataFromLocalStorage))
+			setSearchFormData(JSON.parse(valueDataFromLocalStorage))
 		}
 
 		if(window.location.pathname !== '/rezultati-pretrage') {
@@ -583,12 +587,14 @@ export const AppContextProvider = ({ children }) => {
 		})
 
 		localStorage.setItem('searchData', JSON.stringify(dataArr));
+		localStorage.setItem('searchValue', JSON.stringify(searchFormData))
 		setSearchData(dataArr)
+		setSearchModal(false)
 
 		navigate('/rezultati-pretrage');
 	}
 
-	// Handle Profile Filter Change - BUG
+	// Handle Profile Filter Change
 	const handleProfileCarsFilter = (e) => {
 		const cars = [];
 		let carData;
@@ -659,6 +665,8 @@ export const AppContextProvider = ({ children }) => {
 				searchFormData,
 				profileFilterCars,
 				userCars,
+				searchModal,
+				setSearchModal,
 				setProfileFilterCars,
 				setUserCars,
 				handleProfileCarsFilter,

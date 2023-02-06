@@ -59,3 +59,9 @@ input:focus, select:focus {
       stroke-dashoffset: -124;
     }
 }
+
+@media only screen and (max-width: 580px) {
+  .container {
+    margin: 9px auto;
+  }
+}

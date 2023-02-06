@@ -22,7 +22,7 @@ import './css/navigation.css'
 import './css/mobile/nav-res.css'
 
 const Navbar = () => {
-  const { showOverlay } = useContext(AppContext);
+  const { showOverlay, handleSearchSubmit, handleSearchChange, searchModal, setSearchModal } = useContext(AppContext);
   const [ activeTab, setActiveTab ] = useState(0);
   const [ showSideBar, setShowSideBar ] = useState(false);
   const [showModal, setShowModal ] = useState(false);
@@ -70,9 +70,11 @@ const Navbar = () => {
       <nav>
         <div className="container">
             <div className="nav-section">
-                <BiMenu className='icon menu' onClick={() => setShowSideBar(true)} />
-                <h2><Link to={auth.currentUser ? '/home' : '/'} style={{textDecoration: 'none', color: '#000'}}>Auto <span>Bum.</span></Link></h2>
-                <AiOutlineSearch className='icon search' />
+                <div className="mobile-top-nav">
+                  <BiMenu className='icon menu' onClick={() => setShowSideBar(true)} />
+                  <h2><Link to={auth.currentUser ? '/home' : '/'} style={{textDecoration: 'none', color: '#000'}}>Auto <span>Bum.</span></Link></h2>
+                  <AiOutlineSearch className='icon search' onClick={() => setSearchModal(true)} />
+                </div>
 
                 <ul className='f-list'>
                   <Link to='/info' className='link'>Informacije</Link>
@@ -173,6 +175,17 @@ const Navbar = () => {
               </div>   
         </div>  
       </div>
+      }
+
+      {searchModal &&
+        <div className="search-modal">
+          <div className="input">
+              <BsArrowLeftShort id='icon' onClick={() => setSearchModal(false)} />
+              <form onSubmit={handleSearchSubmit}>
+                <input type="text" placeholder='Ukucajte pretragu' onChange={handleSearchChange} />
+              </form>
+          </div>
+        </div>
       }
 
       {showForgotModal &&

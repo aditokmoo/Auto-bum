@@ -283,6 +283,42 @@
     color: #e35b3c;
 }
 
+/* REZULTATI PRETRAGE SECTION */
+.rezultati-pretrage {
+    margin: 40px 0 90px 0;
+}
+
+.rezultati-pretrage h1 {
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.rezultati-pretrage .car-item .image {
+    width: 100%;
+    height: 200px;
+}
+
+.rezultati-pretrage .car-item .car-info {
+    padding: 20px;
+    margin: 0;
+}
+
+.rezultati-pretrage .car-item .car-info ul {
+    display: grid;
+    gap: 15px;
+}
+
+.rezultati-pretrage .car-item .price {
+    position: static;
+    margin-top: 50px;
+}
+
+.rezultati-pretrage .car-item {
+    display: block;
+    height: inherit;
+    margin: 30px 20px;
+}
+
 /* MOBILE ITEMS */
 .mobile-header, .mobile-attachment, h3.mobile-h3 {
     display: none;

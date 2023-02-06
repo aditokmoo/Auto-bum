@@ -163,22 +163,34 @@
     }
 
     /* MOBILE VERSION */
-    nav .nav-section .icon {
+    nav .nav-section .mobile-top-nav {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        position: fixed;
+        z-index: 2;
+        background-color: #fff;
+        top: 0;
+        padding: 15px 0;
+    }
+
+    nav .nav-section .mobile-top-nav .icon {
         font-size: 1.5em;
         position: relative;
         display: block;
     }
 
-    nav .nav-section .icon.menu {
+    nav .nav-section .mobile-top-nav .icon.menu {
         left: 20px;
         cursor: pointer;
     }
 
-    nav .nav-section .icon.search {
+    nav .nav-section .mobile-top-nav .icon.search {
         right: 20px;
+        cursor: pointer;
     }
 
-	nav .nav-section h2 {
+	nav .nav-section .mobile-top-nav h2 {
         margin: 0 auto;
     }
     nav .nav-section ul {
@@ -299,5 +311,37 @@
 
     .mobile-side-nav #icon {
         font-size: 1.5em;
+    }
+
+    /* SEARCH MODAL */
+    .search-modal {
+        display: block;
+        background-color: #fff;
+        position: fixed;
+        z-index: 2;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .search-modal .input {
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+        margin: 25px 20px;
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+    }
+
+    .search-modal .input input {
+        padding: 15px 10px;
+        display: block;
+        font-family: Montserrat;
+        border: none;
+    }
+
+    .search-modal .input #icon {
+        display: block;
+        margin: 5px 10px;
+        font-size: 2em;
+        cursor: pointer;
     }
 }
