@@ -1,0 +1,57 @@
+@media only screen and (max-width: 580px) {
+    /* Remove desktop version */
+    .userDetails .nav h3 {
+        display: none;
+    }
+
+    /* Mobile version */
+    .userDetails .user-section {
+        background-color: #fff;
+        padding: 30px 0;
+        
+    }
+
+    .userDetails .user-section h1 {
+        text-align: center;
+    }
+
+    .userDetails .user-section .user {
+        display: block;
+    }
+
+    .userDetails .user-section .user .image {
+        margin: 20px auto;
+        width: 300px;
+        height: 240px;
+    }
+
+    .userDetails .user-section .user .details ul {
+        margin-bottom: 40px;
+    }
+
+    .userDetails .user-section .user .details ul li {
+        margin: 20px auto;
+    
+    }
+
+    .userDetails .user-section .user .details button {
+        position: inherit;
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    /* Filter */
+    .userDetails .nav .form-container {
+        width: 100%;
+        display: block;
+        margin: 0 35px;
+    }
+
+    /* Cars */
+    .details-section .cars {
+        display: block;
+        margin: 20px;
+    }
+}

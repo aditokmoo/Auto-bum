@@ -40,7 +40,8 @@
     font-weight: 200;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
-    padding: 10px 0;
+    padding: 10px;
+    margin: 0 20px;
 }
 
 .profile .profile-section .section-1 ul li {

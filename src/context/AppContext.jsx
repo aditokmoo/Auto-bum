@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, setDoc, doc, serverTimestamp, query, addDoc } from 'firebase/firestore';
 import {
 	getAuth,
@@ -26,8 +26,6 @@ export const AppContextProvider = ({ children }) => {
 	const [ userCars, setUserCars ] = useState();
 	// State for storing firebase cars from user
 	const [ profileCars, setProfileCars ] = useState();
-	//
-	const [ userCurrentProfileCars, setUserCurrentProfileCars ] = useState(null);
 	// State for storing cars that are filtered on profile
 	const [ profileFilterCars, setProfileFilterCars ] = useState(null);
 	// State for storing search value
@@ -141,10 +139,10 @@ export const AppContextProvider = ({ children }) => {
 
 	// Get auth from firestore
 	const auth = getAuth();
-	// Define params
-	const params = useParams();
 	// Get Navigate
 	const navigate = useNavigate();
+	// window pathname
+	const location = window.location.pathname
 
 	useEffect(() => {
 		/* Check if user is logged in then add that user to currentUser 
@@ -165,7 +163,12 @@ export const AppContextProvider = ({ children }) => {
 		if(dataFromLocalStorage) {
 			setSearchData(JSON.parse(dataFromLocalStorage))
 		}
-	}, [])
+
+		if(window.location.pathname !== '/rezultati-pretrage') {
+			setSearchData(null)
+			localStorage.clear()
+		}
+	}, [location])
 
 	// Handle Forgot Password Form Function
 	const handleForgotPasswordSubmit = async (e) => {
@@ -351,7 +354,7 @@ export const AppContextProvider = ({ children }) => {
 		setCarID(carsId)
 
 		// Loop car object array to store them in Cars and My Cars array
-		carObj.map((car) => {
+		carObj.forEach((car) => {
 			// Storing car data in Cars array
 			cars.push(car);
 			// Stroing user car data in My Cars array
@@ -588,10 +591,8 @@ export const AppContextProvider = ({ children }) => {
 	// Handle Profile Filter Change - BUG
 	const handleProfileCarsFilter = (e) => {
 		const cars = [];
-
-		const option = e.target.value;
-
 		let carData;
+		const option = e.target.value;
 
 		if(window.location.pathname === '/profile') {
 			carData = profileCars
@@ -614,9 +615,6 @@ export const AppContextProvider = ({ children }) => {
 				});
 			}
 		})
-
-		setUserCurrentProfileCars(option)
-
 
 		setProfileFilterCars(cars);
 	}

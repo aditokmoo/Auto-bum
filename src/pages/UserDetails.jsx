@@ -10,6 +10,7 @@ import { BsArrowLeft } from 'react-icons/bs';
 import avatar_image from './images/avatar-image.png';
 import { cars } from '../data/formSelectData';
 import './css/userDetails.css';
+import './css/mobile/userDetails-res.css';
 
 export const UserDetails = () => {
 	const { handleProfileCarsFilter, profileFilterCars, userCars, setUserCars, setProfileFilterCars } = useContext(AppContext)
