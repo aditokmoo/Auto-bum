@@ -20,6 +20,7 @@ import AppContext from '../context/AppContext';
 import Spinner from '../shared/Spinner';
 import './css/navigation.css'
 import './css/mobile/nav-res.css'
+import { MobileForgotPassword } from './MobileForgotPassword';
 
 const Navbar = () => {
   const { showOverlay, handleSearchSubmit, handleSearchChange, searchModal, setSearchModal } = useContext(AppContext);
@@ -148,11 +149,15 @@ const Navbar = () => {
         </div>
 
         <div className={activeTab === 0 ? 'mobile-login-modal show' : 'mobile-login-modal'}>
-            <LoginMobile />
+            <LoginMobile handleTabClick={handleTabClick} />
         </div>
 
         <div className={activeTab === 1 ? 'mobile-register-modal show' : 'mobile-register-modal'}>
             <RegisterMobile />
+        </div>
+
+        <div className={activeTab === 2 ? 'mobile-forgot-password-modal show' : 'mobile-forgot-password-modal'}>
+          <MobileForgotPassword />
         </div>
       </div>
       }

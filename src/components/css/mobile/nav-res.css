@@ -6,12 +6,13 @@
 
 @media only screen and (max-width: 580px) {
     /* REMOVE DESKTOP VERSION */
-    .desktop, .desktop-login, .mobile-login-modal, .mobile-register-modal, .overlay {
+    .desktop, .desktop-login, .mobile-login-modal, .mobile-register-modal, .mobile-forgot-password-modal, .overlay {
         display: none;
     }
 
     .form .form-section {
         padding: 100px 0;
+        z-index: 2;
     }
 
     /* LOGIN */
@@ -83,16 +84,24 @@
         font-weight: bold;
     }
 
+    /* MOBILE FORGOT PASSWORD */
+    .mobile-forgot-password-modal .forgot-password-section h4 {
+        text-align: center;
+        margin: 10px 0;
+        font-family: Montserrat;
+    }
+
     /* MOBILE LOGIN and REGISTER */
     .register-section {
         padding: 90px 0 !important;
     }
 
-    .mobile-login-modal.show, .mobile-register-modal.show {
+    .mobile-login-modal.show, .mobile-register-modal.show, .mobile-forgot-password-modal.show {
         display: block;
     }
 
-    .mobile-login-modal .form-container-mobile {
+    .mobile-login-modal .form-container-mobile,
+    .mobile-forgot-password-modal .form-container-mobile {
         margin: 60px 25px 0 25px;
     }
 
@@ -101,24 +110,28 @@
     }
 
     .mobile-login-modal .form-container-mobile .input-container,
-    .mobile-register-modal .form-container-mobile .input-container {
+    .mobile-register-modal .form-container-mobile .input-container,
+    .mobile-forgot-password-modal .form-container-mobile .input-container {
         margin: 15px 0;
         font-family: Montserrat;
     }
 
     .mobile-login-modal .form-container-mobile .input-container label,
-    .mobile-register-modal .form-container-mobile .input-container label {
+    .mobile-register-modal .form-container-mobile .input-container label,
+    .mobile-forgot-password-modal .form-container-mobile .input-container label {
         font-size: 13px;
         font-weight: bold;
     }
 
     .mobile-login-modal .form-container-mobile .input-container input,
-    .mobile-register-modal .form-container-mobile .input-container input {
+    .mobile-register-modal .form-container-mobile .input-container input,
+    .mobile-forgot-password-modal .form-container-mobile .input-container input {
         width: 100%;
         padding: 14px;
         margin: 8px 0;
         border: 1px solid #ddd;
         border-radius: 6px;
+        font-family: Montserrat;
     }
 
     .mobile-login-modal p,
@@ -131,13 +144,15 @@
     }
 
     .mobile-login-modal .btn,
-    .mobile-register-modal .btn {
+    .mobile-register-modal .btn,
+    .mobile-forgot-password-modal .btn {
         padding: 10px 25px;
         width: 100%;
     }
 
     .mobile-login-modal .btn button,
-    .mobile-register-modal .btn button {
+    .mobile-register-modal .btn button,
+    .mobile-forgot-password-modal .btn button {
         width: 100%;
         padding: 14px;
         border: 0;

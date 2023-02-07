@@ -184,6 +184,7 @@ export const AppContextProvider = ({ children }) => {
 			// Firebase method for reseting password with email
 			await sendPasswordResetEmail(auth, email);
 			toast.success('Email je poslan');
+			setEmail('')
 		} catch (error) {
 			toast.error('Reset lozinke nije poslan');
 		}

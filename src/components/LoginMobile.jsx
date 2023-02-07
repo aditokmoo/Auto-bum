@@ -4,7 +4,7 @@ import AppContext from '../context/AppContext';
 import { BsArrowLeftShort } from 'react-icons/bs';
 import './css/form.css';
 
-export const LoginMobile = ({ handleForgotModal }) => {
+export const LoginMobile = ({ handleForgotModal, handleTabClick }) => {
 	const { loginUser, handleLoginChange, loginData } = useContext(AppContext);
 	const { log_email, log_password } = loginData;
 
@@ -42,7 +42,7 @@ export const LoginMobile = ({ handleForgotModal }) => {
 					</div>
 				</div>
 				<p onClick={handleForgotModal} id="forgot">
-					Zaboravili ste lozinku?<span> Restartujte je</span>
+					Zaboravili ste lozinku?<span onClick={() => handleTabClick(2)}> Restartujte je</span>
 				</p>
 				<div className="btn">
                     <button>Prijavi se</button>
