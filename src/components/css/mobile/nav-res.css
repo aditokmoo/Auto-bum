@@ -462,4 +462,19 @@
     .tablet-side-nav #icon {
         font-size: 1.5em;
     }
+
+    /* FORM FOR LOGIN AND REGISTER */
+    .form .form-section.desktop {
+        top: 10%;
+        margin: 0 50px;
+    }
+
+    .form .form-section .form-container {
+        display: block;
+    }
+
+    .form .form-section .form-container .input-container {
+        width: 100%;
+        margin: 0;
+    }
 }
