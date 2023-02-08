@@ -1,4 +1,4 @@
-import { Navigate, Outlet } from 'react-router';
+import { Outlet } from 'react-router';
 import { useAuthStatus } from '../hooks/useAuthStatus'
 import Spinner from '../shared/Spinner';
 
@@ -9,7 +9,7 @@ const Openroute = () => {
         return <Spinner />
     }
 
-    return !loggedIn ? <Outlet /> : <Navigate to='/home' />
+    return !loggedIn ? <Outlet /> : <Outlet />
 }
 
 export default Openroute

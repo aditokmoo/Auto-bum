@@ -113,7 +113,7 @@ const Navbar = () => {
 
             <div className={window.location.pathname === '/sell' ? "mobile-nav deactivated" : "mobile-nav"}>
               <ul>
-                <li><Link to='/home' className={window.location.pathname === '/home' ? 'link active' : 'link'}><AiFillHome id='icon' /> Početna</Link></li>
+                <li><Link to='/home' className={window.location.pathname === '/home' || window.location.pathname === '/' ? 'link active' : 'link'}><AiFillHome id='icon' /> Početna</Link></li>
                 <li><Link to='/search' className={window.location.pathname === '/search' ? 'link active' : 'link'}><AiOutlineSearch id='icon' /> Pretraga</Link></li>
                 <li><Link to={auth.currentUser && '/sell'} onClick={checkMobileAuth} className={window.location.pathname === '/sell' ? 'link active' : 'link'}><HiPlus id='icon' /> Objavi oglas</Link></li>
                 <li><Link to={auth.currentUser && '/poruke'} onClick={checkMobileAuth} className={window.location.pathname === '/poruke' ? 'link active' : 'link'}><MdMessage id='icon' /> Poruke</Link></li>

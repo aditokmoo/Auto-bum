@@ -351,6 +351,7 @@
         display: block;
         font-family: Montserrat;
         border: none;
+        width: 100%;
     }
 
     .search-modal .input #icon {

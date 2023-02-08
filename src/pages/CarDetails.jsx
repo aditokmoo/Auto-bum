@@ -161,10 +161,10 @@ export const CarDetails = () => {
 								</ul>
 							</div>
 							<div className="btns">
-								<button className="btn-1" onClick={() => alert('Button nije trenutno u funkciji')}>
+								<button className="btn-1" onClick={() => alert('Nije u funkciji')}>
 									<AiOutlineStar />
 								</button>
-								<button className="btn-2" onClick={() => alert('Button nije trenutno u funkciji')}>Pošalji poruku</button>
+								<button className="btn-2" onClick={() => alert('Nije u funkciji')}>Pošalji poruku</button>
 							</div>
 						</div>
 					</div>

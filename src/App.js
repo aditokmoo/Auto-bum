@@ -23,27 +23,26 @@ function App() {
   return (
       <Router>
         <AppContextProvider>
-        <Routes>
-          <Route path='/info' element={<Info />} />
-          <Route path='/search' element={<Pretrage />} />
-          <Route path='/rezultati-pretrage' element={<RezultatiPretrage />} />
-          <Route path='/user/:user' element={<UserDetails />} />
-          <Route path='/user/:user/:car' element={<CarDetails />} />
-          <Route path='/:car' element={<CarDetails />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/politika-privatnosti' element={<PolitikaPrivatnosti />} />
-
-          <Route element={<Openroute />} >
-            <Route path='/' element={<Home />} />
-          </Route>
-          
-          <Route element={<PrivateRoute />}>
-            <Route path='/home' element={<Home />} />
-            <Route path='/sell' element={<Prodaj />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/poruke' element={<Poruke />} />
-          </Route>
-        </Routes>
+          <Routes>
+            <Route element={<Openroute />} >
+              <Route path='/' element={<Home />} />
+              <Route path='/info' element={<Info />} />
+              <Route path='/search' element={<Pretrage />} />
+              <Route path='/rezultati-pretrage' element={<RezultatiPretrage />} />
+              <Route path='/user/:user' element={<UserDetails />} />
+              <Route path='/user/:user/:car' element={<CarDetails />} />
+              <Route path='/:car' element={<CarDetails />} />
+              <Route path='/contact' element={<Contact />} />
+              <Route path='/politika-privatnosti' element={<PolitikaPrivatnosti />} />
+            </Route>
+            
+            <Route element={<PrivateRoute />}>
+              <Route path='/home' element={<Home />} />
+              <Route path='/sell' element={<Prodaj />} />
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/poruke' element={<Poruke />} />
+            </Route>
+          </Routes>
         </AppContextProvider>
       </Router>
   );
