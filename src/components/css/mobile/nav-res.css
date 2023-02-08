@@ -1,12 +1,14 @@
+/* SMALL MOBILE MEDIA QUERIES */
 @media only screen and (max-width: 360px) {
     nav .mobile-nav ul li {
         font-size: 9px !important;
     }
 }
 
+/* MOBILE MEDIA QUERIES */
 @media only screen and (max-width: 580px) {
     /* REMOVE DESKTOP VERSION */
-    .desktop, .desktop-login, .mobile-login-modal, .mobile-register-modal, .mobile-forgot-password-modal, .overlay {
+    .desktop, .desktop-login, .mobile-login-modal, .mobile-register-modal, .mobile-forgot-password-modal, nav .nav-section .tablet-top-nav, .overlay {
         display: none;
     }
 
@@ -359,5 +361,105 @@
         margin: 5px 10px;
         font-size: 2em;
         cursor: pointer;
+    }
+}
+
+/* TABLET MEDIA QUERIES */
+@media (min-width: 580px) and (max-width: 900px) {
+    /* Remove desktop version */
+    nav .nav-section ul {
+        display: none;
+    }
+
+    nav .nav-section ul li #login, #register {
+        padding: 0;
+    }
+
+    /* Tablet version */
+    nav .nav-section h2 {
+        margin: 0 20px;
+    }
+
+    nav .nav-section .tablet-top-nav {
+        display: block;
+    }
+
+    nav .nav-section .tablet-top-nav #icon{
+        font-size: 1.5em;
+        position: relative;
+        right: 20px;
+        top: 5px;
+        cursor: pointer;
+    }
+
+    /* TABLET SIDE NAV */
+    .tablet-side-nav {
+        display: block;
+    }
+
+    .tablet-side-nav .side-nav {
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        width: 50%;
+        z-index: 2;
+        background-color: #fff;
+        display: block;
+    }
+
+    .tablet-side-nav .overlay {
+        display: block;
+        z-index: 2;
+    }
+
+    .tablet-side-nav h2 {
+        font-size: 26px;
+        font-family: Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+        font-weight: 900;
+        border-bottom: 1px solid #ddd;
+        padding: 20px 0px;
+        margin: 0 20px;
+    }
+
+    .tablet-side-nav h2 span {
+        color: #e35b3c;
+    }
+
+    .tablet-side-nav #close-icon {
+        position: absolute;
+        top: 20px;
+        right: 15px;
+        font-size: 1.6em;
+        cursor: pointer;
+    }
+
+    .tablet-side-nav ul {
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
+        margin: 0 20px;
+    }
+
+    .tablet-side-nav ul li {
+        margin: 30px 0;
+    }
+
+    .tablet-side-nav li {
+        list-style: none;
+        font-size: 18px;
+        font-family: Montserrat;
+        margin: 20px 20px;
+        display: block;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tablet-side-nav li .link {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .tablet-side-nav #icon {
+        font-size: 1.5em;
     }
 }

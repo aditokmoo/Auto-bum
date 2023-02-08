@@ -134,3 +134,44 @@
         font-size: 17px;
     }
 }
+
+
+/* TABLET MEDIA QUERIES */
+@media (min-width: 580px) and (max-width: 900px) {
+    /* REMOVE DESKTOP VERSION */
+    .home-section .cars .car .info-section h3 {
+        display: none;
+    }
+
+    /* FILTER SECTION */
+    .filter .tabs ul {
+        display: block;
+    }
+
+    .filter .car-filter .form-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* CARS SECTION */
+    .home-section .cars-container {
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .home-section .cars {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .home-section .cars .car .info-section {
+        padding: 10px;
+    }
+
+    .home-section .cars .car .info-section h3.mobile-h3 {
+        display: block;
+    }
+
+    .home-section .cars .car .info-section .details {
+        display: grid;
+        gap: 10px;
+    }
+}

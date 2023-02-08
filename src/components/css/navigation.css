@@ -1,5 +1,5 @@
 /* REMOVE MOBILE VERSION */
-.mobile, .mobile-login, .mobile-login-modal, .mobile-register-modal, .mobile-side-nav, .search-modal {display: none}
+.mobile, .mobile-login, .mobile-login-modal, .mobile-register-modal, .mobile-side-nav, .search-modal, nav .nav-section .tablet-top-nav {display: none}
 
 /* NAVIGATION SECTION */
 nav {
