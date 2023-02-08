@@ -52,6 +52,7 @@ const Navbar = () => {
   const checkAuth = () => {
     if(!auth.currentUser) {
       setShowModal(true);
+      setShowTabletSideBar(false);
     }
   }
 

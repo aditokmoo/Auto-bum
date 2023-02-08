@@ -105,3 +105,41 @@
         margin: 30px 0;
     }
 }
+
+/* TABLET MEDIA QUERIES */
+@media (min-width: 580px) and (max-width: 900px) {
+    section .sell-section .nav h1 {
+        text-align: center;
+    }
+
+    section .sell-section .nav ul {
+        display: block;
+    }
+
+    /* add image section */
+    .section .auto-section .image-section {
+        height: auto;
+    }
+
+    .section .auto-section .image-section .add-image-section .image {
+        display: block;
+        height: auto; 
+        margin: 0;
+    }
+
+    .section .auto-section .image-section .add-image-section img {
+        width: 220px;
+        height: 159px;
+        margin: 0 0 0 20px;
+        object-fit: cover;
+    }
+
+    /* input section */
+    .section .auto-section .basic-info .form-container, .other-info .form-container, .other-equipment .form-container, .desc-section .form-container, .user-data-section .form-container {
+        display: block;
+    }
+
+    .section .auto-section .button-section button {
+        margin-right: 40px;
+    }
+}
