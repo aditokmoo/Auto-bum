@@ -97,3 +97,55 @@
         padding: 0;
     }
 }
+
+/* TABLET MEDIA QUERIES */
+@media (min-width: 580px) and (max-width: 900px) {
+    .profile h1 {
+        text-align: center;
+    }
+
+    .profile .profile-section {
+        display: block;
+        margin: 20px 50px;
+    }
+
+    .profile .profile-section .section-1 {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .profile .profile-section .section-1 .img-box {
+        background-color: inherit;
+    }
+
+    .moja-vozila .moja-vozila-section .profile-cars .car {
+        height: 200px;
+    }
+
+    .moja-vozila .moja-vozila-section .profile-cars .car .info-section h3 {
+        font-size: 17px;
+    }
+
+    .moja-vozila .moja-vozila-section .profile-cars .car .info-section .details {
+        padding: 20px 0;
+        gap: 10px;
+        display: grid;
+        font-size: 15px;
+    }
+
+    .profile .profile-section .section-2 {
+        width: 100%;
+    }
+
+    .profile .profile-section .section-2 .section {
+        margin: 20px 0;
+    }
+
+    .profile .profile-section .section-2 .section .form-container {
+        grid-template-columns: 1fr;
+    }
+
+    .profile .profile-section .section-2 .section .form-container .input-container button {
+        top: 0;
+    }
+}
