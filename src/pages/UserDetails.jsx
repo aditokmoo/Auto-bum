@@ -13,14 +13,16 @@ import './css/userDetails.css';
 import './css/mobile/userDetails-res.css';
 
 export const UserDetails = () => {
-	const { handleProfileCarsFilter, profileFilterCars, userCars, setUserCars, setProfileFilterCars } = useContext(AppContext)
+	const { handleProfileCarsFilter, profileFilterCars, userCars, setUserCars, setProfileFilterCars } = useContext(
+		AppContext
+	);
 	const [ userDetails, setUserDetails ] = useState();
 	const params = useParams();
-	
+
 	useEffect(() => {
 		getUserDetails();
 		getUserCars();
-		setProfileFilterCars(null)
+		setProfileFilterCars(null);
 	}, []);
 
 	const getUserDetails = async () => {
@@ -42,22 +44,22 @@ export const UserDetails = () => {
 			const docData = doc.data();
 
 			return data.push({
-                id: doc.id,
-                data: docData
-            });
+				id: doc.id,
+				data: docData
+			});
 		});
 
-		data.forEach(({data, id}) => {
+		data.forEach(({ data, id }) => {
 			if (data.uid === params.user) {
 				userCarsData.push({
-                    data,
-                    id
-                });
+					data,
+					id
+				});
 			} else {
 				setUserCars({
 					data: null,
 					id: null
-				})
+				});
 			}
 		});
 
@@ -68,7 +70,7 @@ export const UserDetails = () => {
 		<div>
 			<div className="details">
 				<div className="nav">
-					<Link to='/home' id="back-icon">
+					<Link to="/home" id="back-icon">
 						<BsArrowLeft />
 					</Link>
 					<h3>Profil korisnika</h3>
@@ -129,63 +131,94 @@ export const UserDetails = () => {
 							</div>
 
 							<div className="details-section">
-								<div className="cars">
-									{profileFilterCars ? profileFilterCars.map(({data: { storageImages, naslov_oglasa, godiste, gorivo, kilometraza, cijena }, id}, index) => (
-                                            <Link to={`${id}`} key={index} id="car-link">
-												<div className="car">
-													<div className="image-section">
-														<img src={storageImages[0]} alt="" />
-													</div>
-													<div className="info-section">
-														<h3>{naslov_oglasa}</h3>
-														<div className="details">
-															<span>
-																<FaCalendarAlt className="icon" /> {godiste}
-															</span>
-															<span>
-																<GiGasPump className="icon" /> {gorivo}
-															</span>
-															<span>
-																<FaRoad className="icon" /> {kilometraza}
-															</span>
+								<div className="cars-container">
+									<div className="cars">
+										{profileFilterCars ? (
+											profileFilterCars.map(
+												(
+													{
+														data: {
+															storageImages,
+															naslov_oglasa,
+															godiste,
+															gorivo,
+															kilometraza,
+															cijena
+														},
+														id
+													},
+													index
+												) => (
+													<Link to={`${id}`} key={index} id="car-link">
+														<div className="car">
+															<div className="image-section">
+																<img src={storageImages[0]} alt="" />
+															</div>
+															<div className="info-section">
+																<h3>{naslov_oglasa}</h3>
+																<div className="details">
+																	<span>
+																		<FaCalendarAlt className="icon" /> {godiste}
+																	</span>
+																	<span>
+																		<GiGasPump className="icon" /> {gorivo}
+																	</span>
+																	<span>
+																		<FaRoad className="icon" /> {kilometraza}
+																	</span>
+																</div>
+																<div className="price">
+																	<span>{cijena} KM</span>
+																</div>
+															</div>
 														</div>
-														<div className="price">
-															<span>{cijena} KM</span>
+													</Link>
+												)
+											)
+										) : (
+											userCars.map(
+												(
+													{
+														data: {
+															storageImages,
+															naslov_oglasa,
+															godiste,
+															gorivo,
+															kilometraza,
+															cijena
+														},
+														id
+													},
+													index
+												) => (
+													<Link to={`${id}`} key={index} id="car-link">
+														<div className="car">
+															<div className="image-section">
+																<img src={storageImages[0]} alt="" />
+															</div>
+															<div className="info-section">
+																<h3>{naslov_oglasa}</h3>
+																<div className="details">
+																	<span>
+																		<FaCalendarAlt className="icon" /> {godiste}
+																	</span>
+																	<span>
+																		<GiGasPump className="icon" /> {gorivo}
+																	</span>
+																	<span>
+																		<FaRoad className="icon" /> {kilometraza}
+																	</span>
+																</div>
+																<div className="price">
+																	<span>{cijena} KM</span>
+																</div>
+															</div>
 														</div>
-													</div>
-												</div>
-											</Link>
-										)
-									) 
-									:
-									userCars.map(({data: { storageImages, naslov_oglasa, godiste, gorivo, kilometraza, cijena }, id}, index) => (
-										<Link to={`${id}`} key={index} id="car-link">
-											<div className="car">
-												<div className="image-section">
-													<img src={storageImages[0]} alt="" />
-												</div>
-												<div className="info-section">
-													<h3>{naslov_oglasa}</h3>
-													<div className="details">
-														<span>
-															<FaCalendarAlt className="icon" /> {godiste}
-														</span>
-														<span>
-															<GiGasPump className="icon" /> {gorivo}
-														</span>
-														<span>
-															<FaRoad className="icon" /> {kilometraza}
-														</span>
-													</div>
-													<div className="price">
-														<span>{cijena} KM</span>
-													</div>
-												</div>
-											</div>
-										</Link>
-									)
-								)
-									}
+													</Link>
+												)
+											)
+										)}
+									</div>
 								</div>
 							</div>
 						</div>

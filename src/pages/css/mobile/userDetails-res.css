@@ -55,3 +55,55 @@
         margin: 20px;
     }
 }
+
+/* TABLET MEDIA QUERIES */
+@media (min-width: 580px) and (max-width: 900px) {
+    .userDetails .user-section h1 {
+        text-align: center;
+    }
+
+    .userDetails .user-section .user {
+        display: block;
+        padding: 20px;
+    }
+
+    .userDetails .user-section .user .image {
+        margin: 0 auto;
+        width: 300px;
+        height: 250px;
+    }
+
+    .userDetails .user-section .user .details ul li {
+        margin: 20px auto;
+    }
+
+    .userDetails .user-section .user .details button {
+        position: inherit;
+        display: flex;
+        justify-content: center;
+        margin: 40px auto 20px auto;
+        width: 300px;
+    }
+
+    .userDetails .nav {
+        margin: 0 50px;
+    }
+
+    /* cars */
+    .details-section .cars-container {
+        padding: 0 50px;
+    }
+
+    .details-section .cars {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .details-section .cars .car .info-section {
+        padding: 10px;
+    }
+
+    .details-section .cars .car .info-section .details {
+        display: grid;
+        gap: 10px;
+    }
+}
