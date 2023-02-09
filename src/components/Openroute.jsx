@@ -3,13 +3,13 @@ import { useAuthStatus } from '../hooks/useAuthStatus'
 import Spinner from '../shared/Spinner';
 
 const Openroute = () => {
-    const { loggedIn, checkingStatus } = useAuthStatus();
+    const { checkingStatus } = useAuthStatus();
 
     if(checkingStatus) {
         return <Spinner />
     }
 
-    return !loggedIn ? <Outlet /> : <Outlet />
+    return <Outlet />
 }
 
 export default Openroute

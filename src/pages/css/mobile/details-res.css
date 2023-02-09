@@ -56,3 +56,37 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* TABLET MEDIA QUERIES */
+@media (min-width: 580px) and (max-width: 900px) {
+    .details .details-section {
+        display: block;
+    }
+
+    .details .details-section .section-1,
+    .details .details-section .section-2 {
+        width: 100%;
+    }
+
+    .details .details-section .section-1 h1 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .details .details-section .section-1 .slider {
+        justify-content: center;
+    }
+
+    .details .details-section .section-2 h1 {
+        margin-top: 20px;
+    }
+
+    .details .info-section h1 {
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    .details .info-section .info .items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
