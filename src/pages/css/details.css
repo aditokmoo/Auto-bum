@@ -62,22 +62,61 @@
     object-fit: contain;
 }
 
-.details .details-section .section-1 .slider {
-    display: flex;
+.details .details-section .section-1 .slider-container {
+    overflow: hidden;
+    position: relative;
 }
 
-.details .details-section .section-1 .slider .slide {
+.details .details-section .section-1 .slider-container .slider {
+    display: flex;
+    position: relative;
+    right:  0;
+}
+
+.details .details-section .section-1 .slider-container .arrow-left {
+    position:  absolute;
+    left:  0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    display: flex;
+    height:  100%;
+    align-items: center;
+    padding:  0 10px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.details .details-section .section-1 .slider-container .arrow-right {
+    position:  absolute;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    display: flex;
+    height:  100%;
+    align-items: center;
+    padding:  0 10px;
+    cursor: pointer;
+    transition:  .3s;
+    z-index: 2;
+}
+
+.details .details-section .section-1 .slider-container .arrow-right:hover,
+.details .details-section .section-1 .slider-container .arrow-left:hover {
+    opacity: 0.9;
+}
+
+.details .details-section .section-1 .slider-container .slider .slide {
     height: 100px;
-    margin: 10px;
+    margin: 0 10px;
     cursor: pointer;
     transition: .3s;
 }
 
-.details .details-section .section-1 .slider .slide:hover {
+.details .details-section .section-1 .slider-container .slider .slide:hover {
     opacity: .6;
 }
 
-.details .details-section .section-1 .slider .slide img {
+.details .details-section .section-1 .slider-container .slider .slide img {
     width: 150px;
     height: 100%;
     object-fit: cover;

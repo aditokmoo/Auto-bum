@@ -77,6 +77,11 @@ section .sell-section .nav ul li span {
 	display: none;
 }
 
+.section .auto-section .image-section .add-image-section .images {
+	display: flex;
+	overflow-x: auto;
+}
+
 .section .auto-section .image-section .add-image-section #images {
 	display: none;
 }
@@ -112,12 +117,10 @@ section .sell-section .nav ul li span {
 
 .section .auto-section .image-section .add-image-section .image {
 	display: flex;
-	height: 200px;
 	margin: 16px 0;
 }
 
 .section .auto-section .image-section .add-image-section img {
-	width: 100%;
 	height: 159px;
 	border: 0;
 	padding: 5px;

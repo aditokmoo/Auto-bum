@@ -7,7 +7,7 @@ import { FaCity, FaCalendarAlt, FaRoad, FaUserAlt, FaPhoneAlt } from 'react-icon
 import { GiGasPump, GiGearStickPattern } from 'react-icons/gi';
 import { TbEngine } from 'react-icons/tb';
 import { IoIosPricetags } from 'react-icons/io';
-import { AiFillCar, AiOutlineStar } from 'react-icons/ai';
+import { AiFillCar, AiOutlineRight, AiOutlineLeft, AiOutlineStar } from 'react-icons/ai';
 import { ostalo_info } from '../data/formSelectData';
 import checkIcon from './images/check-green.png'
 import './css/details.css';
@@ -16,6 +16,7 @@ import './css/mobile/details-res.css';
 export const CarDetails = () => {
 	const [ carDetails, setCarDetails ] = useState();
 	const [ equipDetails, setEquipDetails ] = useState(null);
+	const [ slideImage, setSlideImage ] = useState()
 
 	const params = useParams();
 
@@ -38,10 +39,13 @@ export const CarDetails = () => {
 			})
 		})
 
-
 		setEquipDetails(equipData)
 		setCarDetails(data);
 	};
+
+	const handleSlide = (index) => {
+		setSlideImage(carDetails.storageImages[index])
+	}
 
 	return (
 		<div className="details">
@@ -59,14 +63,22 @@ export const CarDetails = () => {
 						<div className="section-1">
 							<h1>{carDetails.naslov_oglasa}</h1>
 							<div className="image">
-								<img src={carDetails.storageImages[0]} alt="" />
+								<img src={slideImage ? slideImage : carDetails.storageImages[0]} alt="" />
 							</div>
-							<div className="slider">
-								{carDetails.storageImages.map((image, index) => (
-									<div className="slide" key={index}>
-										<img src={image} alt="" />
-									</div>
-								))}
+							<div className="slider-container">
+								<div className="arrow-left">
+									<AiOutlineLeft />
+								</div>
+								<div className="arrow-right">
+									<AiOutlineRight />
+								</div>
+								<div className="slider">
+									{carDetails.storageImages.map((image, index) => (
+										<div className="slide" key={index} onClick={() => handleSlide(index)}>
+											<img src={image} alt="" />
+										</div>
+									))}
+								</div>
 							</div>
 						</div>
 						<div className="section-2">

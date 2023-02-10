@@ -1,6 +1,6 @@
 @media only screen and (max-width: 580px) {
     /* REMOVE DESKTOP VERSION */
-    .details .details-section .section-1 .slider,
+    .details .details-section .section-1 .slider-container,
     .details .details-section .section-2 .btns button.btn-1,
     .details .info-section h1 {
         display: none;
@@ -73,7 +73,7 @@
         margin-bottom: 30px;
     }
 
-    .details .details-section .section-1 .slider {
+    .details .details-section .section-1 .slider-container {
         justify-content: center;
     }
 
