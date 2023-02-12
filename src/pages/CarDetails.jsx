@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase.config';
@@ -10,8 +10,13 @@ import { IoIosPricetags } from 'react-icons/io';
 import { AiFillCar, AiOutlineRight, AiOutlineLeft, AiOutlineStar } from 'react-icons/ai';
 import { ostalo_info } from '../data/formSelectData';
 import checkIcon from './images/check-green.png'
+import Slider from "react-slick";
 import './css/details.css';
 import './css/mobile/details-res.css';
+
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 
 export const CarDetails = () => {
 	const [ carDetails, setCarDetails ] = useState();
@@ -47,6 +52,15 @@ export const CarDetails = () => {
 		setSlideImage(carDetails.storageImages[index])
 	}
 
+	const settings = {
+		focusOnSelect: true,
+		infinite: false,
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		speed: 200
+	  };
+
+
 	return (
 		<div className="details">
 			<div className="nav">
@@ -66,19 +80,13 @@ export const CarDetails = () => {
 								<img src={slideImage ? slideImage : carDetails.storageImages[0]} alt="" />
 							</div>
 							<div className="slider-container">
-								<div className="arrow-left">
-									<AiOutlineLeft />
-								</div>
-								<div className="arrow-right">
-									<AiOutlineRight />
-								</div>
-								<div className="slider">
-									{carDetails.storageImages.map((image, index) => (
-										<div className="slide" key={index} onClick={() => handleSlide(index)}>
-											<img src={image} alt="" />
-										</div>
-									))}
-								</div>
+									<Slider {...settings}>
+										{carDetails.storageImages.map((image, index) => (
+											<div className='slide' key={index} onClick={() => handleSlide(index)}>
+												<img src={image} alt="" />
+										  </div>
+										))}
+									</Slider>
 							</div>
 						</div>
 						<div className="section-2">
