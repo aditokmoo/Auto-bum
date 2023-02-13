@@ -2,7 +2,8 @@
     /* REMOVE DESKTOP VERSION */
     .details .details-section .section-1 .slider-container,
     .details .details-section .section-2 .btns button.btn-1,
-    .details .info-section h1 {
+    .details .info-section h1,
+    .details .details-section .section-1 .image.image-desktop {
         display: none;
     }
     
@@ -54,6 +55,43 @@
 
     .details .info-section .info .items {
         grid-template-columns: 1fr;
+    }
+
+    /* REACT - SLICK SLIDER STYLE */
+    .details .details-section .section-1 .image-mobile {
+        display: block;
+    }
+
+    .details .details-section .section-1 .image {
+        width: 100%;
+        height: 200px;
+        display: block;
+        margin:  0 10px 10px 20px;
+    }
+
+    .details .details-section .section-1 .image img {
+        height: inherit !important;
+    }
+
+    .details .details-section .section-1 .image:focus {
+        outline: none;
+    }
+
+    .slick-initialized .slick-slide {
+        width: 100vw !important;
+    }
+
+    .slick-list {
+        margin: 0;
+        width: 90vw;
+    }
+
+    .slick-slider .slick-list {
+        margin: 0;
+    }
+
+    .slick-slide {
+        width:  100px !important;
     }
 }
 

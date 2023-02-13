@@ -52,12 +52,19 @@ export const CarDetails = () => {
 		setSlideImage(carDetails.storageImages[index])
 	}
 
-	const settings = {
+	const settingsDesktop = {
 		focusOnSelect: true,
 		infinite: false,
 		slidesToShow: 3,
 		slidesToScroll: 1,
 		speed: 200
+	  };
+
+	  const settingsMobile = {
+		infinite: false,
+		speed: 200,
+		slidesToShow: 1,
+		slidesToScroll: 1
 	  };
 
 
@@ -76,17 +83,30 @@ export const CarDetails = () => {
 					<div className="details-section">
 						<div className="section-1">
 							<h1>{carDetails.naslov_oglasa}</h1>
-							<div className="image">
+							<div className="image image-desktop">
 								<img src={slideImage ? slideImage : carDetails.storageImages[0]} alt="" />
 							</div>
-							<div className="slider-container">
-									<Slider {...settings}>
+
+							<div className='image-mobile'>
+								<Slider {...settingsMobile}>
 										{carDetails.storageImages.map((image, index) => (
-											<div className='slide' key={index} onClick={() => handleSlide(index)}>
-												<img src={image} alt="" />
-										  </div>
-										))}
-									</Slider>
+											<div className="image" key={index} onClick={() => handleSlide(index)} >
+												<img src={image} />
+											</div>
+										))}	
+								</Slider>
+							</div>
+
+							<div className="slider-container">
+									
+										<Slider {...settingsDesktop}>
+											{carDetails.storageImages.map((image, index) => (
+												<div className='slide' key={index} onClick={() => handleSlide(index)}>
+													<img src={image} alt="" />
+												</div>
+											))}
+										</Slider>
+								
 							</div>
 						</div>
 						<div className="section-2">

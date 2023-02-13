@@ -8,6 +8,11 @@
     }
 }
 
+/* REMOVE MOBILE VERSION */
+.details .details-section .section-1 .image-mobile {
+    display: none;
+}
+
 /* REACT-SLICK SLIDER STYLE */
 .slick-slider .slick-track, .slick-slider .slick-list {
     display: flex !important;
@@ -44,6 +49,11 @@
     width: 100% !important;
     height: 150px !important;
     object-fit: cover;
+    cursor: pointer;
+}
+
+.slick-slide img:hover {
+    opacity: .7;
 }
 
 /* NAV */
@@ -98,6 +108,7 @@
     height: 100%;
     border-radius: 4px;
     object-fit: contain;
+    cursor: pointer;
 }
 
 .details .details-section .section-1 .slider-container {
