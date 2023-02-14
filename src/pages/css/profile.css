@@ -55,7 +55,9 @@
     color: #111;
     padding: 13px 20px;
     background-color: #fff;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     width: 100%;
     transition: .3s;
 }
@@ -75,6 +77,10 @@
 .profile .profile-section .section-1 ul li:last-child .link {
     background-color: #111;
     color: #fff;
+}
+
+.profile .profile-section .section-1 ul li .link #icon {
+    font-size: 1.3em;
 }
 
 /* SECTION 2 */

@@ -5,6 +5,9 @@ import AppContext from '../context/AppContext';
 import { UrediProfil } from './profile/UrediProfil';
 import { MojaVozila } from './profile/MojaVozila';
 import { SpaseniArtikli } from './profile/SpaseniArtikli';
+import { MdDirectionsCar, MdMessage, MdExitToApp } from 'react-icons/md'
+import { AiOutlineStar } from 'react-icons/ai'
+import { FaUserEdit } from 'react-icons/fa'
 import './css/profile.css'
 import './css/mobile/profile-res.css'
 
@@ -40,11 +43,11 @@ const Profile = () => {
                                     </div>
                                 </div>
                                 <ul>
-                                    <li><Link className={activeTab === 0 ? 'link active' : 'link'} onClick={() => handleTabClick(0)}>Moja vozila</Link></li>
-                                    <li><Link to='/poruke' className='link'>Poruke</Link></li>
-                                    <li><Link className={activeTab === 1 ? 'link active' : 'link'} onClick={() => handleTabClick(1)}>Spašeni artikli</Link></li>
-                                    <li><Link className={activeTab === 2 ? 'link active' : 'link'} onClick={() => handleTabClick(2)}>Uredi profil</Link></li>
-                                    <li><Link to='/' className='link' onClick={logOut}>Odjavi se</Link></li>
+                                    <li><Link className={activeTab === 0 ? 'link active' : 'link'} onClick={() => handleTabClick(0)}><MdDirectionsCar id='icon' /> Moja vozila</Link></li>
+                                    <li><Link to='/poruke' className='link'><MdMessage id='icon' /> Poruke</Link></li>
+                                    <li><Link className={activeTab === 1 ? 'link active' : 'link'} onClick={() => handleTabClick(1)}><AiOutlineStar id='icon' /> Spašeni artikli</Link></li>
+                                    <li><Link className={activeTab === 2 ? 'link active' : 'link'} onClick={() => handleTabClick(2)}><FaUserEdit id='icon' /> Uredi profil</Link></li>
+                                    <li><Link to='/' className='link' onClick={logOut}><MdExitToApp id='icon' /> Odjavi se</Link></li>
                                 </ul>
                             </div>
 
