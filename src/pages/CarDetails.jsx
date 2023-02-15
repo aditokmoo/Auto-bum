@@ -9,19 +9,18 @@ import { TbEngine } from 'react-icons/tb';
 import { IoIosPricetags } from 'react-icons/io';
 import { AiFillCar, AiOutlineRight, AiOutlineLeft, AiOutlineStar } from 'react-icons/ai';
 import { ostalo_info } from '../data/formSelectData';
-import checkIcon from './images/check-green.png'
-import Slider from "react-slick";
+import checkIcon from './images/check-green.png';
+import Slider from 'react-slick';
 import './css/details.css';
 import './css/mobile/details-res.css';
 
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
-
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 export const CarDetails = () => {
 	const [ carDetails, setCarDetails ] = useState();
 	const [ equipDetails, setEquipDetails ] = useState(null);
-	const [ slideImage, setSlideImage ] = useState()
+	const [ slideImage, setSlideImage ] = useState();
 
 	const params = useParams();
 
@@ -32,25 +31,25 @@ export const CarDetails = () => {
 	const getCarDetails = async () => {
 		const carDoc = doc(db, 'cars', params.car);
 		const getCarDoc = await getDoc(carDoc);
-		const data = getCarDoc.data()
+		const data = getCarDoc.data();
 
 		const equipData = [];
 
-		ostalo_info.forEach(row => {
-			Object.entries(data).forEach(([key, value]) => {
-				if(row.id === key && value === true) {
+		ostalo_info.forEach((row) => {
+			Object.entries(data).forEach(([ key, value ]) => {
+				if (row.id === key && value === true) {
 					equipData.push(row.name);
 				}
-			})
-		})
+			});
+		});
 
-		setEquipDetails(equipData)
+		setEquipDetails(equipData);
 		setCarDetails(data);
 	};
 
 	const handleSlide = (index) => {
-		setSlideImage(carDetails.storageImages[index])
-	}
+		setSlideImage(carDetails.storageImages[index]);
+	};
 
 	const settingsDesktop = {
 		focusOnSelect: true,
@@ -58,24 +57,23 @@ export const CarDetails = () => {
 		slidesToShow: 3,
 		slidesToScroll: 1,
 		speed: 200
-	  };
+	};
 
-	  const settingsMobile = {
+	const settingsMobile = {
 		infinite: false,
 		speed: 200,
 		slidesToShow: 1,
 		slidesToScroll: 1
-	  };
-
+	};
 
 	return (
 		<div className="details">
 			<div className="nav">
-				{carDetails && 
-					<Link to='/home' id="back-icon">
-					<BsArrowLeft />
-				</Link>
-				}
+				{carDetails && (
+					<Link to="/home" id="back-icon">
+						<BsArrowLeft />
+					</Link>
+				)}
 				<h3>Detalji artikla</h3>
 			</div>
 			{carDetails && (
@@ -87,26 +85,24 @@ export const CarDetails = () => {
 								<img src={slideImage ? slideImage : carDetails.storageImages[0]} alt="" />
 							</div>
 
-							<div className='image-mobile'>
+							<div className="image-mobile">
 								<Slider {...settingsMobile}>
-										{carDetails.storageImages.map((image, index) => (
-											<div className="image" key={index} onClick={() => handleSlide(index)} >
-												<img src={image} />
-											</div>
-										))}	
+									{carDetails.storageImages.map((image, index) => (
+										<div className="image" key={index} onClick={() => handleSlide(index)}>
+											<img src={image} />
+										</div>
+									))}
 								</Slider>
 							</div>
 
 							<div className="slider-container">
-									
-										<Slider {...settingsDesktop}>
-											{carDetails.storageImages.map((image, index) => (
-												<div className='slide' key={index} onClick={() => handleSlide(index)}>
-													<img src={image} alt="" />
-												</div>
-											))}
-										</Slider>
-								
+								<Slider {...settingsDesktop}>
+									{carDetails.storageImages.map((image, index) => (
+										<div className="slide" key={index} onClick={() => handleSlide(index)}>
+											<img src={image} alt="" />
+										</div>
+									))}
+								</Slider>
 							</div>
 						</div>
 						<div className="section-2">
@@ -180,8 +176,7 @@ export const CarDetails = () => {
 									</li>
 								</ul>
 							</div>
-							
-							
+
 							<div className="details-info-2">
 								<ul>
 									<li>
@@ -189,7 +184,11 @@ export const CarDetails = () => {
 											<FaUserAlt id="icon" />
 										</p>
 										<p>Prodavac</p>
-										<p><Link to={`/user/${carDetails.uid}`} id='link'>{carDetails.ime + ' ' + carDetails.prezime}</Link></p>
+										<p>
+											<Link to={`/user/${carDetails.uid}`} id="link">
+												{carDetails.ime + ' ' + carDetails.prezime}
+											</Link>
+										</p>
 									</li>
 									<li>
 										<p>
@@ -204,10 +203,13 @@ export const CarDetails = () => {
 								<button className="btn-1" onClick={() => alert('Nije u funkciji')}>
 									<AiOutlineStar />
 								</button>
-								<button className="btn-2" onClick={() => alert('Nije u funkciji')}>Pošalji poruku</button>
+								<button className="btn-2" onClick={() => alert('Nije u funkciji')}>
+									Pošalji poruku
+								</button>
 							</div>
 						</div>
 					</div>
+
 					<div className="info-section">
 						<h1>Informacije</h1>
 						<div className="info">
@@ -255,87 +257,89 @@ export const CarDetails = () => {
 								</li>
 							</ul>
 						</div>
+
 						<div className="info">
 							<h3>Dodatne informacije</h3>
 							<ul>
-								{carDetails.kilovati &&
-								<li>
-									<p>Kilovati</p>
-									<p>{carDetails.kilovati}</p>
-								</li>
-								}
-								{carDetails.standard &&
-								<li>
-									<p>Emisioni Standard</p>
-									<p>{carDetails.standard}</p>
-								</li>
-								}
-								{carDetails.broj_brzina &&
-								<li>
-									<p>Broj brzina mjenjača</p>
-									<p>{carDetails.broj_brzina}</p>
-								</li>
-								}
-								{carDetails.broj_vrata &&
-								<li>
-									<p>Broj vrata</p>
-									<p>{carDetails.broj_vrata}</p>
-								</li>
-								}
-								{carDetails.strana_volana &&
-								<li>
-									<p>Strana Volana</p>
-									<p>{carDetails.strana_volana}</p>
-								</li>
-								}
-								{carDetails.boja &&
-								<li>
-									<p>Boja Spoljašnosti</p>
-									<p>{carDetails.boja}</p>
-								</li>
-								}
-								{carDetails.karoserija &&
-								<li>
-									<p>Karoserija</p>
-									<p>{carDetails.karoserija}</p>
-								</li>
-								}
-								{carDetails.pogon &&
-								<li>
-									<p>Pogon</p>
-									<p>{carDetails.pogon}</p>
-								</li>
-								}
-								{carDetails.sjedeca_mjesta &&
-								<li>
-									<p>Sjedeća mjesta</p>
-									<p>{carDetails.sjedeca_mjesta}</p>
-								</li>
-								}
+								{carDetails.kilovati && (
+									<li>
+										<p>Kilovati</p>
+										<p>{carDetails.kilovati}</p>
+									</li>
+								)}
+								{carDetails.standard && (
+									<li>
+										<p>Emisioni Standard</p>
+										<p>{carDetails.standard}</p>
+									</li>
+								)}
+								{carDetails.broj_brzina && (
+									<li>
+										<p>Broj brzina mjenjača</p>
+										<p>{carDetails.broj_brzina}</p>
+									</li>
+								)}
+								{carDetails.broj_vrata && (
+									<li>
+										<p>Broj vrata</p>
+										<p>{carDetails.broj_vrata}</p>
+									</li>
+								)}
+								{carDetails.strana_volana && (
+									<li>
+										<p>Strana Volana</p>
+										<p>{carDetails.strana_volana}</p>
+									</li>
+								)}
+								{carDetails.boja && (
+									<li>
+										<p>Boja Spoljašnosti</p>
+										<p>{carDetails.boja}</p>
+									</li>
+								)}
+								{carDetails.karoserija && (
+									<li>
+										<p>Karoserija</p>
+										<p>{carDetails.karoserija}</p>
+									</li>
+								)}
+								{carDetails.pogon && (
+									<li>
+										<p>Pogon</p>
+										<p>{carDetails.pogon}</p>
+									</li>
+								)}
+								{carDetails.sjedeca_mjesta && (
+									<li>
+										<p>Sjedeća mjesta</p>
+										<p>{carDetails.sjedeca_mjesta}</p>
+									</li>
+								)}
 							</ul>
 						</div>
-						
-						{equipDetails &&
-						<div className="info">
-							<h3 id='custom-h3'>Oprema</h3>
-							<div className="items">
-								{equipDetails.map((oprema, index) => (
-									<p key={index}><img src={checkIcon} alt="" /> {oprema}</p>	
-								))
-								}
+
+						{equipDetails && (
+							<div className="info">
+								<h3 id="custom-h3">Oprema</h3>
+								<div className="items">
+									{equipDetails.map((oprema, index) => (
+										<p key={index}>
+											<img src={checkIcon} alt="" /> {oprema}
+										</p>
+									))}
+								</div>
 							</div>
-						</div>
-						}
-						
-						{carDetails.opis_oglasa &&
-						<div className="opis">
-							<h3 id='custom-h3'>Detaljan opis</h3>
-							<p>{carDetails.opis_oglasa}</p>
-						</div>
-						}
+						)}
+
+						{carDetails.opis_oglasa && (
+							<div className="opis">
+								<h3 id="custom-h3">Detaljan opis</h3>
+								<p>{carDetails.opis_oglasa}</p>
+							</div>
+						)}
 					</div>
 				</div>
-					)}
+			)}
 		</div>
 	);
 };

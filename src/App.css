@@ -21,11 +21,10 @@ body {
 .spinner {
     animation: rotate 2s linear infinite;
     z-index: 2;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    right: 50%;
-    margin: -25px 0 0 -25px;
+    position: relative;
+    display: block;
+    top: 45vh;
+    margin: 0 auto;
     width: 100px;
     height: 100px;
 }
