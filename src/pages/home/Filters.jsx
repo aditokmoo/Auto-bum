@@ -51,7 +51,6 @@ export const Filters = ({ handleFilterChange, handleFilterSubmit, filterFormData
 						<div className="input-container">
 							<label>Model</label>
 							<select id="model" onChange={handleFilterChange}>
-								<option value="">Izaberite model</option>
 								{cars.map(
 									(car) =>
 										car.name === filterFormData.proizvodjac &&
@@ -60,7 +59,7 @@ export const Filters = ({ handleFilterChange, handleFilterSubmit, filterFormData
 												{model}
 											</option>
 										))
-										)}
+									)}
 							</select>
 						</div>
 
