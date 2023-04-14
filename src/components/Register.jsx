@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import AppContext from '../context/AppContext';
+import AuthContext from '../context/auth/AuthContext';
 import { cities } from '../data/formSelectData';
 import './css/form.css'
 
 const Register = () => {
-    const { handleRegChange, registerUser, registerData } = useContext(AppContext)
+    const { handleRegChange, registerUser, registerData } = useContext(AuthContext)
     const { reg_name, reg_lname, reg_number, reg_email, reg_password, reg_city } = registerData;
 
     return (

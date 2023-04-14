@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import AppContext from '../context/AppContext';
+import AuthContext from '../context/auth/AuthContext';
 import './css/form.css'
 
 const Login = ({ handleForgotModal }) => {
-    const { loginUser, handleLoginChange, loginData } = useContext(AppContext);
+    const { loginUser, handleLoginChange, loginData } = useContext(AuthContext);
     const { log_email, log_password } = loginData;
 
     return (

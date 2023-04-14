@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import AppContext from '../context/AppContext';
+import AuthContext from '../context/auth/AuthContext';
 import { cities } from '../data/formSelectData';
 import { BsArrowLeftShort } from 'react-icons/bs';
 import './css/form.css';
 
 export const RegisterMobile = () => {
-	const { handleRegChange, registerUser, registerData } = useContext(AppContext);
-	const { reg_name, reg_lname, reg_number, reg_email, reg_password, reg_city } = registerData;
+	const { handleRegChange, registerUser, registerData } = useContext(AuthContext);
+	const { reg_name, reg_lname, reg_number, reg_email, reg_password } = registerData;
 
 	return (
 		<form onSubmit={registerUser}>

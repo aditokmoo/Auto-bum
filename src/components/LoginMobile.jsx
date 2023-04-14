@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import AppContext from '../context/AppContext';
+import AuthContext from '../context/auth/AuthContext';
 import { BsArrowLeftShort } from 'react-icons/bs';
 import './css/form.css';
 
 export const LoginMobile = ({ handleForgotModal, handleTabClick }) => {
-	const { loginUser, handleLoginChange, loginData } = useContext(AppContext);
+	const { loginUser, handleLoginChange, loginData } = useContext(AuthContext);
 	const { log_email, log_password } = loginData;
 
 	return (
