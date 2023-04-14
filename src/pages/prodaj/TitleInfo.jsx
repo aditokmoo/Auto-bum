@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import AppContext from '../../context/AppContext';
 
 export const TitleInfo = () => {
-	const { handleCarFormChange, formError } = useContext(AppContext);
+	const { handleCarFormChange } = useContext(AppContext);
 
 	return (
 		<div className="desc-section">

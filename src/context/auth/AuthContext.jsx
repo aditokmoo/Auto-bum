@@ -1,13 +1,15 @@
-import { createContext, useState } from "react";
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createContext, useContext, useState } from "react";
+import { createUserWithEmailAndPassword, getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { db } from "../../firebase.config";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+import AppContext from "../AppContext";
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
+	const { setCurrentUser, setUserData } = useContext(AppContext);
     // Register data state
 	const [ registerData, setRegisterData ] = useState({
 		reg_name: '',
@@ -22,6 +24,8 @@ export const AuthContextProvider = ({ children }) => {
 		log_email: '',
 		log_password: ''
 	});
+	// Email data state for forgot password form
+	const [ email, setEmail ] = useState('');
 	// Destructuring loginData and registerData
 	const { log_email, log_password } = loginData;
     const { reg_name, reg_lname, reg_number, reg_email, reg_password, reg_city } = registerData;
@@ -136,13 +140,53 @@ export const AuthContextProvider = ({ children }) => {
 		}
 	};
 
+	// Handle Forgot Password Form Function
+	const handleForgotPasswordSubmit = async (e) => {
+		e.preventDefault();
+
+		try {
+			// Firebase method for reseting password with email
+			await sendPasswordResetEmail(auth, email);
+			toast.success('Email je poslan');
+			setEmail('')
+		} catch (error) {
+			toast.error('Reset lozinke nije poslan');
+		}
+	};
+
+	// Logout from profile function
+	const logOut = () => {
+		try {
+			auth.signOut();
+			navigate('/');
+
+			setUserData(null)
+			setCurrentUser(null)
+		} catch (error) {
+			toast.error(error.message, {
+				position: 'bottom-right',
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: 'light'
+			});
+		}
+	};
+
     return <AuthContext.Provider value={{
         loginData,
         registerData,
+		email,
+		setEmail,
         loginUser,
         registerUser,
         handleLoginChange,
         handleRegChange,
+		handleForgotPasswordSubmit,
+		logOut
     }}>
         {children}
     </AuthContext.Provider>

@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import AppContext from '../context/AppContext';
+import AuthContext from '../context/auth/AuthContext';
 import { Link } from "react-router-dom"
 import { BsArrowLeftShort } from 'react-icons/bs'
 
 export const MobileForgotPassword = () => {
-    const { handleForgotPasswordSubmit, email, setEmail } = useContext(AppContext);
+    const { handleForgotPasswordSubmit, email, setEmail } = useContext(AuthContext);
 	
 	return (
         <form onSubmit={handleForgotPasswordSubmit}>

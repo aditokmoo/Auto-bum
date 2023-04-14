@@ -1,7 +1,10 @@
 import { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+// Context
 import AppContext from '../context/AppContext';
+import AuthContext from '../context/auth/AuthContext';
+// Components and Pages
+import Navbar from '../components/Navbar';
 import { UrediProfil } from './profile/UrediProfil';
 import { MojaVozila } from './profile/MojaVozila';
 import { SpaseniArtikli } from './profile/SpaseniArtikli';
@@ -12,7 +15,8 @@ import './css/profile.css'
 import './css/mobile/profile-res.css'
 
 const Profile = () => {
-    const { userData, getUserCollection, logOut } = useContext(AppContext);
+    const { userData, getUserCollection } = useContext(AppContext);
+    const { logOut } = useContext(AuthContext);
     const [ activeTab, setActiveTab ] = useState(0);
 
     useEffect(() => {

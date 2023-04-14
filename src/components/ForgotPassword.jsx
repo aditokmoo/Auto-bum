@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import AppContext from '../context/AppContext';
+import AuthContext from '../context/auth/AuthContext';
 
 const ForgotPassword = ({ handleTabClick }) => {
-    const { handleForgotPasswordSubmit, email, setEmail } = useContext(AppContext);
+    const { handleForgotPasswordSubmit, email, setEmail } = useContext(AuthContext);
 
     return (
         <form onSubmit={handleForgotPasswordSubmit}>

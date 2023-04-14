@@ -1,10 +1,7 @@
 import { useState, createContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, serverTimestamp, query, addDoc } from 'firebase/firestore';
-import {
-	getAuth,
-	sendPasswordResetEmail
-} from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { db } from '../firebase.config';
 import { v4 as uuidv4 } from 'uuid';
@@ -37,12 +34,8 @@ export const AppContextProvider = ({ children }) => {
 	const [ carID, setCarID ] = useState();
 	// State for showing LOADING OVERLAY
 	const [ showOverlay, setShowOverlay ] = useState(false);
-	// Email data state for forgot password form
-	const [ email, setEmail ] = useState('');
 	// State for adding images at prodaja section
 	const [ imgSrc, setImgSrc ] = useState([]);
-	// State for adding error message for form input
-	const [ formError, setFormError ] = useState('');
 	// State for storing Car Form Data
 	const [ carFormData, setCarFormData ] = useState({
 		alu_felge: false,
@@ -152,22 +145,6 @@ export const AppContextProvider = ({ children }) => {
 			localStorage.clear()
 		}
 	}, [location])
-
-	// Handle Forgot Password Form Function
-	const handleForgotPasswordSubmit = async (e) => {
-		e.preventDefault();
-
-		try {
-			// Get Auth from firebase
-			const auth = getAuth();
-			// Firebase method for reseting password with email
-			await sendPasswordResetEmail(auth, email);
-			toast.success('Email je poslan');
-			setEmail('')
-		} catch (error) {
-			toast.error('Reset lozinke nije poslan');
-		}
-	};
 
 	// Delete added images by comparing there image src
 	const handleImageDelete = (itemSrc, id) => {
@@ -497,45 +474,22 @@ export const AppContextProvider = ({ children }) => {
 		setProfileFilterCars(cars);
 	}
 
-	// Logout from profile function
-	const logOut = () => {
-		try {
-			auth.signOut();
-			navigate('/');
-
-			setUserData(null)
-			setCurrentUser(null)
-		} catch (error) {
-			toast.error(error.message, {
-				position: 'bottom-right',
-				autoClose: 5000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-				theme: 'light'
-			});
-		}
-	};
-
 	return (
 		<AppContext.Provider
 			value={{
 				userData,
 				imgSrc,
-				email,
 				carsData,
 				profileCars,
 				carFormData,
 				showOverlay,
-				formError,
 				carID,
 				searchData,
 				searchFormData,
 				profileFilterCars,
 				userCars,
 				searchModal,
+				setCurrentUser,
 				setSearchModal,
 				setProfileFilterCars,
 				setUserCars,
@@ -546,13 +500,10 @@ export const AppContextProvider = ({ children }) => {
 				handleImageChange,
 				handleCarFormChange,
 				handleCarFormSubmit,
-				setEmail,
-				handleForgotPasswordSubmit,
 				setImgSrc,
 				handleImageDelete,
 				getCarsCollection,
-				getUserCollection,
-				logOut
+				getUserCollection
 			}}
 		>
 			{children}
