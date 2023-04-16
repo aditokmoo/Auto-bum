@@ -14,9 +14,6 @@ import Slider from 'react-slick';
 import './css/details.css';
 import './css/mobile/details-res.css';
 
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
 export const CarDetails = () => {
 	const [ carDetails, setCarDetails ] = useState();
 	const [ equipDetails, setEquipDetails ] = useState(null);
