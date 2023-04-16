@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase.config';
@@ -7,7 +7,7 @@ import { FaCity, FaCalendarAlt, FaRoad, FaUserAlt, FaPhoneAlt } from 'react-icon
 import { GiGasPump, GiGearStickPattern } from 'react-icons/gi';
 import { TbEngine } from 'react-icons/tb';
 import { IoIosPricetags } from 'react-icons/io';
-import { AiFillCar, AiOutlineRight, AiOutlineLeft, AiOutlineStar } from 'react-icons/ai';
+import { AiFillCar, AiOutlineStar } from 'react-icons/ai';
 import { ostalo_info } from '../data/formSelectData';
 import checkIcon from './images/check-green.png';
 import Slider from 'react-slick';

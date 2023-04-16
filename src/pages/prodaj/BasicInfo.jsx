@@ -6,7 +6,7 @@ import { cars, yearType, fuelType, cubicType, ownerShipType, climateType, gearTy
 export const BasicInfo = () => {
 	const { carFormData, handleCarFormChange } = useContext(AppContext);
 	// Destructure carFormData
-	const { proizvodjac, model, godiste, kilometraza, cijena, gorivo, hp, kubikaza, vlasnistvo, klima, mjenjac } = carFormData;
+	const { proizvodjac, kilometraza, cijena, hp } = carFormData;
 
 	return (
 		<div className="basic-info">
