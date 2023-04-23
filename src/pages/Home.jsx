@@ -1,5 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useReducer, useState } from 'react';
+// Context
 import AppContext from '../context/AppContext';
+// Reducer
+import { filterFormReducer } from './reducers/filterFormReducer';
 import Navbar from '../components/Navbar';
 import { FilteredCars } from './home/FilteredCars';
 import { Cars } from './home/Cars';
@@ -16,24 +19,27 @@ const Home = () => {
 	const { getCarsCollection, carsData, handleSearchChange, handleSearchSubmit } = useContext(AppContext);
 	const [ filterCarData, setFilterCarData ] = useState(null);
 	const [ filterCarID, setFilterCarID ] = useState(null);
- 	const [ filterFormData, setFilterFormData ] = useState({
-		proizvodjac: null,
-		model: null,
-		godiste: null,
-		gorivo: null,
-		kilometraza: null,
-		cijena: null,
-	});
+ 	const [ filterFormData, dispatch ] = useReducer(filterFormReducer, {
+		proizvodjac: '',
+		model: '',
+		godiste: '',
+		gorivo: '',
+		kilometraza: '',
+		cijena: '',
+	})
 
 	useEffect(() => {
 		getCarsCollection();
 	}, [])
 
 	const handleFilterChange = (e) => {
-		setFilterFormData(prevState => ({
-			...prevState,
-			[e.target.id]: e.target.value
-		}))
+		dispatch({
+			type: 'UPDATE_FITLER',
+			payload: {
+				id: e.target.id,
+				value: e.target.value
+			}
+		})
 	}
 
 	const handleFilterSubmit = (e) => {
@@ -95,6 +101,8 @@ const Home = () => {
                 setFilterCarData(filterData)
                 setFilterCarID(filterID)
 
+				dispatch({ type: 'RESTART_FILTER', payload: '' })
+
 				checkOnlyTrue = true;
 			}
 		})
@@ -113,6 +121,8 @@ const Home = () => {
 				theme: 'light'
 			});
 		}
+
+		
 	}
 
 	return (
