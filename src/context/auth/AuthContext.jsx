@@ -1,16 +1,21 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 import { createUserWithEmailAndPassword, getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { db } from "../../firebase.config";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 import AppContext from "../AppContext";
+import { ACTIONS, AuthReducer } from "../../reducers/auth/AuthReducer";
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
 	const { setCurrentUser, setUserData } = useContext(AppContext);
     // Register data state
+	const [ state, dispatch ] = useReducer(AuthReducer, {
+		EMAIL: '',
+		PASSWORD: ''
+	})
 	const [ registerData, setRegisterData ] = useState({
 		reg_name: '',
 		reg_lname: '',
@@ -19,15 +24,9 @@ export const AuthContextProvider = ({ children }) => {
 		reg_password: '',
 		reg_city: ''
 	});
-    // Login data state
-	const [ loginData, setLoginData ] = useState({
-		log_email: '',
-		log_password: ''
-	});
 	// Email data state for forgot password form
 	const [ email, setEmail ] = useState('');
-	// Destructuring loginData and registerData
-	const { log_email, log_password } = loginData;
+	// Destructuring registerData
     const { reg_name, reg_lname, reg_number, reg_email, reg_password, reg_city } = registerData;
     
     const navigate = useNavigate();
@@ -103,10 +102,7 @@ export const AuthContextProvider = ({ children }) => {
     // Handle Change In Login Form
 	const handleLoginChange = (e) => {
 		// Set login data state to collect input values and stored them in that state
-		setLoginData((prevState) => ({
-			...prevState,
-			[e.target.id]: e.target.value
-		}));
+		dispatch({ type: e.target.name, payload: e.target.value })
 	};
 
 	// User Login Function
@@ -115,14 +111,11 @@ export const AuthContextProvider = ({ children }) => {
 
 		try {
 			// Firebase method for login
-			const userCredential = await signInWithEmailAndPassword(auth, log_email, log_password);
+			const userCredential = await signInWithEmailAndPassword(auth, state.EMAIL, state.PASSWORD);
 			// Check if user exits
 			if (userCredential.user) {
 				// Clear inputs after login
-				setLoginData({
-					log_email: '',
-					log_password: ''
-				});
+				dispatch({ type: ACTIONS.CLEAR_FORM, payload: '' })
 				// Redirect to Home page after login
 				navigate('/home');
 			}
@@ -177,9 +170,9 @@ export const AuthContextProvider = ({ children }) => {
 	};
 
     return <AuthContext.Provider value={{
-        loginData,
         registerData,
 		email,
+		state,
 		setEmail,
         loginUser,
         registerUser,

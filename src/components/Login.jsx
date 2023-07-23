@@ -3,8 +3,7 @@ import AuthContext from '../context/auth/AuthContext';
 import './css/form.css'
 
 const Login = ({ handleForgotModal }) => {
-    const { loginUser, handleLoginChange, loginData } = useContext(AuthContext);
-    const { log_email, log_password } = loginData;
+    const { state, loginUser, handleLoginChange } = useContext(AuthContext);
 
     return (
         <form onSubmit={loginUser}> 
@@ -12,11 +11,11 @@ const Login = ({ handleForgotModal }) => {
                 <div className="form-container">
                     <div className="input-container">
                         <label htmlFor="email">Email</label>
-                        <input type="email" value={log_email} onChange={handleLoginChange} placeholder='Email...' id='log_email' required/>
+                        <input type="email" value={state.EMAIL} onChange={handleLoginChange} placeholder='Email...' id='log_email' name='EMAIL' required/>
                     </div>
                     <div className="input-container">
                         <label htmlFor="password">Lozinka</label>
-                        <input type="password" value={log_password} onChange={handleLoginChange} placeholder='Password' id='log_password' required/>
+                        <input type="password" value={state.PASSWORD} onChange={handleLoginChange} placeholder='Password' id='log_password' name='PASSWORD' required/>
                     </div>
                 </div>
                 <span onClick={handleForgotModal} id='forgot'>Zaboravili ste lozinku?</span>

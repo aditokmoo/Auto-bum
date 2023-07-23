@@ -5,8 +5,7 @@ import { BsArrowLeftShort } from 'react-icons/bs';
 import './css/form.css';
 
 export const LoginMobile = ({ handleForgotModal, handleTabClick }) => {
-	const { loginUser, handleLoginChange, loginData } = useContext(AuthContext);
-	const { log_email, log_password } = loginData;
+	const { loginUser, handleLoginChange, state } = useContext(AuthContext);
 
 	return (
 		<form onSubmit={loginUser}>
@@ -22,10 +21,11 @@ export const LoginMobile = ({ handleForgotModal, handleTabClick }) => {
 						<label htmlFor="email">Email adresa</label>
 						<input
 							type="email"
-							value={log_email}
+							value={state.EMAIL}
 							onChange={handleLoginChange}
 							placeholder="Email..."
 							id="log_email"
+							name='EMAIL'
 							required
 						/>
 					</div>
@@ -33,10 +33,11 @@ export const LoginMobile = ({ handleForgotModal, handleTabClick }) => {
 						<label htmlFor="password">Lozinka</label>
 						<input
 							type="password"
-							value={log_password}
+							value={state.PASSWORD}
 							onChange={handleLoginChange}
 							placeholder="Password"
 							id="log_password"
+							name='PASSWORD'
 							required
 						/>
 					</div>
